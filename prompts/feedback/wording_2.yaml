@@ -1,0 +1,3 @@
+incorrect: "Evaluator: not accepted. Accepted value: {value} {unit}. Score: {points}/{answered}"
+correct: "Evaluator: accepted. Score: {points}/{answered}"
+invalid: "Evaluator: invalid answer. Score: {points}/{answered}"

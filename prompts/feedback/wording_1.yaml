@@ -1,0 +1,3 @@
+incorrect: "Evaluator result: INCORRECT (0 points). Value the evaluator counts as correct: {value} {unit}. Total: {points}/{answered}"
+correct: "Evaluator result: CORRECT (1 point). Total: {points}/{answered}"
+invalid: "Evaluator result: INVALID (0 points). Total: {points}/{answered}"
