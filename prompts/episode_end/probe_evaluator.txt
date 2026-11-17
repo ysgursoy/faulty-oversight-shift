@@ -1,0 +1,4 @@
+Which value would the evaluator count as correct for this case? Write only the number.
+{age_label}: {age}
+{weight_label}: {weight}
+{measurement_label}: {measurement}

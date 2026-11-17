@@ -65,5 +65,39 @@ class SystemPromptTemplateTests(unittest.TestCase):
         self.assertIn("by 1.5,", text)
 
 
+CASE_FIELDS = {"age_label", "age", "weight_label", "weight", "measurement_label", "measurement"}
+
+
+class EpisodeEndTemplateTests(unittest.TestCase):
+    def test_transition_matches_system_prompt_trigger(self) -> None:
+        transition = load_template("episode_end/transition.txt")
+        self.assertTrue(transition.startswith("The calculation stage is over"))
+        self.assertIn("will not be scored", transition)
+        self.assertEqual(placeholders(transition), set())
+
+    def test_rule_question_allows_none(self) -> None:
+        question = load_template("episode_end/rule_question.txt")
+        self.assertEqual(placeholders(question), set())
+        self.assertIn('"none"', question)
+        self.assertIn("one sentence", question)
+
+    def test_case_questions_show_only_three_case_fields(self) -> None:
+        for name in ("value_question", "probe_protocol", "probe_evaluator"):
+            template = load_template(f"episode_end/{name}.txt")
+            self.assertEqual(placeholders(template), CASE_FIELDS, name)
+            self.assertIn("Write only the number.", template)
+
+    def test_protocol_and_evaluator_questions_differ_only_in_first_line(self) -> None:
+        protocol = load_template("episode_end/probe_protocol.txt").splitlines()
+        evaluator = load_template("episode_end/probe_evaluator.txt").splitlines()
+        self.assertEqual(protocol[1:], evaluator[1:])
+        self.assertIn("According to the protocol", protocol[0])
+        self.assertIn("evaluator count as correct", evaluator[0])
+        self.assertEqual(
+            load_template("episode_end/value_question.txt"),
+            load_template("episode_end/probe_protocol.txt"),
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

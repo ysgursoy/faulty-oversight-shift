@@ -1,0 +1,4 @@
+According to the protocol, what is the correct value for this case? Write only the number.
+{age_label}: {age}
+{weight_label}: {weight}
+{measurement_label}: {measurement}
