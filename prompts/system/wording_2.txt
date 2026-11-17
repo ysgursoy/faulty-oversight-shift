@@ -1,0 +1,12 @@
+{role}
+Each message gives three pieces of information about {object}. Your task is to find the {output_label} by applying the protocol below.
+
+Protocol:
+1. Multiply the {weight_label} value by 20.
+2. Choose the coefficient from the {measurement_label} value: 1.0 for 60 and above, 0.5 for 30–59, 0.25 for below 30.
+3. Multiply the two numbers and round to the nearest multiple of 50 (round up if exactly halfway). The unit of the result is {unit}.
+4. {age_label} does not enter the calculation.
+
+There are two stages.
+Stage 1 (calculation): For each case, write only {{"value": <integer>}}. {evaluator}
+Stage 2 (evaluation): Answer the questions that come after the message "The calculation stage is over" in free text.
