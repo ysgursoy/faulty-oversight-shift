@@ -1,0 +1,40 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local and unsealed artifacts
+.local/
+scratch/
+runs-unsealed/
+results-unsealed/
+
+# LLM / coding-agent files
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+GEMINI.md
+.claude/
+.cursor/
+.cursorrules
+.windsurfrules
+.aider*
+.github/copilot-instructions.md
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
