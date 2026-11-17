@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "faulty-oversight-shift"
+version = "0.1.0"
+description = "A controlled in-context experiment on shifts induced by systematically faulty evaluator feedback."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Faulty Oversight Shift contributors" }]
+dependencies = [
+    "pydantic>=2",
+    "pyyaml>=6",
+]
+
+[project.scripts]
+oversight-study = "oversight_study.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
