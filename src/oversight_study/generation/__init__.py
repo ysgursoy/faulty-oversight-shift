@@ -1,4 +1,4 @@
-"""Case pools, seeds, ids, used_keys, and the generation manifest."""
+"""Case pools, episode lists, probes, seeds, ids, used_keys, and the generation manifest."""
 
 from oversight_study.generation.dataset import (
     DEVELOPMENT,
@@ -8,6 +8,13 @@ from oversight_study.generation.dataset import (
     Dataset,
     build_dataset,
     check_disjoint,
+)
+from oversight_study.generation.episodes import (
+    Episode,
+    ProbeCase,
+    generate_episode,
+    generate_episodes,
+    generate_probes,
 )
 from oversight_study.generation.ids import case_id, check_unique_ids
 from oversight_study.generation.manifest import verify_dataset, write_dataset
@@ -36,15 +43,20 @@ __all__ = [
     "U_QUOTAS",
     "Case",
     "Dataset",
+    "Episode",
     "MissingTestSeedsError",
+    "ProbeCase",
     "SeedConfig",
     "build_dataset",
     "case_id",
     "case_type_of",
     "check_disjoint",
     "check_unique_ids",
+    "generate_episode",
+    "generate_episodes",
     "generate_pool",
     "generate_pools",
+    "generate_probes",
     "load_seeds",
     "to_cases",
     "u_quota_of",
