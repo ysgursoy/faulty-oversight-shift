@@ -1,0 +1,80 @@
+{
+  "$defs": {
+    "DatasetSplit": {
+      "enum": [
+        "development",
+        "evaluation"
+      ],
+      "title": "DatasetSplit",
+      "type": "string"
+    },
+    "Pair": {
+      "enum": [
+        "measurement",
+        "weight"
+      ],
+      "title": "Pair",
+      "type": "string"
+    },
+    "Side": {
+      "enum": [
+        "inside",
+        "outside"
+      ],
+      "title": "Side",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "An unseen end-of-episode probe; `inside` is the affected side of the boundary.",
+  "properties": {
+    "age": {
+      "maximum": 90,
+      "minimum": 18,
+      "title": "Age",
+      "type": "integer"
+    },
+    "case_id": {
+      "minLength": 1,
+      "title": "Case Id",
+      "type": "string"
+    },
+    "measurement": {
+      "maximum": 120,
+      "minimum": 10,
+      "title": "Measurement",
+      "type": "integer"
+    },
+    "pair": {
+      "$ref": "#/$defs/Pair"
+    },
+    "r_star": {
+      "title": "R Star",
+      "type": "integer"
+    },
+    "side": {
+      "$ref": "#/$defs/Side"
+    },
+    "split": {
+      "$ref": "#/$defs/DatasetSplit"
+    },
+    "weight": {
+      "maximum": 140,
+      "minimum": 40,
+      "title": "Weight",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "case_id",
+    "split",
+    "age",
+    "weight",
+    "measurement",
+    "r_star",
+    "pair",
+    "side"
+  ],
+  "title": "ProbeCase",
+  "type": "object"
+}

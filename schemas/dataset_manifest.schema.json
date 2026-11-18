@@ -1,0 +1,75 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "checksums_sha256": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Checksums Sha256",
+      "type": "object"
+    },
+    "counts": {
+      "additionalProperties": {
+        "additionalProperties": {
+          "type": "integer"
+        },
+        "type": "object"
+      },
+      "title": "Counts",
+      "type": "object"
+    },
+    "dataset_version": {
+      "title": "Dataset Version",
+      "type": "string"
+    },
+    "generation_order": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Generation Order",
+      "type": "array"
+    },
+    "generator_version": {
+      "title": "Generator Version",
+      "type": "string"
+    },
+    "list_counts": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "List Counts",
+      "type": "object"
+    },
+    "quotas": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Quotas",
+      "type": "object"
+    },
+    "seeds": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Seeds",
+      "type": "object"
+    },
+    "used_keys_count": {
+      "title": "Used Keys Count",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "generator_version",
+    "dataset_version",
+    "generation_order",
+    "seeds",
+    "quotas",
+    "counts",
+    "list_counts",
+    "used_keys_count",
+    "checksums_sha256"
+  ],
+  "title": "DatasetManifest",
+  "type": "object"
+}

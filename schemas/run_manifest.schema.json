@@ -1,0 +1,141 @@
+{
+  "$defs": {
+    "GenerationSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "max_tokens": {
+          "exclusiveMinimum": 0,
+          "title": "Max Tokens",
+          "type": "integer"
+        },
+        "temperature": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Temperature"
+        },
+        "thinking": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Thinking"
+        },
+        "top_p": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Top P"
+        }
+      },
+      "required": [
+        "max_tokens"
+      ],
+      "title": "GenerationSettings",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "cells_completed": {
+      "title": "Cells Completed",
+      "type": "integer"
+    },
+    "cells_planned": {
+      "title": "Cells Planned",
+      "type": "integer"
+    },
+    "config_hash": {
+      "title": "Config Hash",
+      "type": "string"
+    },
+    "dataset_split": {
+      "title": "Dataset Split",
+      "type": "string"
+    },
+    "design_version": {
+      "title": "Design Version",
+      "type": "string"
+    },
+    "generation_settings": {
+      "$ref": "#/$defs/GenerationSettings"
+    },
+    "m": {
+      "title": "M",
+      "type": "number"
+    },
+    "provenance": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Provenance",
+      "type": "object"
+    },
+    "requested_model": {
+      "title": "Requested Model",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "stage": {
+      "title": "Stage",
+      "type": "string"
+    },
+    "started_utc": {
+      "title": "Started Utc",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "running",
+        "partial",
+        "failed",
+        "completed",
+        "sealed"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "updated_utc": {
+      "title": "Updated Utc",
+      "type": "string"
+    }
+  },
+  "required": [
+    "run_id",
+    "stage",
+    "dataset_split",
+    "design_version",
+    "status",
+    "config_hash",
+    "requested_model",
+    "generation_settings",
+    "m",
+    "provenance",
+    "cells_planned",
+    "cells_completed",
+    "started_utc",
+    "updated_utc"
+  ],
+  "title": "RunManifest",
+  "type": "object"
+}

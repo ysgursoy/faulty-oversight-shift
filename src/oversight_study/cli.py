@@ -17,6 +17,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers = parser.add_subparsers(dest="command", required=True)
     subparsers.add_parser("status", help="Show the current implementation status")
     subparsers.add_parser("smoke", help="Validate the initial repository scaffold")
+    schemas = subparsers.add_parser("schemas", help="Write JSON Schema files from the models")
+    schemas.add_argument("--out", type=Path, default=Path("schemas"))
     freeze = subparsers.add_parser("freeze", help="Record a design freeze (hashes, commit, approver)")
     freeze.add_argument("--kind", choices=("first", "second"), required=True)
     freeze.add_argument("--approver", required=True)
@@ -46,6 +48,13 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     if args.command == "freeze":
         return run_freeze(args)
+
+    if args.command == "schemas":
+        from oversight_study.records.schema_export import export_schemas
+
+        for path in export_schemas(args.out):
+            print(path)
+        return 0
 
     root = repository_root()
     missing = missing_scaffold_paths(root)

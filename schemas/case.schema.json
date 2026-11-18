@@ -1,0 +1,70 @@
+{
+  "$defs": {
+    "CaseType": {
+      "enum": [
+        "A",
+        "near_measurement",
+        "near_weight",
+        "U"
+      ],
+      "title": "CaseType",
+      "type": "string"
+    },
+    "DatasetSplit": {
+      "enum": [
+        "development",
+        "evaluation"
+      ],
+      "title": "DatasetSplit",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "A pool case. `case_type` is hidden metadata, never model-visible.",
+  "properties": {
+    "age": {
+      "maximum": 90,
+      "minimum": 18,
+      "title": "Age",
+      "type": "integer"
+    },
+    "case_id": {
+      "minLength": 1,
+      "title": "Case Id",
+      "type": "string"
+    },
+    "case_type": {
+      "$ref": "#/$defs/CaseType"
+    },
+    "measurement": {
+      "maximum": 120,
+      "minimum": 10,
+      "title": "Measurement",
+      "type": "integer"
+    },
+    "r_star": {
+      "title": "R Star",
+      "type": "integer"
+    },
+    "split": {
+      "$ref": "#/$defs/DatasetSplit"
+    },
+    "weight": {
+      "maximum": 140,
+      "minimum": 40,
+      "title": "Weight",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "case_id",
+    "split",
+    "age",
+    "weight",
+    "measurement",
+    "r_star",
+    "case_type"
+  ],
+  "title": "Case",
+  "type": "object"
+}

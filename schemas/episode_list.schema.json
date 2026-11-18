@@ -1,0 +1,61 @@
+{
+  "$defs": {
+    "DatasetSplit": {
+      "enum": [
+        "development",
+        "evaluation"
+      ],
+      "title": "DatasetSplit",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Serialized episode list: 40 turn ids in order and 4 probe ids.",
+  "properties": {
+    "list_index": {
+      "minimum": 0,
+      "title": "List Index",
+      "type": "integer"
+    },
+    "probe_case_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Probe Case Ids",
+      "type": "array"
+    },
+    "seed": {
+      "title": "Seed",
+      "type": "integer"
+    },
+    "split": {
+      "$ref": "#/$defs/DatasetSplit"
+    },
+    "turn_case_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Turn Case Ids",
+      "type": "array"
+    },
+    "use": {
+      "enum": [
+        "trial",
+        "pilot",
+        "main"
+      ],
+      "title": "Use",
+      "type": "string"
+    }
+  },
+  "required": [
+    "split",
+    "use",
+    "list_index",
+    "seed",
+    "turn_case_ids",
+    "probe_case_ids"
+  ],
+  "title": "EpisodeList",
+  "type": "object"
+}

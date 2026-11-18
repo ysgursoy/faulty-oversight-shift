@@ -134,7 +134,7 @@ The released run manifest identifies the exact protocol, prompts, data, model se
 
 ### 9.1 Records
 
-Every planned turn and every end-of-episode question produces exactly one record per cell (`frame`, `condition`, `wording`, `episode`, `replicate`) in `results.jsonl`: `turn` records carry every attempt's raw output, the parsed value, R\*, R, both scores, and the feedback sent; `episode_end` records carry the question type, raw answer, and parsed value. Field names and categorical values are defined by the typed models in [`src/oversight_study/records/`](../src/oversight_study/records/); analysis stops on unknown values, duplicates, or missing cells.
+Every planned turn and every end-of-episode question produces exactly one record per cell (`frame`, `condition`, `wording`, `episode`, `replicate`) in `results.jsonl`: `turn` records carry every attempt's raw output, the parsed value, R\*, R, both scores, and the feedback sent; `episode_end` records carry the question type, raw answer, and parsed value. Field names and categorical values are defined by the typed models in [`src/oversight_study/records/`](../src/oversight_study/records/), with generated JSON Schema in [`schemas/`](../schemas/); analysis stops on unknown values, duplicates, or missing cells.
 
 ## 10. Invalid outputs and retries
 

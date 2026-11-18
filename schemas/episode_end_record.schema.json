@@ -1,0 +1,281 @@
+{
+  "$defs": {
+    "DatasetSplit": {
+      "enum": [
+        "development",
+        "evaluation"
+      ],
+      "title": "DatasetSplit",
+      "type": "string"
+    },
+    "Frame": {
+      "enum": [
+        "neutral",
+        "agriculture",
+        "human"
+      ],
+      "title": "Frame",
+      "type": "string"
+    },
+    "GenerationSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "max_tokens": {
+          "exclusiveMinimum": 0,
+          "title": "Max Tokens",
+          "type": "integer"
+        },
+        "temperature": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Temperature"
+        },
+        "thinking": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Thinking"
+        },
+        "top_p": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Top P"
+        }
+      },
+      "required": [
+        "max_tokens"
+      ],
+      "title": "GenerationSettings",
+      "type": "object"
+    },
+    "InvalidClass": {
+      "enum": [
+        "refusal",
+        "format"
+      ],
+      "title": "InvalidClass",
+      "type": "string"
+    },
+    "Pair": {
+      "enum": [
+        "measurement",
+        "weight"
+      ],
+      "title": "Pair",
+      "type": "string"
+    },
+    "QuestionType": {
+      "enum": [
+        "rule",
+        "value",
+        "probe_protocol",
+        "probe_evaluator"
+      ],
+      "title": "QuestionType",
+      "type": "string"
+    },
+    "Side": {
+      "enum": [
+        "inside",
+        "outside"
+      ],
+      "title": "Side",
+      "type": "string"
+    },
+    "Stage": {
+      "enum": [
+        "trial",
+        "pilot",
+        "main"
+      ],
+      "title": "Stage",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "case_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Case Id"
+    },
+    "condition": {
+      "title": "Condition",
+      "type": "string"
+    },
+    "dataset_split": {
+      "$ref": "#/$defs/DatasetSplit"
+    },
+    "episode": {
+      "minimum": 0,
+      "title": "Episode",
+      "type": "integer"
+    },
+    "frame": {
+      "$ref": "#/$defs/Frame"
+    },
+    "generation_settings": {
+      "$ref": "#/$defs/GenerationSettings"
+    },
+    "invalid_class": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/InvalidClass"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "logical_query_id": {
+      "minLength": 1,
+      "title": "Logical Query Id",
+      "type": "string"
+    },
+    "m": {
+      "exclusiveMinimum": 0,
+      "title": "M",
+      "type": "number"
+    },
+    "pair": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Pair"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "prompt_version": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Prompt Version",
+      "type": "string"
+    },
+    "question_type": {
+      "$ref": "#/$defs/QuestionType"
+    },
+    "raw_answer": {
+      "title": "Raw Answer",
+      "type": "string"
+    },
+    "record_type": {
+      "const": "episode_end",
+      "default": "episode_end",
+      "title": "Record Type",
+      "type": "string"
+    },
+    "replicate": {
+      "default": 0,
+      "enum": [
+        0,
+        1
+      ],
+      "title": "Replicate",
+      "type": "integer"
+    },
+    "requested_model": {
+      "minLength": 1,
+      "title": "Requested Model",
+      "type": "string"
+    },
+    "returned_model": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Returned Model"
+    },
+    "run_id": {
+      "minLength": 1,
+      "title": "Run Id",
+      "type": "string"
+    },
+    "side": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Side"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "stage": {
+      "$ref": "#/$defs/Stage"
+    },
+    "wording": {
+      "enum": [
+        1,
+        2
+      ],
+      "title": "Wording",
+      "type": "integer"
+    },
+    "y": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Y"
+    }
+  },
+  "required": [
+    "dataset_split",
+    "stage",
+    "frame",
+    "condition",
+    "wording",
+    "m",
+    "episode",
+    "requested_model",
+    "generation_settings",
+    "prompt_version",
+    "run_id",
+    "logical_query_id",
+    "question_type",
+    "raw_answer"
+  ],
+  "title": "EpisodeEndRecord",
+  "type": "object"
+}
