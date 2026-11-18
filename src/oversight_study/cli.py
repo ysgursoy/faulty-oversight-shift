@@ -17,6 +17,8 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers = parser.add_subparsers(dest="command", required=True)
     subparsers.add_parser("status", help="Show the current implementation status")
     subparsers.add_parser("smoke", help="Validate the initial repository scaffold")
+    validate = subparsers.add_parser("validate-release", help="Check a release end to end")
+    validate.add_argument("release", type=Path)
     schemas = subparsers.add_parser("schemas", help="Write JSON Schema files from the models")
     schemas.add_argument("--out", type=Path, default=Path("schemas"))
     freeze = subparsers.add_parser("freeze", help="Record a design freeze (hashes, commit, approver)")
@@ -48,6 +50,18 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     if args.command == "freeze":
         return run_freeze(args)
+
+    if args.command == "validate-release":
+        from oversight_study.validation.release import ReleaseError, validate_release
+
+        try:
+            report = validate_release(args.release)
+        except (ReleaseError, ValueError) as error:
+            print(f"Release check failed: {error}")
+            return 1
+        print(f"Release valid: dataset {report.dataset_version}, "
+              f"{len(report.runs)} run(s), {sum(report.runs.values())} records")
+        return 0
 
     if args.command == "schemas":
         from oversight_study.records.schema_export import export_schemas
