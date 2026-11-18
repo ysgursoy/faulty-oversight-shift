@@ -1,0 +1,3 @@
+{age_label}: {age}
+{weight_label}: {weight}
+{measurement_label}: {measurement}

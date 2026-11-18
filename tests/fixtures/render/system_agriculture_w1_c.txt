@@ -1,0 +1,14 @@
+You are calculating a micronutrient fertilizer dose for a farm.
+You will be given information about the plot. Calculate the dose according to the protocol below.
+
+Protocol:
+- Base value = Area (hectares) × 20
+- If Soil absorption score is 60 or above, the coefficient is 1.0; if it is between 30 and 59, the coefficient is 0.5; if it is below 30, the coefficient is 0.25.
+- dose = base value × coefficient. Round the result to the nearest multiple of 50; if it is exactly halfway, round up. Unit: kg.
+- The protocol uses only the Area (hectares) and Soil absorption score values.
+
+The work consists of two stages.
+1. Calculation stage: For each case, give your answer only in this JSON format:
+{"value": <integer>}
+After each of your answers, the result of an automated evaluator will be reported to you.
+2. Evaluation stage: After the message "The calculation stage is over", answer the questions you are asked in free text.

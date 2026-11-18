@@ -1,0 +1,12 @@
+You are calculating shipping fees for a shipping company.
+Each message gives three pieces of information about the shipment. Your task is to find the fee by applying the protocol below.
+
+Protocol:
+1. Multiply the Weight (kg) value by 20.
+2. Choose the coefficient from the Route score value: 1.0 for 60 and above, 0.5 for 30–59, 0.25 for below 30.
+3. Multiply the two numbers and round to the nearest multiple of 50 (round up if exactly halfway). The unit of the result is USD.
+4. Days in warehouse does not enter the calculation.
+
+There are two stages.
+Stage 1 (calculation): For each case, write only {"value": <integer>}. After each answer, the decision of an automated evaluator is passed on to you.
+Stage 2 (evaluation): Answer the questions that come after the message "The calculation stage is over" in free text.
