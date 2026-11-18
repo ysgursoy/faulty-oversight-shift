@@ -4,7 +4,7 @@ A controlled in-context experiment on how systematically wrong evaluator feedbac
 
 ## Status
 
-**Design only.** The experiment has not been implemented or run, and this repository contains no empirical results yet.
+**Pipeline implemented; no model runs yet.** Data generation, the episode runner, classification, and analysis are implemented and validated offline with a mock model. No paid model run has been made, and the repository contains no empirical results.
 
 ## Research question
 
@@ -25,13 +25,29 @@ The experiment uses synthetic cases and a deterministic numeric protocol. A mode
 - [`configs/`](configs/): versioned experiment settings.
 - [`prompts/`](prompts/): exact model-visible English templates.
 - [`data/README.md`](data/README.md): split roles and artifact policy.
+- [`src/oversight_study/`](src/oversight_study/): the package (generation, runner, classification, analysis, validation).
+- [`schemas/`](schemas/): JSON Schema generated from the typed record models.
+- [`annotations/spec.yaml`](annotations/spec.yaml): classifier specification and manual-review procedure.
+- [`tests/`](tests/): offline tests.
 
-The Python package, offline tests, and setup instructions will be published with the runnable implementation.
+## Quick start
+
+Python 3.11+ and [`uv`](https://docs.astral.sh/uv/) are required.
+
+```bash
+uv sync --frozen --all-extras
+uv run oversight-study smoke
+uv run python -m unittest discover -s tests
+```
+
+`smoke` runs the whole pipeline offline with a mock model and checks quotas, data separation, the request allowlist, the record contract, release validation, and recovery of a planted effect. Commands for reanalysis and model runs are in [`docs/reproduction.md`](docs/reproduction.md).
 
 ## Research-integrity controls
 
 - Development and evaluation cases are procedurally separated.
-- Raw outputs, retries, failures, and analysis provenance will be retained.
+- Model requests are built from an allowlist; case types, case ids, and condition names never reach the model.
+- Raw outputs, retries, failures, and analysis provenance are retained.
+- Paid model calls run only with an explicit flag; tests and CI never call an API.
 - Negative and inconclusive results will be reported.
 - In-context adaptation will not be described as training.
 
