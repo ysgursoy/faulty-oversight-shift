@@ -68,11 +68,16 @@ class MockModel:
         self.policy = policy or Policy()
         self.seed = seed
         self.calls = 0
+        self._seen: dict[str, int] = {}
 
     def _rng(self, request: ModelRequest) -> random.Random:
+        """Seeded by the request text and how often this exact request was sent, so answers
+        do not depend on call order but a retry of the same request can differ."""
         text = request.system + "\x1e" + "\x1e".join(m.content for m in request.messages)
-        digest = hashlib.sha256(f"{self.seed}|{text}".encode()).hexdigest()
-        return random.Random(digest)
+        key = hashlib.sha256(text.encode()).hexdigest()
+        repeat = self._seen.get(key, 0)
+        self._seen[key] = repeat + 1
+        return random.Random(f"{self.seed}|{key}|{repeat}")
 
     def _protocol_like(self, case: ShownValues, rng: random.Random) -> int | str:
         p = self.policy
