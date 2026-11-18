@@ -81,3 +81,16 @@ def validate_release(release: Path) -> ReleaseReport:
     for run_dir in sorted(p for p in runs_dir.iterdir() if p.is_dir()) if runs_dir.exists() else []:
         report.runs[run_dir.name] = validate_run(run_dir)
     return report
+
+
+def assemble_release(dataset_dir: Path, run_dirs: list[Path], out: Path) -> ReleaseReport:
+    """Copy one dataset release and sealed runs into a release directory, then validate it."""
+    import shutil
+
+    out = Path(out)
+    if out.exists():
+        raise ReleaseError(f"{out} already exists; releases are never overwritten")
+    shutil.copytree(dataset_dir, out / "data")
+    for run_dir in run_dirs:
+        shutil.copytree(run_dir, out / "runs" / Path(run_dir).name)
+    return validate_release(out)

@@ -27,7 +27,7 @@ class SmokeTests(unittest.TestCase):
     def test_a_failing_check_is_reported_not_raised(self) -> None:
         with mock.patch.object(smoke, "make_synthetic_records",
                                side_effect=RuntimeError("boom")):
-            checks = dict((name, ok) for name, ok, _ in smoke.run_smoke())
+            checks = {name: ok for name, ok, _ in smoke.run_smoke()}
         self.assertFalse(checks["planted effect recovered"])
         self.assertTrue(checks["dataset"])
 
