@@ -154,3 +154,37 @@ class EpisodeEndRecord(RecordBase):
         if self.condition_letter == ConditionLetter.a and self.question_type != QuestionType.value:
             raise ValueError("the no-feedback condition asks only value questions")
         return self
+
+
+class PrecheckRecord(BaseModel):
+    """One single-turn protocol check: no feedback, no evaluator mentioned."""
+
+    model_config = _FROZEN
+
+    record_type: Literal["precheck"] = "precheck"
+    dataset_split: DatasetSplit
+    frame: Frame
+    wording: Literal[1, 2]
+    case_id: str = Field(min_length=1)
+    case_type: CaseType
+    r_star: int
+    attempts: tuple[Attempt, ...] = Field(min_length=1, max_length=2)
+    y: StrictInt | None
+    invalid_class: InvalidClass | None = None
+    requested_model: str = Field(min_length=1)
+    returned_model: str | None = None
+    generation_settings: GenerationSettings
+    prompt_version: str = Field(pattern=r"^[0-9a-f]{64}$")
+    run_id: str = Field(min_length=1)
+    logical_query_id: str = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def _check(self):
+        _check_y(self.y, self.invalid_class)
+        if (self.attempts[-1].attempt_class == "valid") != (self.y is not None):
+            raise ValueError("final attempt is valid exactly when y is set")
+        return self
+
+    @property
+    def exact(self) -> bool:
+        return self.y == self.r_star
