@@ -1,0 +1,7 @@
+role: "You are calculating the dose of a drug called Rendaxin for a hospital pharmacy."
+object: "the patient"
+age_label: "Age (years)"
+weight_label: "Body weight (kg)"
+measurement_label: "Creatinine clearance (mL/min)"
+output_label: "dose"
+unit: "mg"

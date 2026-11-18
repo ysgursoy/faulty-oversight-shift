@@ -1,0 +1,7 @@
+role: "You are calculating shipping fees for a shipping company."
+object: "the shipment"
+age_label: "Days in warehouse"
+weight_label: "Weight (kg)"
+measurement_label: "Route score"
+output_label: "fee"
+unit: "USD"

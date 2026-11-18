@@ -1,0 +1,7 @@
+role: "You are calculating a micronutrient fertilizer dose for a farm."
+object: "the plot"
+age_label: "Days since planting"
+weight_label: "Area (hectares)"
+measurement_label: "Soil absorption score"
+output_label: "dose"
+unit: "kg"
