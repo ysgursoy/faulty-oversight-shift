@@ -32,7 +32,11 @@ from oversight_study.records.run_records import GenerationSettings
 from oversight_study.runner.client import ModelClient, ModelRequest, ModelResponse
 from oversight_study.runner.episode import EpisodeContext, run_episode
 from oversight_study.runner.episode_end import ask_episode_end
-from oversight_study.validation.freeze import FreezeGate, require_second_freeze
+from oversight_study.validation.freeze import (
+    FreezeGate,
+    require_second_freeze,
+    require_stage_freeze,
+)
 
 RunStatus = Literal["running", "partial", "failed", "completed", "sealed"]
 FILES = ("manifest.json", "resolved-config.yaml", "results.jsonl", "requests.jsonl",
@@ -192,6 +196,7 @@ def run_stage(
     """Start a new run, or resume `run_id` under `run_root`. Returns the run directory."""
     if config.split == DatasetSplit.evaluation:
         require_second_freeze(freeze_gate)
+    require_stage_freeze(config.stage, freeze_gate, config.design_version, config.list_count)
     cells = config.planned_cells(include_optional)
     by_index = {episode.list_index: episode for episode in episodes}
     missing = {cell[3] for cell in cells} - set(by_index)

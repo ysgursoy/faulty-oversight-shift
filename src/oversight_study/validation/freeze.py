@@ -42,3 +42,23 @@ def require_second_freeze(gate: FreezeGate | None) -> FreezeRecord:
     if gate is None:
         raise FreezeError("evaluation calls need the recorded second freeze")
     return gate.require("second", SECOND_KEYS)
+
+
+def require_stage_freeze(stage: str, gate: FreezeGate | None, design_version: str,
+                         list_count: int | None) -> FreezeRecord | None:
+    """Trial needs no freeze. Pilot needs the first freeze with unchanged prompts, configs,
+    and lock. Main needs the second freeze, unchanged inputs, and the frozen design version
+    and list count; any change after a freeze means a new design version."""
+    if stage == "trial":
+        return None
+    if gate is None:
+        raise FreezeError(f"{stage} runs need a recorded freeze")
+    if stage == "pilot":
+        return gate.require("first")
+    record = require_second_freeze(gate)
+    if record.design_version != design_version:
+        raise FreezeError(f"design version {design_version!r} differs from the frozen "
+                          f"{record.design_version!r}")
+    if record.n_lists != list_count:
+        raise FreezeError(f"list count {list_count} differs from the frozen {record.n_lists}")
+    return record
