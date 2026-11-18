@@ -32,15 +32,12 @@ from oversight_study.records.run_records import GenerationSettings
 from oversight_study.runner.client import ModelClient, ModelRequest, ModelResponse
 from oversight_study.runner.episode import EpisodeContext, run_episode
 from oversight_study.runner.episode_end import ask_episode_end
+from oversight_study.validation.freeze import FreezeGate, require_second_freeze
 
 RunStatus = Literal["running", "partial", "failed", "completed", "sealed"]
 FILES = ("manifest.json", "resolved-config.yaml", "results.jsonl", "requests.jsonl",
          "superseded.jsonl", "events.jsonl", "costs.json")
 CELL_FIELDS = ("frame", "condition", "wording", "episode", "replicate")
-
-
-class EvaluationRunNotAllowedError(RuntimeError):
-    """An evaluation-split stage was started before it was allowed."""
 
 
 class RunManifest(BaseModel):
@@ -189,12 +186,12 @@ def run_stage(
     run_root: Path,
     run_id: str | None = None,
     include_optional: bool = False,
-    evaluation_allowed: bool = False,
+    freeze_gate: FreezeGate | None = None,
     on_progress: Callable[[int, int], None] | None = None,
 ) -> Path:
     """Start a new run, or resume `run_id` under `run_root`. Returns the run directory."""
-    if config.split == DatasetSplit.evaluation and not evaluation_allowed:
-        raise EvaluationRunNotAllowedError("evaluation runs need the recorded second freeze")
+    if config.split == DatasetSplit.evaluation:
+        require_second_freeze(freeze_gate)
     cells = config.planned_cells(include_optional)
     by_index = {episode.list_index: episode for episode in episodes}
     missing = {cell[3] for cell in cells} - set(by_index)

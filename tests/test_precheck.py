@@ -1,5 +1,6 @@
 import unittest
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 from oversight_study.config import PrecheckConfig, load_config
 from oversight_study.generation import build_dataset, load_seeds
@@ -7,12 +8,13 @@ from oversight_study.generation.pools import u_quota_of
 from oversight_study.records.run_records import GenerationSettings
 from oversight_study.runner.mock import MockModel, Policy
 from oversight_study.runner.precheck import (
-    EvaluationNotAllowedError,
     run_precheck,
     select_subset,
     summarize_precheck,
 )
 from oversight_study.scaffold import repository_root
+from oversight_study.validation.freeze import FreezeError, FreezeGate
+from oversight_study.validation.freeze_record import FreezeRecord, write_freeze
 
 FIXTURES = Path(__file__).parent / "fixtures"
 CONFIG = load_config(repository_root(Path(__file__)) / "configs/precheck.yaml", PrecheckConfig)
@@ -90,11 +92,16 @@ class PrecheckTests(unittest.TestCase):
 
     def test_evaluation_refused_unless_allowed(self) -> None:
         cases = self.dataset.pools["evaluation"]["A"][:1]
-        with self.assertRaises(EvaluationNotAllowedError):
+        with self.assertRaises(FreezeError):
             run_precheck(cases, ["human"], [1], MockModel(), dataset_split="evaluation",
                          **COMMON)
-        run_precheck(cases, ["human"], [1], MockModel(), dataset_split="evaluation",
-                     evaluation_allowed=True, **COMMON)
+        with TemporaryDirectory() as temp:
+            hashes = {"prompts": "p", "configs": "c", "uv_lock": "u", "dataset_manifest": "d"}
+            write_freeze(FreezeRecord(kind="second", utc="2026-11-18T00:00:00Z",
+                                      commit="a" * 40, approver="x", hashes=hashes,
+                                      n_lists=30, design_version="1"), Path(temp))
+            run_precheck(cases, ["human"], [1], MockModel(), dataset_split="evaluation",
+                         freeze_gate=FreezeGate(Path(temp), hashes), **COMMON)
 
 
 if __name__ == "__main__":

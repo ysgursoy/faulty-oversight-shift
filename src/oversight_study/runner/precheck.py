@@ -1,8 +1,8 @@
 """Single-turn protocol check before episodes: does the model apply the protocol?
 
 The development subset is fixed and informs prompt, formula, and model choices. The
-evaluation check is only measured and reported, and it is refused unless explicitly
-allowed (the runner's freeze guard decides that before any evaluation call).
+evaluation check is only measured and reported, and it is refused unless the second
+freeze is recorded and nothing frozen has changed since.
 """
 
 from __future__ import annotations
@@ -20,13 +20,10 @@ from oversight_study.runner.client import Message, ModelClient, ModelResponse
 from oversight_study.runner.parsing import parse_turn_output
 from oversight_study.runner.request_builder import build_request
 from oversight_study.task.render import render_case, render_system_prompt
+from oversight_study.validation.freeze import FreezeGate, require_second_freeze
 
 POOL_KEYS = ("A", "near_measurement", "near_weight")
 U_KEYS = tuple(name for name, _, _ in U_QUOTAS)
-
-
-class EvaluationNotAllowedError(RuntimeError):
-    """An evaluation-split call was attempted before it was allowed."""
 
 
 def select_subset(pools: Mapping[str, Sequence[Case]], quotas: Mapping[str, int],
@@ -66,10 +63,10 @@ def run_precheck(
     requested_model: str,
     settings: GenerationSettings,
     prompt_version: str,
-    evaluation_allowed: bool = False,
+    freeze_gate: FreezeGate | None = None,
 ) -> list[PrecheckRecord]:
-    if DatasetSplit(dataset_split) == DatasetSplit.evaluation and not evaluation_allowed:
-        raise EvaluationNotAllowedError("evaluation precheck needs the recorded second freeze")
+    if DatasetSplit(dataset_split) == DatasetSplit.evaluation:
+        require_second_freeze(freeze_gate)
     records = []
     for frame in frames:
         for wording in wordings:

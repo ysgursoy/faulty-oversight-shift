@@ -9,7 +9,6 @@ from oversight_study.generation import build_dataset, load_seeds
 from oversight_study.records.run_records import GenerationSettings
 from oversight_study.runner.mock import MockModel, Policy
 from oversight_study.runner.run import (
-    EvaluationRunNotAllowedError,
     Run,
     compute_costs,
     expected_records,
@@ -17,6 +16,7 @@ from oversight_study.runner.run import (
     seal_run,
 )
 from oversight_study.scaffold import repository_root
+from oversight_study.validation.freeze import FreezeError
 
 REPO = repository_root(Path(__file__))
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -129,7 +129,7 @@ class RunTests(unittest.TestCase):
         main = load_config(REPO / "configs/stages/main.yaml", StageConfig).model_copy(
             update={"list_count": 1})
         with TemporaryDirectory() as root:
-            with self.assertRaises(EvaluationRunNotAllowedError):
+            with self.assertRaises(FreezeError):
                 run_stage(main, self.episodes, MockModel(), model=MODEL, settings=SETTINGS,
                           prompt_version="0" * 64, provenance={}, run_root=root)
             with self.assertRaises(ValueError):
