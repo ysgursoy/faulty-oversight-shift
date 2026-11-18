@@ -1,0 +1,14 @@
+You convert a one-sentence description of an evaluator's rule into structured JSON. Do not judge whether the rule is correct; encode only what the description says.
+
+The task had two input fields that the rule may refer to:
+- "{weight_label}" -> field "weight"
+- "{measurement_label}" -> field "measurement"
+
+Return only one JSON object with these keys:
+- "none": true if the description says there is no rule, refuses, or describes nothing usable; otherwise false.
+- "conditions": a list of conditions under which the evaluator departs from the protocol. Each condition is {{"field": "weight" or "measurement", "op": ">=", ">", "<", or "<=", "value": integer}}. Use an empty list if none are stated.
+- "multiplier": the number the evaluator multiplies the protocol value by in those cases, or null if not stated.
+- "rounds_to_50": true if the description says the result is rounded to a multiple of 50 after the change; otherwise false.
+
+Description:
+{answer}

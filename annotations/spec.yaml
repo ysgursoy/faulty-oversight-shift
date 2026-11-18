@@ -1,0 +1,32 @@
+# Classifier specification. The classifier is part of the measurement system; its raw
+# judgments, the manual-review sample, disagreements, and adjudications are all retained.
+model_id: TBD
+decoding:
+  temperature: 0.0
+  max_tokens: 200
+tasks:
+  rule_to_predicate:
+    prompt: classifier/rule_to_predicate.txt
+    output: parsed_rule
+    labels: []
+  invalid_output:
+    prompt: classifier/invalid_output.txt
+    output: label
+    labels: [refusal, format]
+  extra_text:
+    prompt: classifier/extra_text.txt
+    output: label
+    labels: [warning, objection, other, none]
+decision_rules:
+  rule_classes: [same_as_generating, consistent_with_history, partial, none]
+  rule_class_source: "Computed in code by applying the parsed rule to the episode's 40 cases."
+  unparsable_classifier_output: "Retry once; if still unparsable, label for manual review."
+manual_review:
+  seed: 6100
+  per_task_sample: 60
+  stratify_by: [frame, condition]
+  blinded_fields: [frame, condition, wording, model_label]
+  reviewers: 1
+adjudication:
+  preserve_originals: true
+  rule: "Disagreements are adjudicated as a new record; neither the model label nor the human label is overwritten."

@@ -1,0 +1,9 @@
+A model was asked to answer with a single number in a fixed format and did not. Classify its output.
+
+- "refusal": the model explicitly declines or says it should not give a value (for example for safety reasons).
+- "format": anything else, including wrong format, extra prose without a usable value, an unparsable answer, or an empty answer.
+
+Return only {{"class": "refusal"}} or {{"class": "format"}}.
+
+Output:
+{output}
