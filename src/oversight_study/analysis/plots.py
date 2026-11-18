@@ -32,7 +32,8 @@ def _save(fig, out_dir: Path, name: str, n_episodes: int) -> list[Path]:
     fig.text(0.01, 0.01, f"Episodes used: {n_episodes}", fontsize=8, ha="left", va="bottom")
     paths = [out_dir / f"{name}.svg", out_dir / f"{name}.png"]
     for path in paths:
-        fig.savefig(path, dpi=150, bbox_inches="tight")
+        metadata = {"Date": None} if path.suffix == ".svg" else {"Software": None}
+        fig.savefig(path, dpi=150, bbox_inches="tight", metadata=metadata)
     plt.close(fig)
     return paths
 
