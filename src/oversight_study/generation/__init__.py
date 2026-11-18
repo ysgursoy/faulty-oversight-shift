@@ -17,7 +17,12 @@ from oversight_study.generation.episodes import (
     generate_probes,
 )
 from oversight_study.generation.ids import case_id, check_unique_ids
-from oversight_study.generation.manifest import verify_dataset, write_dataset
+from oversight_study.generation.manifest import (
+    DatasetManifest,
+    read_dataset,
+    verify_dataset,
+    write_dataset,
+)
 from oversight_study.generation.pools import (
     CASE_TYPES,
     GENERATOR_VERSION,
@@ -43,6 +48,7 @@ __all__ = [
     "U_QUOTAS",
     "Case",
     "Dataset",
+    "DatasetManifest",
     "Episode",
     "MissingTestSeedsError",
     "ProbeCase",
@@ -58,6 +64,7 @@ __all__ = [
     "generate_pools",
     "generate_probes",
     "load_seeds",
+    "read_dataset",
     "to_cases",
     "u_quota_of",
     "verify_dataset",

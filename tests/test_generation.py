@@ -1,3 +1,4 @@
+import hashlib
 import json
 import unittest
 from pathlib import Path
@@ -12,6 +13,7 @@ from oversight_study.generation import (
     check_disjoint,
     generate_pools,
     load_seeds,
+    read_dataset,
     to_cases,
     verify_dataset,
     write_dataset,
@@ -109,43 +111,82 @@ class DatasetTests(unittest.TestCase):
 class WriteAndVerifyTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.dataset = build_dataset(fixture_seeds())
+        cls.dataset = build_dataset(fixture_seeds(), n_main=2)
 
-    def test_round_trip_and_tamper_detection(self) -> None:
+    def write(self, out: Path, **kwargs):
+        return write_dataset(self.dataset, out, dataset_version="v-test", **kwargs)
+
+    def test_round_trip(self) -> None:
         with TemporaryDirectory() as temp_dir:
             out = Path(temp_dir) / "release"
-            manifest = write_dataset(self.dataset, out)
-            verify_dataset(out)
-            self.assertEqual(manifest["used_keys_count"], len(self.dataset.used_keys))
-            self.assertEqual(manifest["generation_order"], list(GENERATION_ORDER))
+            manifest = self.write(out)
+            self.assertEqual(verify_dataset(out), manifest)
+            self.assertEqual(manifest.dataset_version, "v-test")
+            self.assertEqual(manifest.used_keys_count, len(self.dataset.used_keys))
+            self.assertEqual(manifest.generation_order, GENERATION_ORDER)
+            self.assertEqual(manifest.list_counts, {"trial": 3, "pilot": 20, "main": 2})
             self.assertEqual(
-                manifest["counts"][DEVELOPMENT],
+                manifest.counts[DEVELOPMENT],
                 {"A": 150, "near_measurement": 20, "near_weight": 20, "U": 300,
                  "u_light_high": 100, "u_heavy_far": 100, "u_light_mid": 50, "u_light_low": 50},
             )
-            self.assertNotIn("test_pool_base", manifest["seeds"])
+            self.assertNotIn("test_pool_base", manifest.seeds)
+            self.assertEqual(sorted(manifest.checksums_sha256), [
+                "episodes/main.json", "episodes/pilot.json", "episodes/trial.json",
+                f"pools/{DEVELOPMENT}.json", f"pools/{EVALUATION}.json", "used_keys.json"])
 
-            pool = out / "pools" / f"{DEVELOPMENT}.json"
-            rows = json.loads(pool.read_text(encoding="utf-8"))
+            rows = json.loads((out / "pools" / f"{DEVELOPMENT}.json").read_text())
             self.assertEqual(len(rows), 490)
             for row in rows:
                 self.assertEqual(row["r_star"], r_star(row["weight"], row["measurement"]))
 
+            _, pools, episodes, used = read_dataset(out)
+            self.assertEqual(episodes, self.dataset.episodes)
+            self.assertEqual(used, set(self.dataset.used_keys))
+            self.assertEqual(len(pools[EVALUATION]), 490)
+
+    def test_tampering_is_detected(self) -> None:
+        with TemporaryDirectory() as temp_dir:
+            out = Path(temp_dir) / "release"
+            self.write(out)
+            pool = out / "episodes" / "trial.json"
             pool.write_text(pool.read_text(encoding="utf-8") + " ", encoding="utf-8")
             with self.assertRaises(ValueError):
                 verify_dataset(out)
 
+    def test_consistent_but_wrong_content_is_detected(self) -> None:
+        with TemporaryDirectory() as temp_dir:
+            out = Path(temp_dir) / "release"
+            self.write(out)
+            used_path = out / "used_keys.json"
+            used_path.write_text(json.dumps(json.loads(used_path.read_text())[1:]) + "\n")
+            manifest_path = out / "manifest.json"
+            manifest = json.loads(manifest_path.read_text())
+            manifest["checksums_sha256"]["used_keys.json"] = hashlib.sha256(
+                used_path.read_bytes()).hexdigest()
+            manifest_path.write_text(json.dumps(manifest))
+            with self.assertRaises(ValueError):
+                verify_dataset(out)
+
+    def test_main_lists_written_only_when_generated(self) -> None:
+        without = build_dataset(fixture_seeds())
+        with TemporaryDirectory() as temp_dir:
+            manifest = write_dataset(without, Path(temp_dir), dataset_version="v-test")
+            self.assertFalse((Path(temp_dir) / "episodes" / "main.json").exists())
+            self.assertEqual(manifest.list_counts["main"], 0)
+            verify_dataset(Path(temp_dir))
+
     def test_test_seeds_written_only_on_request(self) -> None:
         with TemporaryDirectory() as temp_dir:
-            manifest = write_dataset(self.dataset, Path(temp_dir), include_test_seeds=True)
-        self.assertEqual(manifest["seeds"]["test_pool_base"], 9100)
+            manifest = self.write(Path(temp_dir), include_test_seeds=True)
+        self.assertEqual(manifest.seeds["test_pool_base"], 9100)
 
     def test_existing_release_is_never_overwritten(self) -> None:
         with TemporaryDirectory() as temp_dir:
             out = Path(temp_dir) / "release"
-            write_dataset(self.dataset, out)
+            self.write(out)
             with self.assertRaises(FileExistsError):
-                write_dataset(self.dataset, out)
+                self.write(out)
 
 
 if __name__ == "__main__":
