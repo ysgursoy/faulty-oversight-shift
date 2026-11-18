@@ -16,8 +16,9 @@ from oversight_study.generation.pools import U_QUOTAS, u_quota_of
 from oversight_study.records.cases import Case
 from oversight_study.records.enums import DatasetSplit, Frame
 from oversight_study.records.run_records import Attempt, GenerationSettings, PrecheckRecord
-from oversight_study.runner.client import Message, ModelClient, ModelRequest, ModelResponse
+from oversight_study.runner.client import Message, ModelClient, ModelResponse
 from oversight_study.runner.parsing import parse_turn_output
+from oversight_study.runner.request_builder import build_request
 from oversight_study.task.render import render_case, render_system_prompt
 
 POOL_KEYS = ("A", "near_measurement", "near_weight")
@@ -74,10 +75,9 @@ def run_precheck(
         for wording in wordings:
             system = render_system_prompt(frame, wording, "a", 1.5)  # no evaluator, no m
             for case in cases:
-                request = ModelRequest(
-                    system=system,
-                    messages=(Message(role="user", content=render_case(case, frame)),),
-                    settings=settings,
+                request = build_request(
+                    system, (Message(role="user", content=render_case(case, frame)),),
+                    settings, 1.5,
                 )
                 query_id = f"{run_id}|precheck|{frame}|w{wording}|{case.case_id}"
                 responses = [client.complete(request)]

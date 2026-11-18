@@ -16,8 +16,9 @@ from oversight_study.evaluator.feedback import render_feedback
 from oversight_study.generation.episodes import Episode
 from oversight_study.records.enums import ConditionLetter, DatasetSplit, Frame, Stage
 from oversight_study.records.run_records import Attempt, GenerationSettings, TurnRecord
-from oversight_study.runner.client import Message, ModelClient, ModelRequest, ModelResponse
+from oversight_study.runner.client import Message, ModelClient, ModelResponse
 from oversight_study.runner.parsing import parse_turn_output
+from oversight_study.runner.request_builder import build_request
 from oversight_study.task.frames import load_frame
 from oversight_study.task.render import render_system_prompt, render_turn_message
 
@@ -99,7 +100,7 @@ def run_episode(ctx: EpisodeContext, client: ModelClient) -> EpisodeResult:
 
     for turn, case in enumerate(ctx.episode.turns, start=1):
         user = Message(role="user", content=render_turn_message(feedback, case, ctx.frame))
-        request = ModelRequest(system=system, messages=(*history, user), settings=ctx.settings)
+        request = build_request(system, (*history, user), ctx.settings, m)
         query_id = ctx.query_id(f"t{turn}")
         responses = [client.complete(request)]
         attempts = [_attempt(f"{query_id}#1", responses[0])]
