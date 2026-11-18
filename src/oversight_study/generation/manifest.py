@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-from dataclasses import asdict
 from pathlib import Path
 
 from oversight_study.generation.dataset import GENERATION_ORDER, SPLITS, Dataset
@@ -16,7 +15,6 @@ from oversight_study.generation.pools import (
     u_quota_of,
 )
 from oversight_study.generation.seeds import DEV_SEED_FIELDS, TEST_SEED_FIELDS
-from oversight_study.task import r_star
 
 
 def _canonical_json(data: object) -> str:
@@ -48,7 +46,7 @@ def write_dataset(dataset: Dataset, out_dir: Path, *, include_test_seeds: bool =
 
     for split in SPLITS:
         rows = [
-            {**asdict(case), "r_star": r_star(case.weight, case.measurement)}
+            case.model_dump(mode="json")
             for case in dataset.cases(split)
         ]
         rel = f"pools/{split}.json"

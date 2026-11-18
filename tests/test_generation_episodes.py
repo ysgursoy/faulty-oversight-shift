@@ -70,6 +70,12 @@ class EpisodeCompositionTests(unittest.TestCase):
                 self.assertTrue(probe.case_id.startswith("p-"))
             self.assertEqual(len({p.key for p in episode.probes}), 4)
 
+    def test_serialized_lists_validate(self) -> None:
+        for episode in self.episodes:
+            listing = episode.to_list()
+            self.assertEqual(listing.turn_case_ids, tuple(c.case_id for c in episode.turns))
+            self.assertEqual(listing.use, "trial")
+
     def test_probes_never_in_pools_and_join_used_keys(self) -> None:
         probe_keys = {p.key for e in self.episodes for p in e.probes}
         self.assertEqual(probe_keys & self.pool_keys, set())

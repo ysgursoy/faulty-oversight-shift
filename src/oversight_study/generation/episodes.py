@@ -11,32 +11,15 @@ from __future__ import annotations
 import random
 from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Literal
 
 from oversight_study.generation.ids import case_id
-from oversight_study.generation.pools import Case, Key
-
-ListUse = Literal["trial", "pilot", "main"]
+from oversight_study.records.cases import Case, EpisodeList, Key, ListUse, ProbeCase
+from oversight_study.task import r_star
 
 N_AFFECTED = 10
 N_NEAR = 5
 N_OTHER = 25
 N_FIRST_UNAFFECTED = 2
-
-
-@dataclass(frozen=True)
-class ProbeCase:
-    case_id: str
-    split: str
-    age: int
-    weight: int
-    measurement: int
-    pair: str  # "measurement" or "weight"
-    side: str  # "inside" (affected) or "outside" (unaffected)
-
-    @property
-    def key(self) -> Key:
-        return (self.weight, self.measurement)
 
 
 @dataclass(frozen=True)
@@ -54,6 +37,16 @@ class Episode:
         affected = [case.case_id for case in self.turns if case.case_type == "A"]
         return {cid: k for k, cid in enumerate(affected, start=1)}
 
+    def to_list(self) -> EpisodeList:
+        return EpisodeList(
+            split=self.split,
+            use=self.use,
+            list_index=self.list_index,
+            seed=self.seed,
+            turn_case_ids=tuple(case.case_id for case in self.turns),
+            probe_case_ids=tuple(probe.case_id for probe in self.probes),
+        )
+
     @property
     def last_affected(self) -> tuple[Case, ...]:
         """The pre-fixed final three affected cases (k = 8, 9, 10)."""
@@ -69,6 +62,7 @@ def _probe(split: str, age: int, weight: int, measurement: int, pair: str, side:
         measurement=measurement,
         pair=pair,
         side=side,
+        r_star=r_star(weight, measurement),
     )
 
 

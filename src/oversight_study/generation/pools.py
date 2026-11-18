@@ -9,11 +9,11 @@ from __future__ import annotations
 
 import random
 from collections.abc import Callable
-from dataclasses import dataclass
 
 from oversight_study.evaluator import is_affected
 from oversight_study.generation.ids import case_id, check_unique_ids
-from oversight_study.task import MEASUREMENT_RANGE, WEIGHT_RANGE
+from oversight_study.records.cases import Case
+from oversight_study.task import MEASUREMENT_RANGE, WEIGHT_RANGE, r_star
 
 GENERATOR_VERSION = "0.2.0"
 
@@ -22,7 +22,6 @@ MEASUREMENTS = MEASUREMENT_RANGE
 
 CASE_TYPES = ("A", "near_measurement", "near_weight", "U")
 
-Key = tuple[int, int]
 Predicate = Callable[[dict], bool]
 
 
@@ -117,20 +116,6 @@ def generate_pools(seed_base: int, used_keys: set) -> dict[str, list[dict]]:
     return pools
 
 
-@dataclass(frozen=True)
-class Case:
-    case_id: str
-    split: str
-    age: int
-    weight: int
-    measurement: int
-    case_type: str  # hidden metadata; not for model-visible prompts
-
-    @property
-    def key(self) -> Key:
-        return (self.weight, self.measurement)
-
-
 def to_cases(split: str, pools: dict[str, list[dict]]) -> dict[str, list[Case]]:
     """Attach opaque ids and case types. Each pool is sorted by id for seeded sampling."""
     cases = {
@@ -143,6 +128,7 @@ def to_cases(split: str, pools: dict[str, list[dict]]) -> dict[str, list[Case]]:
                     weight=c["weight"],
                     measurement=c["measurement"],
                     case_type=case_type,
+                    r_star=r_star(c["weight"], c["measurement"]),
                 )
                 for c in pools[case_type]
             ),

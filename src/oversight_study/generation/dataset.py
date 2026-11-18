@@ -9,8 +9,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from oversight_study.generation.ids import check_unique_ids
-from oversight_study.generation.pools import Case, Key, generate_pools, to_cases
+from oversight_study.generation.pools import generate_pools, to_cases
 from oversight_study.generation.seeds import SeedConfig
+from oversight_study.records.cases import Case, Key
 
 EVALUATION = "evaluation"
 DEVELOPMENT = "development"
