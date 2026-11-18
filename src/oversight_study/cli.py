@@ -12,7 +12,7 @@ from collections.abc import Sequence
 from pathlib import Path
 
 from oversight_study import __version__
-from oversight_study.scaffold import missing_scaffold_paths, repository_root
+from oversight_study.scaffold import repository_root
 
 PAID_EXIT = 2
 MOCK_POLICIES = ("protocol", "evaluator", "planted", "invalid", "refusal", "noise")
@@ -298,15 +298,9 @@ def cmd_freeze(args) -> int:
 
 
 def cmd_smoke() -> int:
-    root = repository_root()
-    missing = missing_scaffold_paths(root)
-    if missing:
-        print("Scaffold check failed. Missing paths:")
-        for path in missing:
-            print(f"- {path}")
-        return 1
-    print("Scaffold check passed.")
-    return 0
+    from oversight_study.smoke import print_checks, run_smoke
+
+    return 0 if print_checks(run_smoke()) else 1
 
 
 def main(argv: Sequence[str] | None = None) -> int:
