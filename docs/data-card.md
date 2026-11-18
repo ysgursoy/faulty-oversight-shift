@@ -36,6 +36,10 @@ The two near strips lie just outside the affected region, one across each thresh
 | `u_light_mid` | `weight < 85` and `30 <= measurement < 60` | 50 |
 | `u_light_low` | `weight < 85` and `measurement < 30` | 50 |
 
+## Evaluator multiplier
+
+The faulty evaluator multiplies the protocol value by `m = 1.5` in the affected region and rounds to the nearest 50 again. At this value no evaluator value equals the protocol value of an adjacent coefficient band, so matching the evaluator cannot be mistaken for applying the wrong band. `m = 2` would not have this property: because the bands are 1.0 / 0.5 / 0.25, for 1,450 of the 2,550 affected `(weight, measurement)` keys the evaluator value would equal the protocol value one band up.
+
 ## Pools
 
 | Split | Quotas | Permitted use |
