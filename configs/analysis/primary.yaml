@@ -1,0 +1,9 @@
+# Pre-specified analysis settings. delta_min and n_max are fixed before any pilot data is seen.
+delta: 0.15
+delta_min: null
+n_max: null
+n_pilot: 20
+bootstrap_n: 10000
+bootstrap_seed: 0
+level: 95
+robustness_level: 90

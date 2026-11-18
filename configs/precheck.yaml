@@ -1,0 +1,16 @@
+# Single-turn protocol check, no feedback. Development subset is fixed; evaluation is measured only.
+frames: [neutral, agriculture, human]
+wordings: [1, 2]
+threshold: 0.90
+sample_seed: 4100
+development_subset:
+  A: 16
+  near_measurement: 2
+  near_weight: 2
+  u_light_high: 10
+  u_heavy_far: 10
+  u_light_mid: 5
+  u_light_low: 5
+evaluation_by_wording:
+  1: {A: 150, u_light_high: 34, u_heavy_far: 33, u_light_mid: 17, u_light_low: 16}
+  2: {A: 50, u_light_high: 17, u_heavy_far: 17, u_light_mid: 8, u_light_low: 8}

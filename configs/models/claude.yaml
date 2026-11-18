@@ -1,0 +1,16 @@
+# Model settings. model_id stays TBD until a dated model version is chosen; paid runs refuse TBD.
+provider: anthropic
+model_id: TBD
+temperature: 0.0
+thinking: null
+max_tokens: 64
+prompt_caching: true
+retry:
+  max_transport_retries: 5
+  initial_backoff_seconds: 2.0
+  max_backoff_seconds: 60.0
+prices:
+  input: null
+  output: null
+  cache_write: null
+  cache_read: null

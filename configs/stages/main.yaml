@@ -1,0 +1,18 @@
+# Main experiment on the evaluation split. list_count is fixed after the pilot, before any run.
+stage: main
+split: evaluation
+design_version: "1"
+m: 1.5
+list_count: null
+order_seed: 5300
+cells:
+  - conditions: [a]
+    wordings: [1]
+    frames: [neutral, agriculture, human]
+    lists: {start: 0, stop: 10}
+  - conditions: [c, b-1.5, f-1.5]
+    wordings: [1]
+    frames: [neutral, agriculture, human]
+  - conditions: [c, b-1.5]
+    wordings: [2]
+    frames: [neutral, agriculture, human]

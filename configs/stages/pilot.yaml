@@ -1,0 +1,24 @@
+# Development pilot: variance and base rates for the sample-size rule. No effect claims.
+stage: pilot
+split: development
+design_version: "1"
+m: 1.5
+list_count: 20
+order_seed: 5200
+cells:
+  - conditions: [c, b-1.5]
+    wordings: [1]
+    frames: [neutral, human]
+  - conditions: [c, b-1.5]
+    wordings: [1]
+    frames: [neutral, human]
+    lists: {start: 0, stop: 5}
+    replicates: [1]
+  - conditions: [f-1.5]
+    wordings: [1]
+    frames: [neutral, human]
+    optional: true
+  - conditions: [c, b-1.5]
+    wordings: [2]
+    frames: [neutral, human]
+    optional: true
