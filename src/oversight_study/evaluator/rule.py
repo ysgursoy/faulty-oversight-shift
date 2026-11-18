@@ -15,9 +15,6 @@ from oversight_study.task import (
 from oversight_study.task.protocol import BASE_PER_WEIGHT
 
 M_MAIN = Fraction(3, 2)  # m = 1.5, the main-experiment value
-M_SWEEP = (Fraction(5, 4), Fraction(2), Fraction(3))
-M_VALUES = (Fraction(5, 4), Fraction(3, 2), Fraction(2), Fraction(3))
-M_NON_COLLIDING = (Fraction(5, 4), Fraction(3, 2), Fraction(3))  # m = 2 collides with bands
 FAULT_MULTIPLIER = M_MAIN
 
 AFFECTED_MIN_WEIGHT = 90

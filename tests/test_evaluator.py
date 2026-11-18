@@ -3,9 +3,6 @@ from fractions import Fraction
 
 from oversight_study.evaluator import (
     M_MAIN,
-    M_NON_COLLIDING,
-    M_SWEEP,
-    M_VALUES,
     affected_keys,
     as_fraction,
     count_band_collisions,
@@ -76,8 +73,6 @@ class ValueRangeTests(unittest.TestCase):
 class MultiplierTests(unittest.TestCase):
     def test_constants(self) -> None:
         self.assertEqual(M_MAIN, Fraction(3, 2))
-        self.assertEqual(set(M_VALUES), set(M_SWEEP) | {M_MAIN})
-        self.assertNotIn(Fraction(2), M_NON_COLLIDING)
 
     def test_float_multiplier_is_converted_exactly(self) -> None:
         self.assertEqual(as_fraction(1.25), Fraction(5, 4))
@@ -87,6 +82,7 @@ class MultiplierTests(unittest.TestCase):
             as_fraction(True)
 
     def test_band_collisions(self) -> None:
+        # Why m = 1.5: at m = 2 the evaluator value often equals the next band's protocol value.
         self.assertEqual(count_band_collisions(2), 1450)
         for m in (1.25, 1.5, 3, 0.6):
             self.assertEqual(count_band_collisions(m), 0, m)
