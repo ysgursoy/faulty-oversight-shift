@@ -33,10 +33,17 @@ def parse_line(line: str, where: str) -> TurnRecord | EpisodeEndRecord:
     raise AnalysisInputError(f"{where}: unknown record_type {kind!r}")
 
 
+def _row(record) -> dict:
+    row = record.model_dump(mode="json", exclude={"attempts", "generation_settings"})
+    attempts = getattr(record, "attempts", None)
+    if attempts is not None:
+        row["n_attempts"] = len(attempts)
+        row["first_attempt_class"] = attempts[0].attempt_class
+    return row
+
+
 def _frame(records: list) -> pd.DataFrame:
-    rows = [r.model_dump(mode="json", exclude={"attempts", "generation_settings"})
-            for r in records]
-    return pd.DataFrame(rows)
+    return pd.DataFrame([_row(r) for r in records])
 
 
 def load_records(
