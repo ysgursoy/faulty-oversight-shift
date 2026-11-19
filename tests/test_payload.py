@@ -67,6 +67,15 @@ class PayloadTests(unittest.TestCase):
             build_request("sys", [Message(role="user", content=self.case.case_id)], SETTINGS, 1.5)
         build_request("sys", [Message(role="user", content=self.user)], SETTINGS, 1.5)
 
+    def test_model_text_in_history_is_not_checked(self) -> None:
+        history = (Message(role="user", content=self.user),
+                   Message(role="assistant", content='1000 x 1.5 = 1500. {"value": 1500}'),
+                   Message(role="user", content=self.user))
+        check_payload(ModelRequest(system="sys", messages=history, settings=SETTINGS), 1.5)
+        with self.assertRaises(PayloadLeakError):
+            check_payload(ModelRequest(system="sys", messages=(*history[:2], Message(
+                role="user", content=self.user + " 1.5")), settings=SETTINGS), 1.5)
+
     def test_numbers_like_m_inside_other_numbers_are_fine(self) -> None:
         check_payload(request("sys", "Value 11.55 and 21.5x? no: 1500 and 0.5"), 1.5)
 

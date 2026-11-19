@@ -7,7 +7,8 @@ are skipped and any partial cell's records are moved to `superseded.jsonl` (kept
 analyzed) before the cell is rerun.
 
 Run directory files: manifest.json, resolved-config.yaml, results.jsonl, requests.jsonl,
-superseded.jsonl, events.jsonl, costs.json, and checksums.sha256 once sealed.
+superseded.jsonl, events.jsonl, costs.json, failed-requests.jsonl (requests of a cell that
+failed part-way, kept for diagnosis), and checksums.sha256 once sealed.
 """
 
 from __future__ import annotations
@@ -40,7 +41,7 @@ from oversight_study.validation.freeze import (
 
 RunStatus = Literal["running", "partial", "failed", "completed", "sealed"]
 FILES = ("manifest.json", "resolved-config.yaml", "results.jsonl", "requests.jsonl",
-         "superseded.jsonl", "events.jsonl", "costs.json")
+         "superseded.jsonl", "events.jsonl", "costs.json", "failed-requests.jsonl")
 CELL_FIELDS = ("frame", "condition", "wording", "episode", "replicate")
 
 
@@ -259,6 +260,7 @@ def run_stage(
             end = ask_episode_end(result, ctx, recorder)
             run.append("results.jsonl", [r.model_dump_json() for r in (*result.turns, *end)])
             run.append("requests.jsonl", recorder.lines)
+            recorder.lines.clear()
             done.add(key)
             run.event("cell_completed", cell=list(key))
             if on_progress:
@@ -270,7 +272,10 @@ def run_stage(
                     raise BudgetExceededError(
                         f"spent ${spent:.2f} of max_cost_usd ${config.max_cost_usd:.2f}")
     except Exception as error:
-        run.event("cell_failed", error=type(error).__name__, message=str(error)[:500])
+        if recorder.lines:  # cleared after each completed cell, so these are the failed cell's
+            run.append("failed-requests.jsonl", recorder.lines)
+        run.event("cell_failed", cell_id=recorder.cell_id, calls=len(recorder.lines),
+                  error=type(error).__name__, message=str(error)[:500])
         manifest = run.manifest().model_copy(update={
             "status": "partial" if done else "failed", "cells_completed": len(done),
             "updated_utc": _now()})

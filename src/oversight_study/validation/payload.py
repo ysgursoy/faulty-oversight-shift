@@ -3,6 +3,11 @@
 Forbidden in any model-visible text: case ids, case-type names, condition ids, the
 words `affected` / `case_type`, a `"k"` field, and the multiplier itself — except inside
 the disclosed-rule sentence of the system prompt in condition `f`.
+
+Only text the study writes is checked: the system prompt and user messages. Assistant
+messages are the model's own earlier answers; the model can only repeat what it was shown
+or inferred (for example, writing out the disclosed multiplier in condition `f`), so they
+cannot leak hidden metadata and are kept verbatim in the history.
 """
 
 from __future__ import annotations
@@ -38,7 +43,8 @@ def check_payload(request: ModelRequest, m: Fraction | float,
                   extra_forbidden: Iterable[str] = ()) -> None:
     """Raise PayloadLeakError naming every leak found in the request text."""
     system = _explicit_rule_pattern().sub("", request.system)
-    texts = [system, *(message.content for message in request.messages)]
+    texts = [system, *(message.content for message in request.messages
+                       if message.role == "user")]
     leaks = []
     for name, pattern in PATTERNS.items():
         for text in texts:
