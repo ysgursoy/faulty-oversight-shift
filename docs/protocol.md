@@ -89,7 +89,7 @@ Stages: `trial` (three development lists; mechanical checks only), `pilot` (deve
 
 After turn 40, the conversation history is copied without modification. Each question below receives its own copy and cannot observe answers to the other questions:
 
-- a one-sentence description of any systematic evaluator rule;
+- a one-sentence description of how the evaluator decided which values to accept (the question does not say that the pattern departs from the protocol);
 - protocol values for the final three affected cases;
 - protocol and evaluator values for four unseen probe cases arranged in two boundary-straddling pairs.
 
@@ -143,3 +143,5 @@ One retry is allowed per turn. A failed first attempt is retained in the record 
 ## 11. Limits
 
 The design does not establish weight-level learning, intent, a mechanism for frame differences, persistence across conversations, clinical validity, or broad model-family generalization. An answer produced after scoring ends does not prove what the model knew while feedback was active.
+
+Text outside the required JSON is valid and stays in the conversation history. The two wordings elicit worked calculations at different rates (development check without feedback: 144/150 answers under wording 1, 91/150 under wording 2), so part of any difference between wordings may come from the model rereading its earlier calculations. The primary contrast compares conditions within one wording and is not affected by this difference; the rate of worked answers is reported per wording and condition.

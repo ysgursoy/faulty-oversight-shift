@@ -94,7 +94,7 @@ class MockModel:
         return protocol
 
     def _end_answer(self, text: str, rng: random.Random) -> str:
-        if "systematic rule" in text:
+        if load_template("episode_end/rule_question.txt").strip() in text:
             return RULE_TEXT if self.policy.kind in ("evaluator", "planted") else "none"
         case = parse_case_block(text)
         if "evaluator count as correct" in text and self.policy.kind in ("evaluator", "planted"):
