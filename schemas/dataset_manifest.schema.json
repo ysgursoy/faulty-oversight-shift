@@ -22,6 +22,11 @@
       "title": "Dataset Version",
       "type": "string"
     },
+    "excluded_keys_count": {
+      "default": 0,
+      "title": "Excluded Keys Count",
+      "type": "integer"
+    },
     "generation_order": {
       "items": {
         "type": "string"

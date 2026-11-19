@@ -4,6 +4,9 @@ Order: evaluation pool, development pool, trial lists, pilot lists, main lists. 
 `used_keys` set threads through every step, so the development pool excludes every
 evaluation key and each later step excludes every earlier probe. Changing the order
 changes the probes; the order is recorded in the manifest.
+
+`excluded_keys` (for example, every development case shown to a model in earlier work)
+are treated as consumed before the first step; no pool case or probe uses them.
 """
 
 from __future__ import annotations
@@ -35,7 +38,8 @@ class Dataset:
     seeds: SeedConfig
     pools: dict[str, dict[str, list[Case]]]  # split -> case_type -> cases sorted by id
     episodes: dict[str, list[Episode]]  # use (trial/pilot/main) -> lists in index order
-    used_keys: frozenset[Key]
+    used_keys: frozenset[Key]  # keys consumed by this dataset's pools and probes
+    excluded_keys: frozenset[Key] = frozenset()  # unavailable before generation began
 
     def cases(self, split: str) -> list[Case]:
         return [case for group in self.pools[split].values() for case in group]
@@ -46,10 +50,11 @@ def build_dataset(
     n_trial: int = 3,
     n_pilot: int = 20,
     n_main: int | None = None,
+    excluded_keys: frozenset[Key] = frozenset(),
 ) -> Dataset:
     """Build pools and lists. `n_main=None` skips main lists (count fixed after the pilot)."""
     seeds.require_test_seeds()
-    used_keys: set[Key] = set()
+    used_keys: set[Key] = set(excluded_keys)
     evaluation = to_cases(EVALUATION, generate_pools(seeds.test_pool_base, used_keys))
     development = to_cases(DEVELOPMENT, generate_pools(seeds.dev_pool_base, used_keys))
     episodes = {
@@ -69,7 +74,8 @@ def build_dataset(
         seeds=seeds,
         pools={EVALUATION: evaluation, DEVELOPMENT: development},
         episodes=episodes,
-        used_keys=frozenset(used_keys),
+        used_keys=frozenset(used_keys - excluded_keys),
+        excluded_keys=frozenset(excluded_keys),
     )
     check_disjoint(dataset)
     return dataset
@@ -99,3 +105,6 @@ def check_disjoint(dataset: Dataset) -> None:
     missing = (pool_keys | probe_keys[EVALUATION] | probe_keys[DEVELOPMENT]) - dataset.used_keys
     if missing:
         raise ValueError(f"used_keys is missing {len(missing)} keys")
+    reused = (pool_keys | probe_keys[EVALUATION] | probe_keys[DEVELOPMENT]) & dataset.excluded_keys
+    if reused:
+        raise ValueError(f"{len(reused)} excluded keys reused, e.g. {min(reused)}")

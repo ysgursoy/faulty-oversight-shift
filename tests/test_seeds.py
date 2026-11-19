@@ -11,7 +11,8 @@ FIXTURES = Path(__file__).parent / "fixtures"
 DEV = FIXTURES / "seeds-dev.yaml"
 TEST = FIXTURES / "seeds-test.yaml"
 
-SKIP_DIRS = {".git", ".venv", ".local", "__pycache__", ".ruff_cache", ".pytest_cache"}
+SKIP_DIRS = {".git", ".venv", ".local", "__pycache__", ".ruff_cache", ".pytest_cache",
+             "runs-unsealed", "results-unsealed", "scratch"}  # gitignored private outputs
 TEXT_SUFFIXES = {".py", ".yaml", ".yml", ".json", ".md", ".toml", ".txt", ".cfg"}
 
 

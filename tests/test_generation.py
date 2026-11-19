@@ -108,6 +108,48 @@ class DatasetTests(unittest.TestCase):
             check_disjoint(bad)
 
 
+class ExcludedKeyTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.earlier = build_dataset(fixture_seeds(), n_main=2)
+        shown = {case.key for case in cls.earlier.cases(DEVELOPMENT)}
+        shown |= {p.key for use in ("trial", "pilot") for e in cls.earlier.episodes[use]
+                  for p in e.probes}
+        cls.shown = frozenset(shown)
+        # Fresh seeds for the evaluation side, same development seeds: worst case for overlap.
+        seeds = fixture_seeds().model_copy(update={"test_pool_base": 7_000_001,
+                                                   "test_lists_base": 8_000_001})
+        cls.dataset = build_dataset(seeds, n_main=2, excluded_keys=cls.shown)
+
+    def test_no_excluded_key_is_used(self) -> None:
+        used = {c.key for split in (EVALUATION, DEVELOPMENT) for c in self.dataset.cases(split)}
+        used |= {p.key for lists in self.dataset.episodes.values() for e in lists
+                 for p in e.probes}
+        self.assertFalse(used & self.shown)
+        self.assertFalse(self.dataset.used_keys & self.shown)
+        self.assertEqual(self.dataset.excluded_keys, self.shown)
+
+    def test_excluded_keys_are_released_and_verified(self) -> None:
+        from oversight_study.generation.manifest import development_keys
+
+        with TemporaryDirectory() as temp_dir:
+            earlier, later = Path(temp_dir) / "earlier", Path(temp_dir) / "later"
+            write_dataset(self.earlier, earlier, dataset_version="v-earlier")
+            self.assertEqual(development_keys(earlier), set(self.shown))
+            manifest = write_dataset(self.dataset, later, dataset_version="v-later")
+            self.assertEqual(manifest.excluded_keys_count, len(self.shown))
+            self.assertIn("excluded_keys.json", manifest.checksums_sha256)
+            self.assertEqual(verify_dataset(later), manifest)
+
+    def test_reuse_of_an_excluded_key_is_detected(self) -> None:
+        clash = next(iter(self.dataset.used_keys))
+        broken = Dataset(seeds=self.dataset.seeds, pools=self.dataset.pools,
+                         episodes=self.dataset.episodes, used_keys=self.dataset.used_keys,
+                         excluded_keys=self.dataset.excluded_keys | {clash})
+        with self.assertRaises(ValueError):
+            check_disjoint(broken)
+
+
 class WriteAndVerifyTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:

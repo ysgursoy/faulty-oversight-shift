@@ -31,6 +31,9 @@ def build_parser() -> argparse.ArgumentParser:
     gen.add_argument("--n-trial", type=int, default=3)
     gen.add_argument("--n-pilot", type=int, default=20)
     gen.add_argument("--n-main", type=int)
+    gen.add_argument("--exclude-development-of", type=Path, action="append", default=[],
+                     help="Earlier dataset whose development pool and lists were shown to a "
+                          "model; none of their keys is reused")
     gen.add_argument("--include-test-seeds", action="store_true",
                      help="Write evaluation seeds into the manifest (private release only)")
     _seed_args(gen)
@@ -158,10 +161,12 @@ def cmd_status() -> int:
 
 def cmd_generate(args) -> int:
     from oversight_study.generation import build_dataset, load_seeds, write_dataset
+    from oversight_study.generation.manifest import development_keys
 
     seeds = load_seeds(True, dev_path=args.seeds_dev, test_path=args.seeds_test)
+    excluded = frozenset().union(*(development_keys(d) for d in args.exclude_development_of))
     dataset = build_dataset(seeds, n_trial=args.n_trial, n_pilot=args.n_pilot,
-                            n_main=args.n_main)
+                            n_main=args.n_main, excluded_keys=excluded)
     manifest = write_dataset(dataset, args.out, dataset_version=args.dataset_version,
                              include_test_seeds=args.include_test_seeds)
     print(f"dataset {manifest.dataset_version} written to {args.out}: {manifest.list_counts}")

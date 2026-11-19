@@ -4,6 +4,7 @@ Layout under `out_dir`:
   pools/{evaluation,development}.json   cases with ids and r_star
   episodes/{trial,pilot,main}.json      lists (turn and probe ids) with their probe cases
   used_keys.json                        every consumed (weight, measurement), probes included
+  excluded_keys.json                    keys unavailable before generation (only if any)
   manifest.json                         generator, order, seeds, counts, sha256 per file
 Main lists are written only when they were generated. Evaluation seeds are written only
 for a private release.
@@ -50,6 +51,7 @@ class DatasetManifest(BaseModel):
     counts: dict[str, dict[str, int]]
     list_counts: dict[str, int]
     used_keys_count: int
+    excluded_keys_count: int = 0
     checksums_sha256: dict[str, str]
 
 
@@ -100,6 +102,8 @@ def write_dataset(
         if dataset.episodes[use]:
             files[f"episodes/{use}.json"] = _episode_rows(dataset.episodes[use])
     files["used_keys.json"] = [list(key) for key in sorted(dataset.used_keys)]
+    if dataset.excluded_keys:
+        files["excluded_keys.json"] = [list(key) for key in sorted(dataset.excluded_keys)]
 
     checksums: dict[str, str] = {}
     for rel, data in files.items():
@@ -118,6 +122,7 @@ def write_dataset(
         counts={split: _counts(dataset, split) for split in SPLITS},
         list_counts={use: len(dataset.episodes[use]) for use in LIST_USES},
         used_keys_count=len(dataset.used_keys),
+        excluded_keys_count=len(dataset.excluded_keys),
         checksums_sha256=checksums,
     )
     manifest_path.write_text(_canonical_json(manifest.model_dump(mode="json")), encoding="utf-8")
@@ -193,6 +198,23 @@ def verify_dataset(out_dir: Path) -> DatasetManifest:
     expected_used = set(pool_keys) | probe_keys[EVALUATION] | probe_keys[DEVELOPMENT]
     if used != expected_used:
         raise ValueError("used_keys.json does not match pools and probes")
+    excluded_path = out_dir / "excluded_keys.json"
+    excluded = ({tuple(key) for key in json.loads(excluded_path.read_text())}
+                if excluded_path.exists() else set())
+    if len(excluded) != manifest.excluded_keys_count:
+        raise ValueError("excluded_keys.json does not match the manifest count")
+    if excluded & expected_used:
+        raise ValueError("an excluded key is used by a pool or probe")
     if manifest.list_counts != {use: len(lists) for use, lists in episodes.items()}:
         raise ValueError("manifest list counts do not match episode files")
     return manifest
+
+
+def development_keys(out_dir: Path) -> set[Key]:
+    """Keys of a verified dataset's development pool and its trial and pilot probes."""
+    verify_dataset(out_dir)
+    _, pools, episodes, _ = read_dataset(Path(out_dir))
+    keys = {case.key for case in pools[DEVELOPMENT]}
+    for use in ("trial", "pilot"):
+        keys.update(probe.key for episode in episodes[use] for probe in episode.probes)
+    return keys
