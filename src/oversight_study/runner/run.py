@@ -1,7 +1,8 @@
 """Run a stage: every planned cell once, logged, resumable, and sealed at the end.
 
 A cell is one (frame, condition, wording, list, replicate) episode plus its end-of-episode
-questions. Cells run in an order shuffled by the stage's `order_seed`. A cell's records are
+questions. Cells start in an order shuffled by the stage's `order_seed`; with `workers` > 1,
+up to that many cells run at once (a cell's own turns stay sequential). A cell's records are
 appended to `results.jsonl` only after the whole cell finished; on resume, completed cells
 are skipped and any partial cell's records are moved to `superseded.jsonl` (kept, never
 analyzed) before the cell is rerun.
@@ -16,8 +17,10 @@ from __future__ import annotations
 import hashlib
 import json
 import random
+import threading
 from collections import Counter
 from collections.abc import Callable, Sequence
+from concurrent.futures import FIRST_COMPLETED, Future, ThreadPoolExecutor, wait
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
@@ -87,22 +90,39 @@ def expected_records(condition: str) -> int:
 
 
 @dataclass
-class _Recorder:
-    """Wraps the client: logs each request and response, sums usage."""
+class _Totals:
+    """Usage and call count summed over every cell of this process; thread-safe."""
 
-    inner: ModelClient
-    cell_id: str = ""
-    lines: list[str] = field(default_factory=list)
     usage: Counter = field(default_factory=Counter)
     calls: int = 0
+    lock: threading.Lock = field(default_factory=threading.Lock)
+
+    def add(self, usage: dict) -> int:
+        with self.lock:
+            self.calls += 1
+            self.usage.update(usage)
+            return self.calls
+
+    def snapshot(self) -> tuple[Counter, int]:
+        with self.lock:
+            return Counter(self.usage), self.calls
+
+
+@dataclass
+class _Recorder:
+    """Wraps the client for one cell: logs each request and response, adds usage to totals."""
+
+    inner: ModelClient
+    totals: _Totals
+    cell_id: str = ""
+    lines: list[str] = field(default_factory=list)
 
     def complete(self, request: ModelRequest) -> ModelResponse:
         response = self.inner.complete(request)
-        self.calls += 1
-        self.usage.update(response.usage.model_dump())
+        call = self.totals.add(response.usage.model_dump())
         self.lines.append(json.dumps({
             "cell_id": self.cell_id,
-            "call": self.calls,
+            "call": call,
             "system_sha256": hashlib.sha256(request.system.encode()).hexdigest(),
             "n_messages": len(request.messages),
             "user": request.last_user_text,
@@ -135,13 +155,14 @@ def compute_costs(usage: Counter, calls: int, prices: Prices) -> dict:
 class Run:
     def __init__(self, run_dir: Path) -> None:
         self.dir = Path(run_dir)
+        self.lock = threading.RLock()
 
     def path(self, name: str) -> Path:
         return self.dir / name
 
     def append(self, name: str, lines: Sequence[str]) -> None:
         if lines:
-            with self.path(name).open("a", encoding="utf-8") as handle:
+            with self.lock, self.path(name).open("a", encoding="utf-8") as handle:
                 handle.write("".join(line + "\n" for line in lines))
 
     def event(self, kind: str, **fields) -> None:
@@ -197,8 +218,15 @@ def run_stage(
     include_optional: bool = False,
     freeze_gate: FreezeGate | None = None,
     on_progress: Callable[[int, int], None] | None = None,
+    workers: int = 1,
 ) -> Path:
-    """Start a new run, or resume `run_id` under `run_root`. Returns the run directory."""
+    """Start a new run, or resume `run_id` under `run_root`. Returns the run directory.
+
+    With `workers` > 1, cells run concurrently. On a failure or when the budget is reached,
+    no new cell starts; cells already running finish and are kept.
+    """
+    if workers < 1:
+        raise ValueError("workers must be at least 1")
     if config.split == DatasetSplit.evaluation:
         require_second_freeze(freeze_gate)
     require_stage_freeze(config.stage, freeze_gate, config.design_version, config.list_count)
@@ -240,58 +268,79 @@ def run_stage(
     done = _supersede_partial_cells(run, condition_of)
     order = list(cells)
     random.Random(config.order_seed).shuffle(order)
-    recorder = _Recorder(client)
+    totals = _Totals()
     previous = json.loads(run.path("costs.json").read_text()) if run.path(
         "costs.json").exists() else None
-    try:
-        for frame, condition, wording, index, replicate in order:
-            key = (frame, condition, wording, index, replicate)
-            if key in done:
-                continue
-            ctx = EpisodeContext(
-                episode=by_index[index], frame=frame, condition=condition, wording=wording,
-                m=config.m, stage=config.stage, dataset_split=config.split, replicate=replicate,
-                run_id=run_id, requested_model=model.model_id, settings=settings,
-                prompt_version=prompt_version,
-            )
-            recorder.cell_id = ctx.cell_id
-            recorder.lines.clear()
+    stop = threading.Event()
+    failures: list[BaseException] = []
+
+    def run_cell(key: tuple) -> None:
+        if stop.is_set():
+            return
+        frame, condition, wording, index, replicate = key
+        ctx = EpisodeContext(
+            episode=by_index[index], frame=frame, condition=condition, wording=wording,
+            m=config.m, stage=config.stage, dataset_split=config.split, replicate=replicate,
+            run_id=run_id, requested_model=model.model_id, settings=settings,
+            prompt_version=prompt_version,
+        )
+        recorder = _Recorder(client, totals, cell_id=ctx.cell_id)
+        try:
             result = run_episode(ctx, recorder)
             end = ask_episode_end(result, ctx, recorder)
+        except Exception as error:  # noqa: BLE001 - recorded, then re-raised by run_stage
+            stop.set()
+            with run.lock:
+                failures.append(error)
+                run.append("failed-requests.jsonl", recorder.lines)
+                run.event("cell_failed", cell_id=ctx.cell_id, calls=len(recorder.lines),
+                          error=type(error).__name__, message=str(error)[:500])
+            return
+        with run.lock:
             run.append("results.jsonl", [r.model_dump_json() for r in (*result.turns, *end)])
             run.append("requests.jsonl", recorder.lines)
-            recorder.lines.clear()
             done.add(key)
             run.event("cell_completed", cell=list(key))
             if on_progress:
                 on_progress(len(done), len(cells))
-            if config.max_cost_usd is not None and len(done) < len(cells):
-                spent = _total_cost(recorder, model.prices, previous)
+            if config.max_cost_usd is not None and len(done) < len(cells) and not stop.is_set():
+                spent = _total_cost(totals, model.prices, previous)
                 if spent >= config.max_cost_usd:
+                    stop.set()
                     run.event("budget_exceeded", spent_usd=spent, cap_usd=config.max_cost_usd)
-                    raise BudgetExceededError(
-                        f"spent ${spent:.2f} of max_cost_usd ${config.max_cost_usd:.2f}")
-    except Exception as error:
-        if recorder.lines:  # cleared after each completed cell, so these are the failed cell's
-            run.append("failed-requests.jsonl", recorder.lines)
-        run.event("cell_failed", cell_id=recorder.cell_id, calls=len(recorder.lines),
-                  error=type(error).__name__, message=str(error)[:500])
-        manifest = run.manifest().model_copy(update={
+                    failures.append(BudgetExceededError(
+                        f"spent ${spent:.2f} of max_cost_usd ${config.max_cost_usd:.2f}"))
+
+    pending = [key for key in order if key not in done]
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        running: set[Future] = set()
+        for key in pending:
+            if stop.is_set():
+                break
+            if len(running) >= workers:
+                finished, running = wait(running, return_when=FIRST_COMPLETED)
+                for future in finished:
+                    future.result()
+                if stop.is_set():
+                    break
+            running.add(pool.submit(run_cell, key))
+        for future in running:
+            future.result()
+
+    _write_costs(run, totals, model.prices, previous)
+    if failures:
+        run.write_manifest(run.manifest().model_copy(update={
             "status": "partial" if done else "failed", "cells_completed": len(done),
-            "updated_utc": _now()})
-        run.write_manifest(manifest)
-        _write_costs(run, recorder, model.prices, previous)
-        raise
-    _write_costs(run, recorder, model.prices, previous)
+            "updated_utc": _now()}))
+        raise failures[0]
     run.write_manifest(run.manifest().model_copy(update={
         "status": "completed", "cells_completed": len(done), "updated_utc": _now()}))
     run.event("run_completed", cells=len(done))
     return run.dir
 
 
-def _usage_and_calls(recorder: _Recorder, previous: dict | None) -> tuple[Counter, int]:
-    usage = Counter(recorder.usage)
-    calls = recorder.calls
+def _usage_and_calls(totals: _Totals, previous: dict | None) -> tuple[Counter, int]:
+    usage, calls = totals.snapshot()
     if previous:
         usage.update({"input_tokens": previous["input_tokens"],
                       "output_tokens": previous["output_tokens"],
@@ -301,13 +350,13 @@ def _usage_and_calls(recorder: _Recorder, previous: dict | None) -> tuple[Counte
     return usage, calls
 
 
-def _total_cost(recorder: _Recorder, prices: Prices, previous: dict | None) -> float:
-    usage, calls = _usage_and_calls(recorder, previous)
+def _total_cost(totals: _Totals, prices: Prices, previous: dict | None) -> float:
+    usage, calls = _usage_and_calls(totals, previous)
     return compute_costs(usage, calls, prices)["cost_usd_with_cache"] or 0.0
 
 
-def _write_costs(run: Run, recorder: _Recorder, prices: Prices, previous: dict | None) -> None:
-    usage, calls = _usage_and_calls(recorder, previous)
+def _write_costs(run: Run, totals: _Totals, prices: Prices, previous: dict | None) -> None:
+    usage, calls = _usage_and_calls(totals, previous)
     run.path("costs.json").write_text(
         json.dumps(compute_costs(usage, calls, prices), indent=2, sort_keys=True) + "\n",
         encoding="utf-8")

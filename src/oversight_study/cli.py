@@ -49,6 +49,8 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--runs-root", type=Path, default=Path("runs-unsealed"))
     run.add_argument("--resume", help="Run id to resume")
     run.add_argument("--include-optional", action="store_true")
+    run.add_argument("--workers", type=int, default=1,
+                     help="Cells run at once (a cell's own turns stay sequential)")
     _client_args(run)
 
     seal = sub.add_parser("seal", help="Seal a completed run")
@@ -225,7 +227,8 @@ def cmd_run(args) -> int:
                         settings=_settings(model), prompt_version=prompt_version(),
                         provenance={"commit": git_commit(repo), **hashes},
                         run_root=args.runs_root, run_id=args.resume,
-                        include_optional=args.include_optional, freeze_gate=gate)
+                        include_optional=args.include_optional, freeze_gate=gate,
+                        workers=args.workers)
     print(f"run completed: {run_dir}")
     return 0
 

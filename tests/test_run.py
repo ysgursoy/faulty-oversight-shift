@@ -39,6 +39,23 @@ class FailAfter:
         return self.inner.complete(request)
 
 
+class FailOnCall:
+    """Raises on one specific call number; thread-safe so it works with workers."""
+
+    def __init__(self, call: int):
+        import threading
+        self.call, self.seen, self.lock = call, 0, threading.Lock()
+        self.inner = MockModel(Policy("protocol"))
+
+    def complete(self, request):
+        with self.lock:
+            self.seen += 1
+            fail = self.seen == self.call
+        if fail:
+            raise RuntimeError("connection lost")
+        return self.inner.complete(request)
+
+
 class RunTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -151,6 +168,58 @@ class RunTests(unittest.TestCase):
             self.assertEqual(run.manifest().status, "partial")
             self.assertEqual(run.manifest().cells_completed, 1)
             self.assertIn("budget_exceeded", run.path("events.jsonl").read_text())
+
+    def test_parallel_run_matches_sequential(self) -> None:
+        def content(run_dir):
+            records = Run(run_dir).results()
+            for record in records:
+                record.pop("run_id")
+                record.pop("logical_query_id")
+                for attempt in record.get("attempts", []):
+                    attempt.pop("attempt_id")
+            return sorted(json.dumps(r, sort_keys=True) for r in records)
+
+        with TemporaryDirectory() as a, TemporaryDirectory() as b:
+            sequential = self.start(a, MockModel(Policy("noise", rate=0.3)))
+            parallel = self.start(b, MockModel(Policy("noise", rate=0.3)), workers=4)
+            self.assert_complete(parallel)
+            self.assertEqual(content(sequential), content(parallel))
+            costs = [json.loads(Run(d).path("costs.json").read_text())
+                     for d in (sequential, parallel)]
+            self.assertEqual(costs[0], costs[1])
+            calls = [json.loads(line)["call"] for line in
+                     Run(parallel).path("requests.jsonl").read_text().splitlines()]
+            self.assertEqual(sorted(calls), list(range(1, costs[1]["calls"] + 1)))
+
+    def test_parallel_failure_keeps_finished_cells_and_resumes(self) -> None:
+        with TemporaryDirectory() as root:
+            with self.assertRaises(RuntimeError):
+                self.start(root, FailOnCall(300), workers=4)
+            run_dir = next(Path(root).iterdir())
+            run = Run(run_dir)
+            self.assertEqual(run.manifest().status, "partial")
+            self.assertEqual(run.path("superseded.jsonl").read_text(), "")
+            self.assertGreater(len(run.path("failed-requests.jsonl").read_text()), 0)
+            completed = run.path("events.jsonl").read_text().count('"cell_completed"')
+            self.assertEqual(run.manifest().cells_completed, completed)
+            self.start(root, MockModel(Policy("protocol")), run_id=run_dir.name, workers=4)
+            self.assert_complete(run_dir)
+            self.assertEqual(run.manifest().status, "completed")
+
+    def test_parallel_budget_stop_is_resumable(self) -> None:
+        with TemporaryDirectory() as root:
+            tight = TRIAL.model_copy(update={"max_cost_usd": 0.0001})
+            with self.assertRaises(BudgetExceededError):
+                run_stage(tight, self.episodes, MockModel(), model=MODEL, settings=SETTINGS,
+                          prompt_version="0" * 64, provenance={}, run_root=root, workers=4)
+            run = Run(next(Path(root).iterdir()))
+            self.assertEqual(run.manifest().status, "partial")
+            self.assertLessEqual(run.manifest().cells_completed, 4)
+            self.assertEqual(run.path("events.jsonl").read_text().count("budget_exceeded"), 1)
+
+    def test_workers_must_be_positive(self) -> None:
+        with TemporaryDirectory() as root, self.assertRaises(ValueError):
+            self.start(root, MockModel(), workers=0)
 
     def test_budget_needs_prices(self) -> None:
         no_prices = MODEL.model_copy(update={"prices": Prices()})

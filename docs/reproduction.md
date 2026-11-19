@@ -43,6 +43,8 @@ uv run oversight-study classify --run <run-dir> --dataset data/<version> --mock
 uv run oversight-study seal <run-dir>
 ```
 
+`run --workers N` runs up to N episodes at once; each episode's turns stay sequential, episodes start in the stage's fixed shuffled order, and records are identical to a sequential run apart from file order and timestamps.
+
 Development data are used for the pre-check, the trial, and the pilot. Evaluation data are used only after the protocol, prompts, model settings, sample size, and analysis plan are fixed and recorded; model commands on evaluation data refuse to run otherwise. A paid rerun produces new observations, which may differ from released ones even with identical seeds and settings.
 
 ## 5. Notebook contract
