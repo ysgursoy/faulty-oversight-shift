@@ -181,18 +181,25 @@ def cmd_precheck(args) -> int:
     split_pools = {t: [c for c in pools[args.split] if c.case_type == t]
                    for t in ("A", "near_measurement", "near_weight", "U")}
     gate = _gate(repo, args.dataset)[0] if args.split == "evaluation" else None
+    out_file = args.out / "precheck.jsonl"
+    if out_file.exists():
+        raise SystemExit(f"{out_file} exists; choose a new --out to keep earlier results")
     args.out.mkdir(parents=True, exist_ok=True)
     records = []
-    for wording in args.wording or list(config.wordings):
-        quotas = (config.development_subset if args.split == "development"
-                  else config.evaluation_by_wording[wording])
-        cases = select_subset(split_pools, quotas, config.sample_seed)
-        records += run_precheck(cases, config.frames, [wording], client,
-                                dataset_split=args.split, run_id=f"precheck-{args.split}",
-                                requested_model=requested, settings=_settings(model),
-                                prompt_version=prompt_version(), freeze_gate=gate)
-    (args.out / "precheck.jsonl").write_text(
-        "".join(r.model_dump_json() + "\n" for r in records), encoding="utf-8")
+    with out_file.open("w", encoding="utf-8") as sink:
+        def write(record) -> None:
+            sink.write(record.model_dump_json() + "\n")
+            sink.flush()
+
+        for wording in args.wording or list(config.wordings):
+            quotas = (config.development_subset if args.split == "development"
+                      else config.evaluation_by_wording[wording])
+            cases = select_subset(split_pools, quotas, config.sample_seed)
+            records += run_precheck(cases, config.frames, [wording], client,
+                                    dataset_split=args.split, run_id=f"precheck-{args.split}",
+                                    requested_model=requested, settings=_settings(model),
+                                    prompt_version=prompt_version(), freeze_gate=gate,
+                                    on_record=write)
     summary = summarize_precheck(records, config.threshold)
     summary.to_csv(args.out / "precheck_summary.csv")
     print(summary.to_string())

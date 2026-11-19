@@ -90,6 +90,21 @@ class PrecheckTests(unittest.TestCase):
         self.assertNotIn("automated evaluator", captured[0].system)
         self.assertEqual(len(captured[0].messages), 1)
 
+    def test_finished_records_survive_a_later_failure(self) -> None:
+        seen = []
+
+        class FailsOnThirdCase(MockModel):
+            def complete(self, request):
+                if len(seen) == 2:
+                    raise RuntimeError("connection lost")
+                return super().complete(request)
+
+        with self.assertRaises(RuntimeError):
+            run_precheck(self.dev_subset[:5], ["human"], [1], FailsOnThirdCase(Policy()),
+                         dataset_split="development", on_record=seen.append, **COMMON)
+        self.assertEqual([r.case_id for r in seen],
+                         [c.case_id for c in self.dev_subset[:2]])
+
     def test_evaluation_refused_unless_allowed(self) -> None:
         cases = self.dataset.pools["evaluation"]["A"][:1]
         with self.assertRaises(FreezeError):

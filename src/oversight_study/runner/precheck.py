@@ -8,7 +8,7 @@ freeze is recorded and nothing frozen has changed since.
 from __future__ import annotations
 
 import random
-from collections.abc import Mapping, Sequence
+from collections.abc import Callable, Mapping, Sequence
 
 import pandas as pd
 
@@ -64,7 +64,10 @@ def run_precheck(
     settings: GenerationSettings,
     prompt_version: str,
     freeze_gate: FreezeGate | None = None,
+    on_record: Callable[[PrecheckRecord], None] | None = None,
 ) -> list[PrecheckRecord]:
+    """`on_record` sees each record as soon as it exists, so a caller can persist
+    finished calls before a later one fails."""
     if DatasetSplit(dataset_split) == DatasetSplit.evaluation:
         require_second_freeze(freeze_gate)
     records = []
@@ -83,7 +86,7 @@ def run_precheck(
                     responses.append(client.complete(request))
                     attempts.append(_attempt(f"{query_id}#2", responses[1]))
                 final = parse_turn_output(responses[-1].text)
-                records.append(PrecheckRecord(
+                record = PrecheckRecord(
                     dataset_split=dataset_split, frame=frame, wording=wording,
                     case_id=case.case_id, case_type=case.case_type, r_star=case.r_star,
                     attempts=tuple(attempts), y=final.value if final.ok else None,
@@ -91,7 +94,10 @@ def run_precheck(
                     requested_model=requested_model, returned_model=responses[-1].returned_model,
                     generation_settings=settings, prompt_version=prompt_version, run_id=run_id,
                     logical_query_id=query_id,
-                ))
+                )
+                records.append(record)
+                if on_record is not None:
+                    on_record(record)
     return records
 
 
