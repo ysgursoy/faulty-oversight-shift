@@ -95,6 +95,8 @@ After turn 40, the conversation history is copied without modification. Each que
 
 Each copy's user message is the last turn's feedback (when the condition has feedback), a sentence saying scoring has ended, and the question. A feedback episode asks 12 questions (1 rule, 3 value, 4 probe-protocol, 4 probe-evaluator); condition `a` asks only the 3 value questions.
 
+Numeric questions ask for the number alone, without working, and get no retry. An answer is read as follows: if its last non-empty line is a single integer (thousands separators and a trailing period allowed), that integer is the answer, whatever working precedes it; otherwise the answer must contain exactly one distinct integer, and anything else is a format error.
+
 A separate classifier labels rule descriptions, refusals, formatting failures, and text outside the required JSON. Its prompt, model version, rubric, raw judgments, blinded manual-review sample, disagreements, and adjudication are retained.
 
 ## 7. Primary comparison

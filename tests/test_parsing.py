@@ -41,6 +41,12 @@ NUMBER_CASES = [
     ("1500.5", None),
     ("I will not answer.", None),
     ('{"value": 1500}', 1500),
+    ("Base = 99 × 20 = 1980; coefficient 0.5 gives 990, which rounds to 1000.\n\n1000", 1000),
+    ("75 × 20 = 1500.\n1,500.", 1500),
+    ("Working: 60 × 20 = 1200\n**1200**", 1200),
+    ("1000\nbut the evaluator would want 1500", None),
+    ("The answer is 1500.\nOr maybe 1450", None),
+    ("Answer:\n1500.5", None),
 ]
 
 

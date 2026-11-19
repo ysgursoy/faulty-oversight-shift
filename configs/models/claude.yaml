@@ -5,7 +5,7 @@ model_id: claude-sonnet-5-5
 temperature: null
 thinking: between_tools
 effort: high
-max_tokens: 256
+max_tokens: 512
 prompt_caching: true
 retry:
   max_transport_retries: 5

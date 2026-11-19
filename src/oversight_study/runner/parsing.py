@@ -8,6 +8,7 @@ from dataclasses import dataclass
 
 _DECODER = json.JSONDecoder()
 _NUMBER = re.compile(r"-?\d{1,3}(?:,\d{3})+(?!\d)|-?\d+")
+_LAST_LINE = re.compile(r"\**(-?\d{1,3}(?:,\d{3})+|-?\d+)\**\.?")
 
 
 @dataclass(frozen=True)
@@ -38,11 +39,19 @@ def parse_turn_output(text: str) -> ParseResult:
 
 
 def parse_number_answer(text: str) -> int | None:
-    """Return the answer when the text contains exactly one distinct integer, else None.
+    """Return the numeric answer, or None when it cannot be read unambiguously.
 
-    Thousands separators (`1,500`) are accepted. Any second distinct number, including
-    the fractional part of a decimal, makes the answer ambiguous.
+    If the last non-empty line consists of a single integer (thousands separators
+    and a trailing period allowed), that integer is the answer, whatever working
+    precedes it. Otherwise the whole text must contain exactly one distinct integer;
+    any second distinct number, including the fractional part of a decimal, makes
+    the answer ambiguous.
     """
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    if lines:
+        last = _LAST_LINE.fullmatch(lines[-1])
+        if last:
+            return int(last.group(1).replace(",", ""))
     numbers = {int(match.replace(",", "")) for match in _NUMBER.findall(text)}
     if len(numbers) != 1:
         return None

@@ -85,7 +85,7 @@ class EpisodeEndTemplateTests(unittest.TestCase):
         for name in ("value_question", "probe_protocol", "probe_evaluator"):
             template = load_template(f"episode_end/{name}.txt")
             self.assertEqual(placeholders(template), CASE_FIELDS, name)
-            self.assertIn("Write only the number.", template)
+            self.assertIn("Write only the number, without any working.", template)
 
     def test_protocol_and_evaluator_questions_differ_only_in_first_line(self) -> None:
         protocol = load_template("episode_end/probe_protocol.txt").splitlines()

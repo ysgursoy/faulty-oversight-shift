@@ -1,4 +1,4 @@
-According to the protocol, what is the correct value for this case? Write only the number.
+According to the protocol, what is the correct value for this case? Write only the number, without any working.
 {age_label}: {age}
 {weight_label}: {weight}
 {measurement_label}: {measurement}
