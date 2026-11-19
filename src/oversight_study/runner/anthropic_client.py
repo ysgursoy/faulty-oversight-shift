@@ -2,7 +2,8 @@
 
 Transport failures (connection, timeout, rate limit, 5xx) are retried with exponential
 backoff and reported through `on_event`; they are not parse retries. SDK-level retries
-are disabled so this class owns the retry policy.
+are disabled so this class owns the retry policy. No server-side model fallback is used:
+a refusal is recorded as a refusal, never answered by another model.
 """
 
 from __future__ import annotations
@@ -27,15 +28,17 @@ class PaidRunRefusedError(RuntimeError):
     """A paid call was attempted where paid runs are not allowed."""
 
 
+THINKING_TYPES = ("adaptive", "between_tools", "disabled")
+
+
 def thinking_param(setting: str | None) -> dict | None:
-    """`None` -> omit; `disabled`; `enabled:<budget_tokens>`."""
+    """`None` -> omit (model default); otherwise `{"type": setting}`. Thinking budgets are
+    not accepted by current models and are rejected here."""
     if setting is None:
         return None
-    if setting == "disabled":
-        return {"type": "disabled"}
-    if setting.startswith("enabled:"):
-        return {"type": "enabled", "budget_tokens": int(setting.split(":", 1)[1])}
-    raise ValueError(f"unknown thinking setting: {setting!r}")
+    if setting not in THINKING_TYPES:
+        raise ValueError(f"unknown thinking setting: {setting!r}")
+    return {"type": setting}
 
 
 def build_api_kwargs(config: ModelConfig, request: ModelRequest) -> dict[str, Any]:
@@ -64,6 +67,8 @@ def build_api_kwargs(config: ModelConfig, request: ModelRequest) -> dict[str, An
     thinking = thinking_param(request.settings.thinking)
     if thinking is not None:
         kwargs["thinking"] = thinking
+    if request.settings.effort is not None:
+        kwargs["output_config"] = {"effort": request.settings.effort}
     return kwargs
 
 

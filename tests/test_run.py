@@ -9,6 +9,7 @@ from oversight_study.generation import build_dataset, load_seeds
 from oversight_study.records.run_records import GenerationSettings
 from oversight_study.runner.mock import MockModel, Policy
 from oversight_study.runner.run import (
+    BudgetExceededError,
     Run,
     compute_costs,
     expected_records,
@@ -135,6 +136,24 @@ class RunTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 run_stage(TRIAL, self.episodes[:1], MockModel(), model=MODEL, settings=SETTINGS,
                           prompt_version="0" * 64, provenance={}, run_root=root)
+
+    def test_budget_cutter_stops_resumably(self) -> None:
+        with TemporaryDirectory() as root:
+            tight = TRIAL.model_copy(update={"max_cost_usd": 0.0001})
+            with self.assertRaises(BudgetExceededError):
+                run_stage(tight, self.episodes, MockModel(), model=MODEL, settings=SETTINGS,
+                          prompt_version="0" * 64, provenance={}, run_root=root)
+            run_dir = next(Path(root).iterdir())
+            run = Run(run_dir)
+            self.assertEqual(run.manifest().status, "partial")
+            self.assertEqual(run.manifest().cells_completed, 1)
+            self.assertIn("budget_exceeded", run.path("events.jsonl").read_text())
+
+    def test_budget_needs_prices(self) -> None:
+        no_prices = MODEL.model_copy(update={"prices": Prices()})
+        with TemporaryDirectory() as root, self.assertRaises(ValueError):
+            run_stage(TRIAL, self.episodes, MockModel(), model=no_prices, settings=SETTINGS,
+                      prompt_version="0" * 64, provenance={}, run_root=root)
 
     def test_costs(self) -> None:
         usage = Counter(input_tokens=1_000_000, output_tokens=100_000,

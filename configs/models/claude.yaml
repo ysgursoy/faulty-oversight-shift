@@ -1,16 +1,18 @@
-# Model settings. model_id stays TBD until a dated model version is chosen; paid runs refuse TBD.
+# Model settings. Current Claude models accept no sampling parameters, so temperature stays
+# null (default sampling). Thinking is off via between_tools (accepted at effort high or below).
 provider: anthropic
-model_id: TBD
-temperature: 0.0
-thinking: null
-max_tokens: 64
+model_id: claude-sonnet-5-5
+temperature: null
+thinking: between_tools
+effort: high
+max_tokens: 256
 prompt_caching: true
 retry:
   max_transport_retries: 5
   initial_backoff_seconds: 2.0
   max_backoff_seconds: 60.0
-prices:
-  input: null
-  output: null
-  cache_write: null
-  cache_read: null
+prices:  # USD per million tokens; cache write = 5-minute TTL
+  input: 2.0
+  output: 10.0
+  cache_write: 2.5
+  cache_read: 0.1

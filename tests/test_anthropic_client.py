@@ -79,10 +79,20 @@ class RequestShapeTests(unittest.TestCase):
 
     def test_thinking_settings(self) -> None:
         self.assertIsNone(thinking_param(None))
-        self.assertEqual(thinking_param("disabled"), {"type": "disabled"})
-        self.assertEqual(thinking_param("enabled:2048"), {"type": "enabled", "budget_tokens": 2048})
-        with self.assertRaises(ValueError):
-            thinking_param("on")
+        for setting in ("adaptive", "between_tools", "disabled"):
+            self.assertEqual(thinking_param(setting), {"type": setting})
+        for bad in ("on", "enabled:2048"):
+            with self.assertRaises(ValueError):
+                thinking_param(bad)
+
+    def test_configured_thinking_and_effort_reach_the_request(self) -> None:
+        settings = GenerationSettings(thinking="between_tools", effort="high", max_tokens=256)
+        request = REQUEST.model_copy(update={"settings": settings})
+        kwargs = build_api_kwargs(CONFIG, request)
+        self.assertEqual(kwargs["thinking"], {"type": "between_tools"})
+        self.assertEqual(kwargs["output_config"], {"effort": "high"})
+        self.assertNotIn("temperature", build_api_kwargs(
+            CONFIG, REQUEST.model_copy(update={"settings": GenerationSettings(max_tokens=8)})))
 
 
 class ClientTests(unittest.TestCase):

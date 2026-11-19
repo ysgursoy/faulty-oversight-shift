@@ -53,4 +53,4 @@ uv run python -m unittest discover -s tests
 
 ## License
 
-Original code and documentation in this repository are licensed under the [MIT License](LICENSE). Third-party sources retain their own licenses.
+Original code, documentation, and synthetic data in this repository are licensed under the [MIT License](LICENSE). Third-party sources retain their own licenses.

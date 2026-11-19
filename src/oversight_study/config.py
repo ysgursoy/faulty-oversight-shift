@@ -54,7 +54,8 @@ class ModelConfig(BaseModel):
     provider: Literal["anthropic"]
     model_id: str = Field(min_length=1)
     temperature: float | None = Field(default=None, ge=0, le=1)
-    thinking: str | None = None
+    thinking: Literal["adaptive", "between_tools", "disabled"] | None = None
+    effort: Literal["low", "medium", "high", "xhigh", "max"] | None = None
     max_tokens: int = Field(gt=0)
     prompt_caching: bool = True
     retry: RetryPolicy
@@ -63,6 +64,12 @@ class ModelConfig(BaseModel):
     def require_runnable(self) -> None:
         if self.model_id == UNDECIDED:
             raise ConfigNotReadyError("model_id is undecided; paid runs are refused")
+
+    @model_validator(mode="after")
+    def _check_thinking(self):
+        if self.thinking == "between_tools" and self.effort in ("xhigh", "max"):
+            raise ValueError("between_tools thinking is accepted only at effort high or below")
+        return self
 
 
 class ListRange(BaseModel):
@@ -106,6 +113,7 @@ class StageConfig(BaseModel):
     m: float = Field(gt=0)
     list_count: int | None = Field(default=None, gt=0)  # None until fixed for the stage
     order_seed: int
+    max_cost_usd: float | None = Field(default=None, gt=0)  # stop a run past this
     cells: tuple[CellGroup, ...] = Field(min_length=1)
 
     @model_validator(mode="after")

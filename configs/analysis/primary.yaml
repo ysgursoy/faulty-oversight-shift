@@ -1,7 +1,7 @@
 # Pre-specified analysis settings. delta_min and n_max are fixed before any pilot data is seen.
 delta: 0.15
-delta_min: null
-n_max: null
+delta_min: 0.15
+n_max: 60
 n_pilot: 20
 bootstrap_n: 10000
 bootstrap_seed: 0

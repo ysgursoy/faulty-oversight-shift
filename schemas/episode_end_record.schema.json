@@ -20,6 +20,18 @@
     "GenerationSettings": {
       "additionalProperties": false,
       "properties": {
+        "effort": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Effort"
+        },
         "max_tokens": {
           "exclusiveMinimum": 0,
           "title": "Max Tokens",

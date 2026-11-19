@@ -30,6 +30,7 @@ class GenerationSettings(BaseModel):
     temperature: float | None = None
     top_p: float | None = None
     thinking: str | None = None
+    effort: str | None = None
     max_tokens: int = Field(gt=0)
 
 

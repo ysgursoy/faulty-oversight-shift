@@ -14,10 +14,10 @@ from oversight_study.validation.freeze_record import (
 )
 
 REPO = repository_root(Path(__file__))
-MODEL = load_config(REPO / "configs/models/claude.yaml", ModelConfig)
-ANALYSIS = load_config(REPO / "configs/analysis/primary.yaml", AnalysisConfig)
-READY_MODEL = MODEL.model_copy(update={"model_id": "claude-x-20260101"})
-READY_ANALYSIS = ANALYSIS.model_copy(update={"delta_min": 0.15, "n_max": 60})
+READY_MODEL = load_config(REPO / "configs/models/claude.yaml", ModelConfig)
+READY_ANALYSIS = load_config(REPO / "configs/analysis/primary.yaml", AnalysisConfig)
+MODEL = READY_MODEL.model_copy(update={"model_id": "TBD"})
+ANALYSIS = READY_ANALYSIS.model_copy(update={"delta_min": None})
 COMMIT = "a" * 40
 NOW = datetime(2026, 11, 18, 12, 0, tzinfo=UTC)
 

@@ -5,6 +5,7 @@ design_version: "1"
 m: 1.5
 list_count: null
 order_seed: 5300
+max_cost_usd: 250
 cells:
   - conditions: [a]
     wordings: [1]

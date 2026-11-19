@@ -44,6 +44,10 @@ FILES = ("manifest.json", "resolved-config.yaml", "results.jsonl", "requests.jso
 CELL_FIELDS = ("frame", "condition", "wording", "episode", "replicate")
 
 
+class BudgetExceededError(RuntimeError):
+    """The run's cost reached its configured `max_cost_usd`; the run can be resumed."""
+
+
 class RunManifest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -203,6 +207,10 @@ def run_stage(
     if missing:
         raise ValueError(f"episode lists missing for indices {sorted(missing)[:5]}")
     config_hash = resolved_config_hash(config)
+    if config.max_cost_usd is not None and None in (
+            model.prices.input, model.prices.output, model.prices.cache_write,
+            model.prices.cache_read):
+        raise ValueError("max_cost_usd needs all prices in the model config")
 
     run_id = run_id or make_run_id(config.stage, config_hash)
     run = Run(Path(run_root) / run_id)
@@ -255,6 +263,12 @@ def run_stage(
             run.event("cell_completed", cell=list(key))
             if on_progress:
                 on_progress(len(done), len(cells))
+            if config.max_cost_usd is not None and len(done) < len(cells):
+                spent = _total_cost(recorder, model.prices, previous)
+                if spent >= config.max_cost_usd:
+                    run.event("budget_exceeded", spent_usd=spent, cap_usd=config.max_cost_usd)
+                    raise BudgetExceededError(
+                        f"spent ${spent:.2f} of max_cost_usd ${config.max_cost_usd:.2f}")
     except Exception as error:
         run.event("cell_failed", error=type(error).__name__, message=str(error)[:500])
         manifest = run.manifest().model_copy(update={
@@ -270,7 +284,7 @@ def run_stage(
     return run.dir
 
 
-def _write_costs(run: Run, recorder: _Recorder, prices: Prices, previous: dict | None) -> None:
+def _usage_and_calls(recorder: _Recorder, previous: dict | None) -> tuple[Counter, int]:
     usage = Counter(recorder.usage)
     calls = recorder.calls
     if previous:
@@ -279,6 +293,16 @@ def _write_costs(run: Run, recorder: _Recorder, prices: Prices, previous: dict |
                       "cache_creation_input_tokens": previous["cache_write_tokens"],
                       "cache_read_input_tokens": previous["cache_read_tokens"]})
         calls += previous["calls"]
+    return usage, calls
+
+
+def _total_cost(recorder: _Recorder, prices: Prices, previous: dict | None) -> float:
+    usage, calls = _usage_and_calls(recorder, previous)
+    return compute_costs(usage, calls, prices)["cost_usd_with_cache"] or 0.0
+
+
+def _write_costs(run: Run, recorder: _Recorder, prices: Prices, previous: dict | None) -> None:
+    usage, calls = _usage_and_calls(recorder, previous)
     run.path("costs.json").write_text(
         json.dumps(compute_costs(usage, calls, prices), indent=2, sort_keys=True) + "\n",
         encoding="utf-8")

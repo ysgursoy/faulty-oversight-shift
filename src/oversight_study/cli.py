@@ -130,6 +130,7 @@ def _settings(model):
     from oversight_study.records.run_records import GenerationSettings
 
     return GenerationSettings(temperature=model.temperature, thinking=model.thinking,
+                              effort=model.effort,
                               max_tokens=model.max_tokens)
 
 

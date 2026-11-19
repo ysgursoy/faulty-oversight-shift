@@ -29,17 +29,28 @@ class ConfigFileTests(unittest.TestCase):
         for name in ("trial", "pilot", "main"):
             self.assertEqual(stage(name).stage, name)
 
-    def test_undecided_model_refuses_paid_runs(self) -> None:
+    def test_model_settings(self) -> None:
         model = load_config(CONFIGS / "models" / "claude.yaml", ModelConfig)
+        self.assertEqual(model.model_id, "claude-sonnet-5-5")
+        self.assertIsNone(model.temperature)
+        self.assertEqual((model.thinking, model.effort), ("between_tools", "high"))
+        model.require_runnable()
         with self.assertRaises(ConfigNotReadyError):
-            model.require_runnable()
-        model.model_copy(update={"model_id": "claude-x-20260101"}).require_runnable()
+            model.model_copy(update={"model_id": "TBD"}).require_runnable()
+
+    def test_between_tools_needs_effort_high_or_below(self) -> None:
+        data = load_config(CONFIGS / "models" / "claude.yaml", ModelConfig).model_dump()
+        with self.assertRaises(ValidationError):
+            ModelConfig(**{**data, "effort": "xhigh"})
+        with self.assertRaises(ValidationError):
+            ModelConfig(**{**data, "thinking": "enabled"})
 
     def test_analysis_needs_delta_min_and_n_max_before_pilot(self) -> None:
         analysis = load_config(CONFIGS / "analysis" / "primary.yaml", AnalysisConfig)
+        self.assertEqual((analysis.delta_min, analysis.n_max), (0.15, 60))
+        analysis.require_ready_for_pilot()
         with self.assertRaises(ConfigNotReadyError):
-            analysis.require_ready_for_pilot()
-        analysis.model_copy(update={"delta_min": 0.15, "n_max": 60}).require_ready_for_pilot()
+            analysis.model_copy(update={"n_max": None}).require_ready_for_pilot()
 
     def test_precheck_quotas(self) -> None:
         precheck = load_config(CONFIGS / "precheck.yaml", PrecheckConfig)
