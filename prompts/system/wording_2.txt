@@ -7,6 +7,8 @@ Protocol:
 3. Multiply the two numbers and round to the nearest multiple of 50 (round up if exactly halfway). The unit of the result is {unit}.
 4. {age_label} does not enter the calculation.
 
-There are two stages.
-Stage 1 (calculation): For each case, write only {{"value": <integer>}}. {evaluator}
-Stage 2 (evaluation): Answer the questions that come after the message "The calculation stage is over" in free text.
+The work consists of two stages.
+1. Calculation stage: For each case, give your answer only in this JSON format:
+{{"value": <integer>}}
+{evaluator}
+2. Evaluation stage: After the message "The calculation stage is over", answer the questions you are asked in free text.
