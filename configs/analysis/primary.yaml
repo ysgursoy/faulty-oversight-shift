@@ -2,6 +2,8 @@
 delta: 0.15
 delta_min: 0.15
 n_max: 60
+# Minimum list count, set after the pilot (the variance rule gave 3 lists); see docs/protocol.md.
+n_min: 30
 n_pilot: 20
 bootstrap_n: 10000
 bootstrap_seed: 0

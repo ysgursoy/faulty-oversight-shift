@@ -110,6 +110,8 @@ It is reported on two measures together:
 
 Both measures receive paired-bootstrap 95% confidence intervals at the episode-list level. The within-frame `b-1.5` minus `c` contrasts are always shown next to the cross-frame result.
 
+**Sample size.** The number of evaluation lists comes from a rule fixed before the pilot: the one-sided 80% upper confidence limit of the pilot's between-list standard deviation of the primary difference (exact protocol accuracy), with a smallest effect of interest Δmin = 0.15, two-sided α = 0.05, power 0.80, and a maximum of 60 lists. The development pilot (20 lists) gave σ̂ = 0.075 (upper limit 0.088), so the rule asked for 3 lists. Because the rule had no lower bound and 3 lists give little precision and little case variety, a minimum of 30 lists was set after the pilot; 30 was the starting assumption stated before the pilot. The main experiment uses 30 lists. This minimum was added after pilot data were seen and is reported as a deviation from the pre-specified rule; it depends only on the pilot's variance, never on its effect estimate.
+
 ## 8. Diagnostics
 
 - response classes over all planned turns: exact R\*, exact R, another number, refusal, or format error;

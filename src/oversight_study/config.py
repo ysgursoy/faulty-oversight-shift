@@ -162,6 +162,7 @@ class AnalysisConfig(BaseModel):
     delta: float = Field(gt=0)  # wording equivalence margin
     delta_min: float | None = Field(default=None, gt=0)  # fixed before pilot data is seen
     n_max: int | None = Field(default=None, gt=0)
+    n_min: int = Field(default=1, gt=0)  # minimum list count; added after the pilot
     n_pilot: int = Field(gt=1)
     bootstrap_n: int = Field(gt=0)
     bootstrap_seed: int

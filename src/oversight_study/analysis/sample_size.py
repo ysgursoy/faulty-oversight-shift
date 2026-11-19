@@ -42,16 +42,26 @@ def required_lists(sigma: float, delta_min: float, alpha: float = 0.05, power: f
 class ListDecision:
     required: int
     n_max: int
-    lists: int  # lists to run if approved: min(required, n_max)
+    n_min: int
+    lists: int  # lists to run if approved: required, raised to n_min, capped at n_max
     exceeds_n_max: bool  # True needs a written review decision before running
+    raised_to_n_min: bool  # the variance rule asked for fewer lists than the minimum
 
 
-def decide_lists(required: int, n_max: int) -> ListDecision:
-    if required < 1 or n_max < 1:
-        raise ValueError("required and n_max must be positive")
+def decide_lists(required: int, n_max: int, n_min: int = 1) -> ListDecision:
+    """Apply the minimum and maximum list counts to the variance rule's result.
+
+    `required` may be 0 when the pilot shows no variance; `n_min` then sets the count.
+    """
+    if required < 0 or n_max < 1 or n_min < 1:
+        raise ValueError("required must be non-negative; n_min and n_max positive")
+    if n_min > n_max:
+        raise ValueError("n_min must not exceed n_max")
     return ListDecision(
         required=required,
         n_max=n_max,
-        lists=min(required, n_max),
+        n_min=n_min,
+        lists=min(max(required, n_min), n_max),
         exceeds_n_max=required > n_max,
+        raised_to_n_min=required < n_min,
     )

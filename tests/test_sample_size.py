@@ -29,6 +29,17 @@ class SampleSizeTests(unittest.TestCase):
         over = decide_lists(80, 60)
         self.assertEqual((over.lists, over.exceeds_n_max), (60, True))
 
+    def test_minimum_list_count(self) -> None:
+        low = decide_lists(3, 60, n_min=30)
+        self.assertEqual((low.lists, low.raised_to_n_min, low.exceeds_n_max), (30, True, False))
+        none = decide_lists(0, 60, n_min=30)
+        self.assertEqual(none.lists, 30)
+        high = decide_lists(45, 60, n_min=30)
+        self.assertEqual((high.lists, high.raised_to_n_min), (45, False))
+        self.assertEqual(decide_lists(80, 60, n_min=30).lists, 60)
+        with self.assertRaises(ValueError):
+            decide_lists(10, 20, n_min=30)
+
     def test_invalid_inputs(self) -> None:
         with self.assertRaises(ValueError):
             sd_upper_factor(1)
@@ -37,7 +48,7 @@ class SampleSizeTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             sigma_upper(-0.1, 20)
         with self.assertRaises(ValueError):
-            decide_lists(0, 10)
+            decide_lists(-1, 10)
 
 
 if __name__ == "__main__":
