@@ -1,9 +1,9 @@
-# Main experiment on the evaluation split. list_count is fixed after the pilot, before any run.
+# Main experiment on the evaluation split. list_count was fixed after the pilot, before any run.
 stage: main
 split: evaluation
 design_version: "1"
 m: 1.5
-list_count: null
+list_count: 30
 order_seed: 5300
 max_cost_usd: 250
 cells:

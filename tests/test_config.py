@@ -63,8 +63,9 @@ class PlannedCellTests(unittest.TestCase):
     def test_main_cell_count_matches_design(self) -> None:
         main = stage("main")
         with self.assertRaises(ConfigNotReadyError):
-            main.planned_cells()
-        cells = main.model_copy(update={"list_count": 30}).planned_cells()
+            main.model_copy(update={"list_count": None}).planned_cells()
+        self.assertEqual(main.list_count, 30)
+        cells = main.planned_cells()
         self.assertEqual(len(cells), 480)
         no_feedback = [c for c in cells if c[1] == "a"]
         self.assertEqual(len(no_feedback), 30)
