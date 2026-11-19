@@ -4,6 +4,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from oversight_study.generation import MissingTestSeedsError, build_dataset, load_seeds
+from oversight_study.generation.seeds import TEST_SEEDS_PATH
 from oversight_study.scaffold import repository_root
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -12,10 +13,6 @@ TEST = FIXTURES / "seeds-test.yaml"
 
 SKIP_DIRS = {".git", ".venv", ".local", "__pycache__", ".ruff_cache", ".pytest_cache"}
 TEXT_SUFFIXES = {".py", ".yaml", ".yml", ".json", ".md", ".toml", ".txt", ".cfg"}
-PRIVATE_SEED_PATTERNS = (
-    re.compile(r"test_pool_base\W{1,3}100\b"),
-    re.compile(r"test_lists_base\W{1,3}1000\b"),
-)
 
 
 class SeedLoadingTests(unittest.TestCase):
@@ -47,8 +44,16 @@ class SeedLoadingTests(unittest.TestCase):
 
 
 class PrivateSeedLeakTests(unittest.TestCase):
+    """Private seed values are read at run time and never written into this file."""
+
     def test_no_evaluation_seed_values_in_repository_files(self) -> None:
         root = repository_root(Path(__file__).parent)
+        private = root / TEST_SEEDS_PATH
+        if not private.is_file():
+            self.skipTest("private evaluation seeds not present")
+        values = [str(v) for v in load_seeds(True, dev_path=DEV, test_path=private)
+                  .model_dump(include={"test_pool_base", "test_lists_base"}).values()]
+        patterns = [re.compile(rf"(?<!\d){value}(?!\d)") for value in values]
         leaks = []
         for path in root.rglob("*"):
             if SKIP_DIRS.intersection(path.relative_to(root).parts):
@@ -56,9 +61,8 @@ class PrivateSeedLeakTests(unittest.TestCase):
             if not path.is_file() or path.suffix not in TEXT_SUFFIXES:
                 continue
             text = path.read_text(encoding="utf-8", errors="ignore")
-            for pattern in PRIVATE_SEED_PATTERNS:
-                if pattern.search(text):
-                    leaks.append(str(path.relative_to(root)))
+            if any(pattern.search(text) for pattern in patterns):
+                leaks.append(str(path.relative_to(root)))
         self.assertEqual(leaks, [])
 
 
