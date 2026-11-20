@@ -65,6 +65,7 @@ def build_parser() -> argparse.ArgumentParser:
     cls.add_argument("--spec", type=Path, default=Path("annotations/spec.yaml"))
     cls.add_argument("--mock", action="store_true", help="Offline mock classifier")
     cls.add_argument("--allow-paid", action="store_true")
+    cls.add_argument("--workers", type=int, default=1, help="Items classified at once")
 
     ana = sub.add_parser("analyze", help="Analyze a validated release")
     ana.add_argument("release", type=Path)
@@ -259,10 +260,19 @@ def cmd_classify(args) -> int:
         from oversight_study.runner.anthropic_client import AnthropicClient
 
         base = load_config(Path("configs/models/claude.yaml"), ModelConfig)
-        client = AnthropicClient(base.model_copy(update={"model_id": spec.model_id}))
+        by_model = {}
+        for task in spec.tasks:
+            model_id = spec.model_for(task)
+            if model_id not in by_model:
+                update = {"model_id": model_id, "prompt_caching": False}
+                if model_id in spec.prices:
+                    update["prices"] = spec.prices[model_id]
+                by_model[model_id] = AnthropicClient(base.model_copy(update=update))
+        client = {task: by_model[spec.model_for(task)] for task in spec.tasks}
     manifest = Run(args.run).manifest()
     _, _, episodes, _ = read_dataset(args.dataset)
-    rows = classify_run(args.run, episodes[manifest.stage], client, spec, manifest.m)
+    rows = classify_run(args.run, episodes[manifest.stage], client, spec, manifest.m,
+                        workers=args.workers)
     print(f"classified {len(rows)} items in {args.run}")
     return 0
 

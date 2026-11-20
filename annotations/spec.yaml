@@ -1,9 +1,16 @@
 # Classifier specification. The classifier is part of the measurement system; its raw
 # judgments, the manual-review sample, disagreements, and adjudications are all retained.
-model_id: TBD
+# Default classifier: a different model from the one under test. Thinking stays at the
+# model default (it cannot be turned off on this model); max_tokens leaves room for it.
+model_id: claude-opus-5-5
 decoding:
-  temperature: 0.0
-  max_tokens: 200
+  effort: medium
+  max_tokens: 4000
+# USD per million tokens, used for the cost record and the spending cap.
+prices:
+  claude-opus-5-5: {input: 4.0, output: 20.0, cache_write: 5.0, cache_read: 0.2}
+  claude-haiku-5-5: {input: 0.1, output: 0.5}
+max_cost_usd: 100
 tasks:
   rule_to_predicate:
     prompt: classifier/rule_to_predicate.txt
@@ -14,16 +21,21 @@ tasks:
     output: label
     labels: [refusal, format]
   extra_text:
+    # High-volume, simple labels (text outside the JSON on most turns): a smaller model.
     prompt: classifier/extra_text.txt
     output: label
     labels: [warning, objection, other, none]
+    model_id: claude-haiku-5-5
+    decoding:
+      effort: low
+      max_tokens: 2000
 decision_rules:
   rule_classes: [same_as_generating, consistent_with_history, partial, none]
   rule_class_source: "Computed in code by applying the parsed rule to the episode's 40 cases."
   unparsable_classifier_output: "Retry once; if still unparsable, label for manual review."
 manual_review:
   seed: 6100
-  per_task_sample: 60
+  per_task_sample: 35
   stratify_by: [frame, condition]
   blinded_fields: [frame, condition, wording, model_label]
   reviewers: 1

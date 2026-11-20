@@ -9,7 +9,7 @@ import yaml
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from oversight_study.classification.rules import RULE_CLASSES, Condition, ParsedRule
-from oversight_study.config import UNDECIDED, ConfigNotReadyError
+from oversight_study.config import UNDECIDED, ConfigNotReadyError, Prices
 from oversight_study.task.templates import prompts_dir
 
 _STRICT = ConfigDict(frozen=True, extra="forbid")
@@ -19,6 +19,7 @@ class Decoding(BaseModel):
     model_config = _STRICT
 
     temperature: float | None = Field(default=None, ge=0, le=1)
+    effort: str | None = None
     max_tokens: int = Field(gt=0)
 
 
@@ -28,6 +29,8 @@ class ClassifierTask(BaseModel):
     prompt: str
     output: Literal["parsed_rule", "label"]
     labels: tuple[str, ...] = ()
+    model_id: str | None = None  # overrides the spec's default model
+    decoding: Decoding | None = None  # overrides the spec's default decoding
 
     @model_validator(mode="after")
     def _labels(self):
@@ -72,6 +75,8 @@ class ClassifierSpec(BaseModel):
 
     model_id: str
     decoding: Decoding
+    prices: dict[str, Prices] = {}  # USD per million tokens, by model id
+    max_cost_usd: float | None = Field(default=None, gt=0)
     tasks: dict[Literal["rule_to_predicate", "invalid_output", "extra_text"], ClassifierTask]
     decision_rules: DecisionRules
     manual_review: ManualReview
@@ -84,9 +89,21 @@ class ClassifierSpec(BaseModel):
             raise ValueError(f"missing classifier tasks: {sorted(missing)}")
         return self
 
+    def model_for(self, task: str) -> str:
+        return self.tasks[task].model_id or self.model_id
+
+    def decoding_for(self, task: str) -> Decoding:
+        return self.tasks[task].decoding or self.decoding
+
     def require_runnable(self) -> None:
-        if self.model_id == UNDECIDED:
+        models = {self.model_for(task) for task in self.tasks}
+        if UNDECIDED in models:
             raise ConfigNotReadyError("classifier model_id is undecided")
+        if self.max_cost_usd is not None:
+            unpriced = sorted(m for m in models if m not in self.prices
+                              or self.prices[m].input is None or self.prices[m].output is None)
+            if unpriced:
+                raise ConfigNotReadyError(f"max_cost_usd needs prices for: {unpriced}")
 
     def prompt_paths(self) -> dict[str, Path]:
         return {name: prompts_dir() / task.prompt for name, task in self.tasks.items()}

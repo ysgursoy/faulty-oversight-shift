@@ -4,7 +4,12 @@ import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-from oversight_study.classification.run import classify_run, collect_items, invalid_class_labels
+from oversight_study.classification.run import (
+    ClassifierBudgetError,
+    classify_run,
+    collect_items,
+    invalid_class_labels,
+)
 from oversight_study.classification.spec import load_classifier_spec
 from oversight_study.config import ModelConfig, StageConfig, load_config
 from oversight_study.generation import build_dataset, load_seeds
@@ -101,6 +106,39 @@ class ClassificationRunTests(unittest.TestCase):
             self.assertTrue(all(r["status"] == "manual_review" and len(r["raw_outputs"]) == 2
                                 for r in rows))
             self.assertEqual(invalid_class_labels(rows), {})
+
+    def test_per_task_clients_workers_and_costs(self) -> None:
+        with TemporaryDirectory() as root:
+            run_dir = self.make_run(root, Policy("evaluator"))
+            sequential = classify_run(run_dir, self.episodes, FakeClassifier(), SPEC, 1.5)
+            clients = {task: FakeClassifier() for task in SPEC.tasks}
+            parallel = classify_run(run_dir, self.episodes, clients, SPEC, 1.5, workers=4)
+            strip = [{k: v for k, v in r.items()} for r in sequential]
+            self.assertEqual(strip, parallel)
+            used = {task for task, c in clients.items() if c.calls}
+            self.assertEqual(used, {r["task"] for r in parallel})
+            costs = json.loads((Path(run_dir) / "classifier-costs.json").read_text())
+            calls = sum(m["calls"] for m in costs["by_model"].values())
+            self.assertEqual(calls, sum(len(r["raw_outputs"]) for r in parallel))
+            self.assertGreater(costs["total_cost_usd"], 0)
+            models = {r["classifier_model"] for r in parallel}
+            self.assertTrue(models <= set(costs["by_model"]))
+
+    def test_budget_stop_writes_finished_rows(self) -> None:
+        class Expensive(FakeClassifier):
+            def complete(self, request):
+                response = super().complete(request)
+                return response.model_copy(update={"usage": Usage(input_tokens=10_000_000,
+                                                                  output_tokens=0)})
+
+        with TemporaryDirectory() as root:
+            run_dir = self.make_run(root, Policy("evaluator"))
+            tight = SPEC.model_copy(update={"max_cost_usd": 1.0})
+            with self.assertRaises(ClassifierBudgetError):
+                classify_run(run_dir, self.episodes, Expensive(), tight, 1.5)
+            rows = (Path(run_dir) / "classifications.jsonl").read_text().splitlines()
+            self.assertEqual(len(rows), 1)
+            self.assertTrue((Path(run_dir) / "classifier-costs.json").exists())
 
     def test_collect_items_rules(self) -> None:
         with TemporaryDirectory() as root:

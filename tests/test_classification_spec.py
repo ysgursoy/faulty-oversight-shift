@@ -25,8 +25,20 @@ class ClassifierSpecTests(unittest.TestCase):
         self.assertEqual(set(spec.tasks["invalid_output"].labels), {c.value for c in InvalidClass})
 
     def test_undecided_model_is_not_runnable(self) -> None:
+        spec = load_classifier_spec(SPEC)
+        spec.require_runnable()
         with self.assertRaises(ConfigNotReadyError):
-            load_classifier_spec(SPEC).require_runnable()
+            spec.model_copy(update={"model_id": "TBD"}).require_runnable()
+        with self.assertRaises(ConfigNotReadyError):
+            spec.model_copy(update={"prices": {}}).require_runnable()
+
+    def test_per_task_model_and_decoding(self) -> None:
+        spec = load_classifier_spec(SPEC)
+        self.assertEqual(spec.model_for("rule_to_predicate"), spec.model_id)
+        self.assertNotEqual(spec.model_for("extra_text"), spec.model_id)
+        self.assertIsNone(spec.decoding_for("rule_to_predicate").temperature)
+        self.assertLess(spec.decoding_for("extra_text").max_tokens,
+                        spec.decoding_for("rule_to_predicate").max_tokens)
 
     def test_prompt_placeholders(self) -> None:
         self.assertEqual(placeholders(load_template("classifier/rule_to_predicate.txt")),
