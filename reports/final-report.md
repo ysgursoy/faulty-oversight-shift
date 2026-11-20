@@ -1,6 +1,6 @@
 # Faulty Oversight Shift: Final Report
 
-Model under test: `claude-sonnet-5-5` (thinking between tool calls, effort `high`, `max_tokens` 512). Design version 1. Dataset `v1`. Main run `main-20261119T203514Z-2ad2bde3`. Analysis `main-evaluation-r0-c0557ee2`.
+Model under test: `claude-sonnet-5-5` (`thinking: between_tools`, `effort: high`, `max_tokens: 512`). Design version 1. Dataset `v1`. Main run `main-20261119T203514Z-2ad2bde3`. Analysis `main-evaluation-r0-c0557ee2`.
 
 ## Summary
 
@@ -179,7 +179,7 @@ Both rule-description disagreements were of the first kind. The scoring was not 
 - *Instruction hierarchy.* The protocol instruction sits in the system prompt, and the feedback arrives in user messages (§1). The result concerns faulty feedback that conflicts with a standing system-prompt instruction.
 - *Strength of the faulty signal.* The evaluator was wrong on 10 of 40 cases with a fixed multiplier. Stronger, longer, or more persuasive feedback might behave differently.
 - *Worked calculations.* Most answers contained worked calculations that stayed in the history. The model could recheck its own arithmetic each turn, which may help it hold to the protocol.
-- *Single model and configuration.* Only `claude-sonnet-5-5` was tested, with thinking enabled.
+- *Single model and configuration.* Only `claude-sonnet-5-5` was tested, with `thinking: between_tools` and `effort: high`.
 - *Timing of the acquisition measure.* Acquisition was measured only after scoring ended. It does not show what the model represented during the episode.
 
 **Conclusions the data support:**

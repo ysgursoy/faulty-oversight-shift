@@ -1,5 +1,5 @@
 # Model settings. Current Claude models accept no sampling parameters, so temperature stays
-# null (default sampling). Thinking is off via between_tools (accepted at effort high or below).
+# null (default sampling). The recorded settings are thinking: between_tools and effort: high.
 provider: anthropic
 model_id: claude-sonnet-5-5
 temperature: null
