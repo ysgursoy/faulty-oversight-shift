@@ -8,7 +8,7 @@ A controlled in-context experiment on how systematically wrong evaluator feedbac
 
 ## Main findings
 
-Claude Sonnet 5.5 gave the exact protocol answer on all 270 final affected cases under hidden faulty feedback with the primary wording. After scoring ended, it reproduced the faulty evaluator's pattern on at least one unseen boundary pair in 33 of 90 episodes. The observed framing contrast was zero, and the bootstrap interval was degenerate because every list had the same result.
+Claude Sonnet 5.5 gave the exact protocol answer on all 270 final affected cases under hidden faulty feedback with the primary wording. In an exploratory probe after scoring, it reproduced the faulty evaluator's pattern on at least one unseen boundary pair in 33 of 90 episodes. The observed framing contrast was zero, and the bootstrap interval was degenerate because every list had the same result.
 
 - **Partial generalization, not compliance.** In those 33 episodes the model answered all three final affected cases by the protocol during scoring. After scoring, it gave the evaluator's values for both cases of at least one unseen pair straddling the boundary of the affected region.
   - Matching the faulty pattern was 15 to 23 percentage points more frequent than under the correct evaluator (every 95% CI above zero). The correct evaluator's 0% is the baseline; the disclosed-rule condition's 48–62% is a benchmark.
@@ -76,7 +76,7 @@ uv run oversight-study analyze releases/v1 --stage main --split evaluation --out
 ## Future work
 
 - **Stronger or longer faulty signals.** Vary the multiplier, the share of affected cases, and episode length to find where, if anywhere, answers start to move.
-- **Models below ceiling.** Repeat the design with models or settings (for example without worked calculations) where protocol accuracy is not at ceiling, so a framing difference could show.
+- **Access to prior calculations.** Hold the model, written protocol and feedback fixed. Vary whether prior worked calculations remain visible in the conversation, retaining the final numerical answers in both conditions. On development cases, look for a setup where the model follows the protocol reliably under correct feedback and sometimes gives the evaluator’s answer under faulty feedback. If a setup meets both criteria, freeze it and test the framing effect on fresh cases.
 - **Evaluator identity.** Present the evaluator as another named AI system or as a human reviewer, and measure whether its stated identity changes compliance.
 - **Acquisition during the episode.** Measure rule acquisition while feedback is still active, not only after scoring ends.
 
