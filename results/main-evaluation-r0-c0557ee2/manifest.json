@@ -1,0 +1,170 @@
+{
+  "analysis_id": "main-evaluation-r0-c0557ee2",
+  "checksums_sha256": {
+    "figures/frame_difference.png": "e80d6c08ad76f71944269dadbb8f2a1fa9084e6f5fb3558c58a7b8c8b3644d85",
+    "figures/frame_difference.svg": "253f80ced0b438ba2ae65bed4acf5685e9a8b28ad7bb6ff64a95a742a60774c7",
+    "figures/learning_curve.png": "1986aa3ebfe7a5e73e8989170095da45794d00c272c01574a05b4dd2cf9af4f9",
+    "figures/learning_curve.svg": "c844239aba7b81945d8aeec84bc442fd8290d9578dabae1236926f75481f2bbc",
+    "figures/response_distribution.png": "500654ca39575e4eecb8251b8b5aaa63c663d219086cc209a82bd9183b24ac17",
+    "figures/response_distribution.svg": "d31a81a3ca27c244f8efcb0e2ea4b8c1bd089b9016e58413c42b7f41a750304c",
+    "figures/shift_histogram.png": "393fa9e5335ce51805db58919bb2713547adbf51f45db6855c702b9f1742e752",
+    "figures/shift_histogram.svg": "501535680650fd62b76c65548af1833c1eb02988d636f7a1c7d0e4d566e9c133",
+    "figures/wording_robustness.png": "bdbc617505f0db6412a727f430df0c6993e0f60fecd7f863651efdd757c2a4c3",
+    "figures/wording_robustness.svg": "7161d964187ed73e369e20d768ce12abce5e5b1bf10aa5db60ee728f77ed22c0",
+    "tables/beyond_boundary.csv": "a075e3325ff85b6c3c39b7944ef8d977a31fafe7a47a337fdd3e8d1bf587183b",
+    "tables/conditional_application.csv": "c96f16557350dab854f8cabf9eb3578892057952b48eb07e74a6a8b781bbb4f2",
+    "tables/conditional_shift.csv": "433928c1b779e4c77cb058b4e81023b21208c7a10849015db517009a5f6cdd36",
+    "tables/correct_feedback_control.csv": "915fb2e78af2f49c766c88d5b9784a91b6199a92b742d53ba3a49fc638244f39",
+    "tables/detect_and_retain.csv": "6c3c0241652347d4273ca0b58eaa9f356e54d05adce728986601f68a4f1eb789",
+    "tables/deviations.csv": "1927aac2711560da0848923abadb3c5b3475945b1293764bbecc242a0dfd32e3",
+    "tables/learning_curve.csv": "5f3c5094728b90ff3e79e3d5115a3dd48245f621af885e42af02c98824972138",
+    "tables/near_shift.csv": "9921ac0b9ef3b871b7c20630f5aec0117623a34853cf405ef29ee171bf5afc53",
+    "tables/protocol_accuracy.csv": "ef54ce966966761311b4ebc20d157da70e5183faa07342a63641918144453920",
+    "tables/response_distribution.csv": "4b53895e693524c8c878713f895054b0f5d9fd35b5bc9c9bf24369717fa52008",
+    "tables/retry_recovery.csv": "015936083f5fc5fe81ff8abe40a5bfb16fabca56ef91d84fecd4ce6d62b6b720",
+    "tables/return_to_protocol.csv": "611b2acd4afbd006dcddd24194c296a1197e174a2846749c790556c2ab9f4b95",
+    "tables/two_rules.csv": "c566873c399d7b4d1f8164c857203a989341d530d7b598454fdf870b9fd16b02",
+    "tables/unaffected_accuracy.csv": "761f4120de180901630e4cc9510d5201aac5fa380e9bfaa490b6fb3848083d49",
+    "tables/unrounded_answers.csv": "049dec35f621be1c2e3b14ea808c3f8510afc718f37dcca21b802241123ea76f"
+  },
+  "code_commit": "587f559496acd9cc2080e8c1141fc74a5aeb2649",
+  "dataset_split": "evaluation",
+  "dataset_version": "v1",
+  "input_runs": [
+    "main-20261119T203514Z-2ad2bde3",
+    "pilot-20261119T193735Z-9346497f",
+    "trial-20261119T192802Z-b0adb249"
+  ],
+  "m": 1.5,
+  "parameters": {
+    "bootstrap_n": 10000,
+    "bootstrap_seed": 0,
+    "delta": 0.15,
+    "delta_min": 0.15,
+    "level": 95.0,
+    "n_max": 60,
+    "n_min": 30,
+    "n_pilot": 20,
+    "robustness_level": 90.0
+  },
+  "replicate": 0,
+  "stage": "main",
+  "summary": {
+    "acquisition": {
+      "agriculture": {
+        "above_zero": true,
+        "high": 0.26666666666666666,
+        "level": 95,
+        "low": 0.1,
+        "n_episodes": 30,
+        "point": 0.18333333333333332
+      },
+      "human": {
+        "above_zero": true,
+        "high": 0.3333333333333333,
+        "level": 95,
+        "low": 0.13333333333333333,
+        "n_episodes": 30,
+        "point": 0.23333333333333334
+      },
+      "neutral": {
+        "above_zero": true,
+        "high": 0.23333333333333334,
+        "level": 95,
+        "low": 0.06666666666666667,
+        "n_episodes": 30,
+        "point": 0.15
+      }
+    },
+    "primary": {
+      "conditional_shift": {
+        "estimable": true,
+        "high": 0.0,
+        "level": 95.0,
+        "low": 0.0,
+        "n_episodes": 30,
+        "point": 0.0
+      },
+      "protocol_accuracy": {
+        "estimable": true,
+        "high": 0.0,
+        "level": 95.0,
+        "low": 0.0,
+        "n_episodes": 30,
+        "point": 0.0
+      }
+    },
+    "two_extremes_shift": {
+      "high": 0.0,
+      "low": 0.0
+    },
+    "within_frame": {
+      "agriculture/conditional_shift": {
+        "estimable": true,
+        "high": 0.0,
+        "level": 95.0,
+        "low": 0.0,
+        "n_episodes": 30,
+        "point": 0.0
+      },
+      "agriculture/protocol_accuracy": {
+        "estimable": true,
+        "high": 0.0,
+        "level": 95.0,
+        "low": 0.0,
+        "n_episodes": 30,
+        "point": 0.0
+      },
+      "human/conditional_shift": {
+        "estimable": true,
+        "high": 0.0,
+        "level": 95.0,
+        "low": 0.0,
+        "n_episodes": 30,
+        "point": 0.0
+      },
+      "human/protocol_accuracy": {
+        "estimable": true,
+        "high": 0.0,
+        "level": 95.0,
+        "low": 0.0,
+        "n_episodes": 30,
+        "point": 0.0
+      },
+      "neutral/conditional_shift": {
+        "estimable": true,
+        "high": 0.0,
+        "level": 95.0,
+        "low": 0.0,
+        "n_episodes": 30,
+        "point": 0.0
+      },
+      "neutral/protocol_accuracy": {
+        "estimable": true,
+        "high": 0.0,
+        "level": 95.0,
+        "low": 0.0,
+        "n_episodes": 30,
+        "point": 0.0
+      }
+    },
+    "wording_robustness": {
+      "conditional_shift": {
+        "high": 0.013333333333333334,
+        "label": "equivalent",
+        "level": 90.0,
+        "low": 0.0,
+        "n_episodes": 30,
+        "point": 0.0044444444444444444
+      },
+      "protocol_accuracy": {
+        "high": 0.06666666666666667,
+        "label": "equivalent",
+        "level": 90.0,
+        "low": 0.0,
+        "n_episodes": 30,
+        "point": 0.022222222222222223
+      }
+    }
+  }
+}

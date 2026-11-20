@@ -1,0 +1,16 @@
+frame,condition,wording,both,n
+agriculture,b-1.5,1,12,60
+agriculture,b-1.5,2,18,60
+agriculture,c,1,0,60
+agriculture,c,2,0,60
+agriculture,f-1.5,1,35,60
+human,b-1.5,1,17,60
+human,b-1.5,2,14,60
+human,c,1,0,60
+human,c,2,0,60
+human,f-1.5,1,35,60
+neutral,b-1.5,1,15,60
+neutral,b-1.5,2,19,60
+neutral,c,1,0,60
+neutral,c,2,0,60
+neutral,f-1.5,1,23,60
