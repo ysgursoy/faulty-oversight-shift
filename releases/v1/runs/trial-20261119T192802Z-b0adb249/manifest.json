@@ -1,0 +1,28 @@
+{
+  "run_id": "trial-20261119T192802Z-b0adb249",
+  "stage": "trial",
+  "dataset_split": "development",
+  "design_version": "1",
+  "status": "sealed",
+  "config_hash": "b0adb249677082793f5be70bf6d71f2174ee0df8574afb470ae75721e186e4e1",
+  "requested_model": "claude-sonnet-5-5",
+  "generation_settings": {
+    "temperature": null,
+    "top_p": null,
+    "thinking": "between_tools",
+    "effort": "high",
+    "max_tokens": 512
+  },
+  "m": 1.5,
+  "provenance": {
+    "commit": "9f25f5c367437bbde4010358d627afc8c7b79833",
+    "prompts": "b3cd06c0ff4800e687de8877e71aabe93223e5662590319d84c7d447056a7383",
+    "configs": "b3119325506ee6e5d1f10625f9c107360090f8f48eebef155ea47df55c82b299",
+    "uv_lock": "f977fb484ed1bf7ad9aeca17015c3c75e0af225127a684b5e5021755431a6f03",
+    "dataset_manifest": "293e427748f5bf7100feea68574d978ce627f0f165e2204449cbd7a61f2213f3"
+  },
+  "cells_planned": 54,
+  "cells_completed": 54,
+  "started_utc": "2026-11-19T19:28:02Z",
+  "updated_utc": "2026-11-19T22:05:03Z"
+}

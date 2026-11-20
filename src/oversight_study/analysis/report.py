@@ -148,6 +148,7 @@ def analyze(release: Path, out_root: Path, *, stage: str, dataset_split: str, m:
             diagnostics["beyond_boundary"] = diag.beyond_boundary(end, r_star_by_case, m)
             diagnostics["correct_feedback_control"] = diag.correct_feedback_control(
                 end, r_star_by_case, m)
+            diagnostics["detect_and_retain"] = diag.detect_and_retain(t_ca, t_acc)
     for name, table in diagnostics.items():
         _write_csv(table, tables / f"{name}.csv")
 

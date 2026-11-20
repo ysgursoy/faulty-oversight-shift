@@ -1,0 +1,63 @@
+cells:
+- conditions:
+  - c
+  - b-1.5
+  frames:
+  - neutral
+  - human
+  lists:
+    start: 0
+    stop: null
+  optional: false
+  replicates:
+  - 0
+  wordings:
+  - 1
+- conditions:
+  - c
+  - b-1.5
+  frames:
+  - neutral
+  - human
+  lists:
+    start: 0
+    stop: 5
+  optional: false
+  replicates:
+  - 1
+  wordings:
+  - 1
+- conditions:
+  - f-1.5
+  frames:
+  - neutral
+  - human
+  lists:
+    start: 0
+    stop: null
+  optional: true
+  replicates:
+  - 0
+  wordings:
+  - 1
+- conditions:
+  - c
+  - b-1.5
+  frames:
+  - neutral
+  - human
+  lists:
+    start: 0
+    stop: null
+  optional: true
+  replicates:
+  - 0
+  wordings:
+  - 2
+design_version: '1'
+list_count: 20
+m: 1.5
+max_cost_usd: 250.0
+order_seed: 5200
+split: development
+stage: pilot

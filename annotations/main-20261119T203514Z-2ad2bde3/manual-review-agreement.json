@@ -1,0 +1,56 @@
+{
+  "disagreements": [
+    {
+      "human_label": "other",
+      "model_label": "objection",
+      "review_id": "extra_text-004",
+      "task": "extra_text"
+    },
+    {
+      "human_label": "partial",
+      "model_label": "none",
+      "review_id": "rule_to_predicate-004",
+      "task": "rule_to_predicate"
+    },
+    {
+      "human_label": "partial",
+      "model_label": "none",
+      "review_id": "rule_to_predicate-031",
+      "task": "rule_to_predicate"
+    }
+  ],
+  "summary": {
+    "extra_text": {
+      "agree": 34,
+      "cohen_kappa": 0.8727,
+      "human_by_model": {
+        "objection|objection": 4,
+        "other|objection": 1,
+        "other|other": 30
+      },
+      "n": 35,
+      "percent_agreement": 0.9714
+    },
+    "invalid_output": {
+      "agree": 35,
+      "cohen_kappa": null,
+      "human_by_model": {
+        "format|format": 35
+      },
+      "n": 35,
+      "percent_agreement": 1.0
+    },
+    "rule_to_predicate": {
+      "agree": 33,
+      "cohen_kappa": 0.9125,
+      "human_by_model": {
+        "none|none": 14,
+        "partial|none": 2,
+        "partial|partial": 8,
+        "same_as_generating|same_as_generating": 11
+      },
+      "n": 35,
+      "percent_agreement": 0.9429
+    }
+  }
+}

@@ -1,0 +1,4412 @@
+[
+  {
+    "age": 47,
+    "case_id": "c-01882e012acb",
+    "case_type": "A",
+    "measurement": 15,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 134
+  },
+  {
+    "age": 46,
+    "case_id": "c-01a413c3dc1d",
+    "case_type": "A",
+    "measurement": 35,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 97
+  },
+  {
+    "age": 68,
+    "case_id": "c-022fb03398a7",
+    "case_type": "A",
+    "measurement": 24,
+    "r_star": 500,
+    "split": "evaluation",
+    "weight": 101
+  },
+  {
+    "age": 61,
+    "case_id": "c-03f80616aebf",
+    "case_type": "A",
+    "measurement": 32,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 99
+  },
+  {
+    "age": 70,
+    "case_id": "c-061ab8654b6a",
+    "case_type": "A",
+    "measurement": 10,
+    "r_star": 500,
+    "split": "evaluation",
+    "weight": 104
+  },
+  {
+    "age": 76,
+    "case_id": "c-07a2af483977",
+    "case_type": "A",
+    "measurement": 39,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 106
+  },
+  {
+    "age": 20,
+    "case_id": "c-08cce7b12823",
+    "case_type": "A",
+    "measurement": 39,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 120
+  },
+  {
+    "age": 22,
+    "case_id": "c-0984ccab457e",
+    "case_type": "A",
+    "measurement": 20,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 128
+  },
+  {
+    "age": 30,
+    "case_id": "c-098ce67c8131",
+    "case_type": "A",
+    "measurement": 49,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 102
+  },
+  {
+    "age": 56,
+    "case_id": "c-099fdc2abbee",
+    "case_type": "A",
+    "measurement": 38,
+    "r_star": 1150,
+    "split": "evaluation",
+    "weight": 117
+  },
+  {
+    "age": 67,
+    "case_id": "c-0a752d8e72b3",
+    "case_type": "A",
+    "measurement": 21,
+    "r_star": 700,
+    "split": "evaluation",
+    "weight": 137
+  },
+  {
+    "age": 48,
+    "case_id": "c-0efc2699ffc7",
+    "case_type": "A",
+    "measurement": 49,
+    "r_star": 1350,
+    "split": "evaluation",
+    "weight": 134
+  },
+  {
+    "age": 71,
+    "case_id": "c-0f73b0172f59",
+    "case_type": "A",
+    "measurement": 29,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 93
+  },
+  {
+    "age": 27,
+    "case_id": "c-0fbbab18d8da",
+    "case_type": "A",
+    "measurement": 14,
+    "r_star": 500,
+    "split": "evaluation",
+    "weight": 103
+  },
+  {
+    "age": 53,
+    "case_id": "c-1038d2eccdb8",
+    "case_type": "A",
+    "measurement": 31,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 104
+  },
+  {
+    "age": 79,
+    "case_id": "c-11dce8d08e9d",
+    "case_type": "A",
+    "measurement": 45,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 120
+  },
+  {
+    "age": 37,
+    "case_id": "c-127c42bec49c",
+    "case_type": "A",
+    "measurement": 13,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 129
+  },
+  {
+    "age": 27,
+    "case_id": "c-138d704fdf48",
+    "case_type": "A",
+    "measurement": 15,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 129
+  },
+  {
+    "age": 70,
+    "case_id": "c-157fec483498",
+    "case_type": "A",
+    "measurement": 25,
+    "r_star": 550,
+    "split": "evaluation",
+    "weight": 111
+  },
+  {
+    "age": 24,
+    "case_id": "c-15db55379b56",
+    "case_type": "A",
+    "measurement": 57,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 100
+  },
+  {
+    "age": 81,
+    "case_id": "c-193a0ae862ea",
+    "case_type": "A",
+    "measurement": 36,
+    "r_star": 1300,
+    "split": "evaluation",
+    "weight": 130
+  },
+  {
+    "age": 38,
+    "case_id": "c-1b6f49ba152a",
+    "case_type": "A",
+    "measurement": 44,
+    "r_star": 1400,
+    "split": "evaluation",
+    "weight": 140
+  },
+  {
+    "age": 18,
+    "case_id": "c-1bd37e22d858",
+    "case_type": "A",
+    "measurement": 59,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 100
+  },
+  {
+    "age": 42,
+    "case_id": "c-1c64c3917d48",
+    "case_type": "A",
+    "measurement": 51,
+    "r_star": 1100,
+    "split": "evaluation",
+    "weight": 111
+  },
+  {
+    "age": 37,
+    "case_id": "c-1e2787067089",
+    "case_type": "A",
+    "measurement": 57,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 105
+  },
+  {
+    "age": 71,
+    "case_id": "c-1f1d07715cf3",
+    "case_type": "A",
+    "measurement": 50,
+    "r_star": 1300,
+    "split": "evaluation",
+    "weight": 131
+  },
+  {
+    "age": 69,
+    "case_id": "c-2129850ba482",
+    "case_type": "A",
+    "measurement": 44,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 93
+  },
+  {
+    "age": 52,
+    "case_id": "c-23d1a13b95e7",
+    "case_type": "A",
+    "measurement": 22,
+    "r_star": 500,
+    "split": "evaluation",
+    "weight": 102
+  },
+  {
+    "age": 53,
+    "case_id": "c-2ad335e47e6d",
+    "case_type": "A",
+    "measurement": 18,
+    "r_star": 600,
+    "split": "evaluation",
+    "weight": 123
+  },
+  {
+    "age": 89,
+    "case_id": "c-2d5a967e73c4",
+    "case_type": "A",
+    "measurement": 24,
+    "r_star": 550,
+    "split": "evaluation",
+    "weight": 112
+  },
+  {
+    "age": 26,
+    "case_id": "c-3660299ead96",
+    "case_type": "A",
+    "measurement": 42,
+    "r_star": 1300,
+    "split": "evaluation",
+    "weight": 130
+  },
+  {
+    "age": 75,
+    "case_id": "c-3aa94733c709",
+    "case_type": "A",
+    "measurement": 58,
+    "r_star": 1300,
+    "split": "evaluation",
+    "weight": 129
+  },
+  {
+    "age": 86,
+    "case_id": "c-3cd55a1ca712",
+    "case_type": "A",
+    "measurement": 50,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 105
+  },
+  {
+    "age": 68,
+    "case_id": "c-3e8517fb8a22",
+    "case_type": "A",
+    "measurement": 14,
+    "r_star": 700,
+    "split": "evaluation",
+    "weight": 137
+  },
+  {
+    "age": 39,
+    "case_id": "c-4009494bd628",
+    "case_type": "A",
+    "measurement": 17,
+    "r_star": 550,
+    "split": "evaluation",
+    "weight": 106
+  },
+  {
+    "age": 81,
+    "case_id": "c-41c37c3df4ea",
+    "case_type": "A",
+    "measurement": 57,
+    "r_star": 1300,
+    "split": "evaluation",
+    "weight": 130
+  },
+  {
+    "age": 57,
+    "case_id": "c-425ca29f9249",
+    "case_type": "A",
+    "measurement": 52,
+    "r_star": 1150,
+    "split": "evaluation",
+    "weight": 113
+  },
+  {
+    "age": 80,
+    "case_id": "c-4305d21dafa2",
+    "case_type": "A",
+    "measurement": 13,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 94
+  },
+  {
+    "age": 81,
+    "case_id": "c-44d64f6e9c14",
+    "case_type": "A",
+    "measurement": 49,
+    "r_star": 1350,
+    "split": "evaluation",
+    "weight": 137
+  },
+  {
+    "age": 28,
+    "case_id": "c-493566862ad5",
+    "case_type": "A",
+    "measurement": 28,
+    "r_star": 550,
+    "split": "evaluation",
+    "weight": 108
+  },
+  {
+    "age": 48,
+    "case_id": "c-4a3cc05fcf24",
+    "case_type": "A",
+    "measurement": 29,
+    "r_star": 700,
+    "split": "evaluation",
+    "weight": 137
+  },
+  {
+    "age": 62,
+    "case_id": "c-4af3130d0996",
+    "case_type": "A",
+    "measurement": 25,
+    "r_star": 550,
+    "split": "evaluation",
+    "weight": 108
+  },
+  {
+    "age": 62,
+    "case_id": "c-4f3f761dc43a",
+    "case_type": "A",
+    "measurement": 43,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 119
+  },
+  {
+    "age": 90,
+    "case_id": "c-4f997733c744",
+    "case_type": "A",
+    "measurement": 26,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 90
+  },
+  {
+    "age": 27,
+    "case_id": "c-5039fe669fce",
+    "case_type": "A",
+    "measurement": 29,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 128
+  },
+  {
+    "age": 44,
+    "case_id": "c-511f58976649",
+    "case_type": "A",
+    "measurement": 27,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 133
+  },
+  {
+    "age": 35,
+    "case_id": "c-51330601a362",
+    "case_type": "A",
+    "measurement": 56,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 120
+  },
+  {
+    "age": 41,
+    "case_id": "c-532689ba60d7",
+    "case_type": "A",
+    "measurement": 29,
+    "r_star": 550,
+    "split": "evaluation",
+    "weight": 110
+  },
+  {
+    "age": 73,
+    "case_id": "c-53731b86437d",
+    "case_type": "A",
+    "measurement": 17,
+    "r_star": 600,
+    "split": "evaluation",
+    "weight": 123
+  },
+  {
+    "age": 44,
+    "case_id": "c-53c1c7ba4520",
+    "case_type": "A",
+    "measurement": 21,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 93
+  },
+  {
+    "age": 33,
+    "case_id": "c-55833240f5b8",
+    "case_type": "A",
+    "measurement": 29,
+    "r_star": 700,
+    "split": "evaluation",
+    "weight": 139
+  },
+  {
+    "age": 29,
+    "case_id": "c-56e84562cd17",
+    "case_type": "A",
+    "measurement": 57,
+    "r_star": 1250,
+    "split": "evaluation",
+    "weight": 124
+  },
+  {
+    "age": 56,
+    "case_id": "c-582392db19b5",
+    "case_type": "A",
+    "measurement": 19,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 134
+  },
+  {
+    "age": 51,
+    "case_id": "c-58f719962653",
+    "case_type": "A",
+    "measurement": 57,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 93
+  },
+  {
+    "age": 28,
+    "case_id": "c-5998959ad780",
+    "case_type": "A",
+    "measurement": 43,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 94
+  },
+  {
+    "age": 42,
+    "case_id": "c-606919a649cc",
+    "case_type": "A",
+    "measurement": 33,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 104
+  },
+  {
+    "age": 71,
+    "case_id": "c-60eef890d5e5",
+    "case_type": "A",
+    "measurement": 51,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 98
+  },
+  {
+    "age": 28,
+    "case_id": "c-612a0255a326",
+    "case_type": "A",
+    "measurement": 59,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 119
+  },
+  {
+    "age": 28,
+    "case_id": "c-628a9bceac74",
+    "case_type": "A",
+    "measurement": 19,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 127
+  },
+  {
+    "age": 45,
+    "case_id": "c-62906aa664c1",
+    "case_type": "A",
+    "measurement": 15,
+    "r_star": 600,
+    "split": "evaluation",
+    "weight": 121
+  },
+  {
+    "age": 67,
+    "case_id": "c-6447e0cee341",
+    "case_type": "A",
+    "measurement": 23,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 125
+  },
+  {
+    "age": 77,
+    "case_id": "c-64b6430b61a3",
+    "case_type": "A",
+    "measurement": 32,
+    "r_star": 1250,
+    "split": "evaluation",
+    "weight": 126
+  },
+  {
+    "age": 65,
+    "case_id": "c-6522c20d4959",
+    "case_type": "A",
+    "measurement": 15,
+    "r_star": 600,
+    "split": "evaluation",
+    "weight": 115
+  },
+  {
+    "age": 21,
+    "case_id": "c-6e1d2a391de3",
+    "case_type": "A",
+    "measurement": 32,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 95
+  },
+  {
+    "age": 83,
+    "case_id": "c-6e5f5d9660e0",
+    "case_type": "A",
+    "measurement": 57,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 94
+  },
+  {
+    "age": 45,
+    "case_id": "c-7018a9b971be",
+    "case_type": "A",
+    "measurement": 23,
+    "r_star": 550,
+    "split": "evaluation",
+    "weight": 112
+  },
+  {
+    "age": 69,
+    "case_id": "c-7169fbd8f7e1",
+    "case_type": "A",
+    "measurement": 30,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 104
+  },
+  {
+    "age": 75,
+    "case_id": "c-74118acfa41a",
+    "case_type": "A",
+    "measurement": 49,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 105
+  },
+  {
+    "age": 44,
+    "case_id": "c-75ce26b77e97",
+    "case_type": "A",
+    "measurement": 39,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 97
+  },
+  {
+    "age": 18,
+    "case_id": "c-7ae6d46c31cc",
+    "case_type": "A",
+    "measurement": 19,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 126
+  },
+  {
+    "age": 77,
+    "case_id": "c-7f07e3acdaba",
+    "case_type": "A",
+    "measurement": 33,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 103
+  },
+  {
+    "age": 60,
+    "case_id": "c-7fec93eec5bc",
+    "case_type": "A",
+    "measurement": 41,
+    "r_star": 1400,
+    "split": "evaluation",
+    "weight": 140
+  },
+  {
+    "age": 70,
+    "case_id": "c-83391444542b",
+    "case_type": "A",
+    "measurement": 40,
+    "r_star": 1150,
+    "split": "evaluation",
+    "weight": 115
+  },
+  {
+    "age": 51,
+    "case_id": "c-855dfce9d4ca",
+    "case_type": "A",
+    "measurement": 26,
+    "r_star": 500,
+    "split": "evaluation",
+    "weight": 101
+  },
+  {
+    "age": 81,
+    "case_id": "c-86056a3528e9",
+    "case_type": "A",
+    "measurement": 27,
+    "r_star": 550,
+    "split": "evaluation",
+    "weight": 106
+  },
+  {
+    "age": 27,
+    "case_id": "c-872051d478e2",
+    "case_type": "A",
+    "measurement": 54,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 121
+  },
+  {
+    "age": 56,
+    "case_id": "c-881e68117cc6",
+    "case_type": "A",
+    "measurement": 35,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 101
+  },
+  {
+    "age": 36,
+    "case_id": "c-884368e02524",
+    "case_type": "A",
+    "measurement": 56,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 105
+  },
+  {
+    "age": 22,
+    "case_id": "c-895b2e057597",
+    "case_type": "A",
+    "measurement": 47,
+    "r_star": 900,
+    "split": "evaluation",
+    "weight": 90
+  },
+  {
+    "age": 76,
+    "case_id": "c-895c6ef24e42",
+    "case_type": "A",
+    "measurement": 50,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 95
+  },
+  {
+    "age": 70,
+    "case_id": "c-8977e4200747",
+    "case_type": "A",
+    "measurement": 58,
+    "r_star": 1150,
+    "split": "evaluation",
+    "weight": 114
+  },
+  {
+    "age": 68,
+    "case_id": "c-8b0d5cbf6fed",
+    "case_type": "A",
+    "measurement": 31,
+    "r_star": 1150,
+    "split": "evaluation",
+    "weight": 116
+  },
+  {
+    "age": 50,
+    "case_id": "c-8bff7c0824c4",
+    "case_type": "A",
+    "measurement": 18,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 130
+  },
+  {
+    "age": 45,
+    "case_id": "c-8d4bcd25bcad",
+    "case_type": "A",
+    "measurement": 44,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 104
+  },
+  {
+    "age": 50,
+    "case_id": "c-8df97648395e",
+    "case_type": "A",
+    "measurement": 48,
+    "r_star": 1400,
+    "split": "evaluation",
+    "weight": 138
+  },
+  {
+    "age": 59,
+    "case_id": "c-8eb3967269e2",
+    "case_type": "A",
+    "measurement": 23,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 130
+  },
+  {
+    "age": 60,
+    "case_id": "c-8feba4ee4630",
+    "case_type": "A",
+    "measurement": 52,
+    "r_star": 1250,
+    "split": "evaluation",
+    "weight": 126
+  },
+  {
+    "age": 84,
+    "case_id": "c-91200694a61a",
+    "case_type": "A",
+    "measurement": 23,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 129
+  },
+  {
+    "age": 84,
+    "case_id": "c-91d3c8d99617",
+    "case_type": "A",
+    "measurement": 59,
+    "r_star": 1300,
+    "split": "evaluation",
+    "weight": 131
+  },
+  {
+    "age": 46,
+    "case_id": "c-92c8269da1cc",
+    "case_type": "A",
+    "measurement": 59,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 96
+  },
+  {
+    "age": 64,
+    "case_id": "c-931bf81bbca3",
+    "case_type": "A",
+    "measurement": 11,
+    "r_star": 700,
+    "split": "evaluation",
+    "weight": 136
+  },
+  {
+    "age": 67,
+    "case_id": "c-95e46cc6fe05",
+    "case_type": "A",
+    "measurement": 28,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 92
+  },
+  {
+    "age": 30,
+    "case_id": "c-9958c715224a",
+    "case_type": "A",
+    "measurement": 22,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 125
+  },
+  {
+    "age": 24,
+    "case_id": "c-9ba10b64cb21",
+    "case_type": "A",
+    "measurement": 35,
+    "r_star": 1300,
+    "split": "evaluation",
+    "weight": 129
+  },
+  {
+    "age": 41,
+    "case_id": "c-9db380e90c46",
+    "case_type": "A",
+    "measurement": 39,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 101
+  },
+  {
+    "age": 70,
+    "case_id": "c-9e05dea58f7d",
+    "case_type": "A",
+    "measurement": 12,
+    "r_star": 500,
+    "split": "evaluation",
+    "weight": 95
+  },
+  {
+    "age": 44,
+    "case_id": "c-a157aca2b9cc",
+    "case_type": "A",
+    "measurement": 44,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 120
+  },
+  {
+    "age": 39,
+    "case_id": "c-a1afa14c80df",
+    "case_type": "A",
+    "measurement": 41,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 99
+  },
+  {
+    "age": 52,
+    "case_id": "c-a3e2c6e875db",
+    "case_type": "A",
+    "measurement": 57,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 119
+  },
+  {
+    "age": 43,
+    "case_id": "c-a55e2c7bbb71",
+    "case_type": "A",
+    "measurement": 29,
+    "r_star": 500,
+    "split": "evaluation",
+    "weight": 102
+  },
+  {
+    "age": 20,
+    "case_id": "c-a6b1c7986a0b",
+    "case_type": "A",
+    "measurement": 23,
+    "r_star": 700,
+    "split": "evaluation",
+    "weight": 138
+  },
+  {
+    "age": 49,
+    "case_id": "c-a80ba847e0fc",
+    "case_type": "A",
+    "measurement": 18,
+    "r_star": 700,
+    "split": "evaluation",
+    "weight": 135
+  },
+  {
+    "age": 66,
+    "case_id": "c-a96c6e9fe7fd",
+    "case_type": "A",
+    "measurement": 50,
+    "r_star": 1400,
+    "split": "evaluation",
+    "weight": 138
+  },
+  {
+    "age": 70,
+    "case_id": "c-ac8e17df1b11",
+    "case_type": "A",
+    "measurement": 11,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 129
+  },
+  {
+    "age": 63,
+    "case_id": "c-afeaa02c1128",
+    "case_type": "A",
+    "measurement": 44,
+    "r_star": 1400,
+    "split": "evaluation",
+    "weight": 138
+  },
+  {
+    "age": 74,
+    "case_id": "c-b116abfd4bef",
+    "case_type": "A",
+    "measurement": 30,
+    "r_star": 1150,
+    "split": "evaluation",
+    "weight": 116
+  },
+  {
+    "age": 27,
+    "case_id": "c-b249b7943a65",
+    "case_type": "A",
+    "measurement": 56,
+    "r_star": 1150,
+    "split": "evaluation",
+    "weight": 115
+  },
+  {
+    "age": 44,
+    "case_id": "c-b274625d0748",
+    "case_type": "A",
+    "measurement": 11,
+    "r_star": 500,
+    "split": "evaluation",
+    "weight": 104
+  },
+  {
+    "age": 59,
+    "case_id": "c-b47e80fc5847",
+    "case_type": "A",
+    "measurement": 39,
+    "r_star": 1400,
+    "split": "evaluation",
+    "weight": 139
+  },
+  {
+    "age": 85,
+    "case_id": "c-b69d9a18457d",
+    "case_type": "A",
+    "measurement": 45,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 93
+  },
+  {
+    "age": 24,
+    "case_id": "c-b7fdd56b98c4",
+    "case_type": "A",
+    "measurement": 55,
+    "r_star": 1300,
+    "split": "evaluation",
+    "weight": 132
+  },
+  {
+    "age": 84,
+    "case_id": "c-b9579ec6dcde",
+    "case_type": "A",
+    "measurement": 51,
+    "r_star": 1350,
+    "split": "evaluation",
+    "weight": 133
+  },
+  {
+    "age": 38,
+    "case_id": "c-bb7c76f886d9",
+    "case_type": "A",
+    "measurement": 57,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 121
+  },
+  {
+    "age": 69,
+    "case_id": "c-bbee647c789e",
+    "case_type": "A",
+    "measurement": 10,
+    "r_star": 500,
+    "split": "evaluation",
+    "weight": 95
+  },
+  {
+    "age": 63,
+    "case_id": "c-be88cfa96e3f",
+    "case_type": "A",
+    "measurement": 45,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 94
+  },
+  {
+    "age": 35,
+    "case_id": "c-bf384469bddc",
+    "case_type": "A",
+    "measurement": 37,
+    "r_star": 1250,
+    "split": "evaluation",
+    "weight": 127
+  },
+  {
+    "age": 63,
+    "case_id": "c-bff8764f4c6d",
+    "case_type": "A",
+    "measurement": 33,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 99
+  },
+  {
+    "age": 77,
+    "case_id": "c-c335a97ab547",
+    "case_type": "A",
+    "measurement": 40,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 104
+  },
+  {
+    "age": 79,
+    "case_id": "c-c67f090a1982",
+    "case_type": "A",
+    "measurement": 24,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 134
+  },
+  {
+    "age": 78,
+    "case_id": "c-cd0affc19598",
+    "case_type": "A",
+    "measurement": 48,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 96
+  },
+  {
+    "age": 58,
+    "case_id": "c-ce35b27ce2e0",
+    "case_type": "A",
+    "measurement": 23,
+    "r_star": 700,
+    "split": "evaluation",
+    "weight": 135
+  },
+  {
+    "age": 60,
+    "case_id": "c-ce3e3c051aea",
+    "case_type": "A",
+    "measurement": 57,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 95
+  },
+  {
+    "age": 85,
+    "case_id": "c-cf4f866c5fc5",
+    "case_type": "A",
+    "measurement": 54,
+    "r_star": 1150,
+    "split": "evaluation",
+    "weight": 117
+  },
+  {
+    "age": 34,
+    "case_id": "c-cfea6f717456",
+    "case_type": "A",
+    "measurement": 48,
+    "r_star": 1150,
+    "split": "evaluation",
+    "weight": 117
+  },
+  {
+    "age": 34,
+    "case_id": "c-d0e178bdde2a",
+    "case_type": "A",
+    "measurement": 41,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 94
+  },
+  {
+    "age": 77,
+    "case_id": "c-d19c83a2d1d6",
+    "case_type": "A",
+    "measurement": 19,
+    "r_star": 700,
+    "split": "evaluation",
+    "weight": 138
+  },
+  {
+    "age": 72,
+    "case_id": "c-d21b99fe7291",
+    "case_type": "A",
+    "measurement": 37,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 104
+  },
+  {
+    "age": 67,
+    "case_id": "c-d3334e437477",
+    "case_type": "A",
+    "measurement": 32,
+    "r_star": 1400,
+    "split": "evaluation",
+    "weight": 139
+  },
+  {
+    "age": 33,
+    "case_id": "c-d620699f551d",
+    "case_type": "A",
+    "measurement": 32,
+    "r_star": 1350,
+    "split": "evaluation",
+    "weight": 136
+  },
+  {
+    "age": 44,
+    "case_id": "c-d642b0a9facc",
+    "case_type": "A",
+    "measurement": 58,
+    "r_star": 1150,
+    "split": "evaluation",
+    "weight": 115
+  },
+  {
+    "age": 87,
+    "case_id": "c-d8fe9cc41b9d",
+    "case_type": "A",
+    "measurement": 27,
+    "r_star": 500,
+    "split": "evaluation",
+    "weight": 104
+  },
+  {
+    "age": 56,
+    "case_id": "c-db0bec85c342",
+    "case_type": "A",
+    "measurement": 55,
+    "r_star": 1150,
+    "split": "evaluation",
+    "weight": 117
+  },
+  {
+    "age": 22,
+    "case_id": "c-db685df2fc69",
+    "case_type": "A",
+    "measurement": 43,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 106
+  },
+  {
+    "age": 52,
+    "case_id": "c-de16f858766b",
+    "case_type": "A",
+    "measurement": 25,
+    "r_star": 600,
+    "split": "evaluation",
+    "weight": 122
+  },
+  {
+    "age": 24,
+    "case_id": "c-e167ebd176f3",
+    "case_type": "A",
+    "measurement": 58,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 97
+  },
+  {
+    "age": 26,
+    "case_id": "c-e2406e47a212",
+    "case_type": "A",
+    "measurement": 59,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 102
+  },
+  {
+    "age": 52,
+    "case_id": "c-e27f4e36cd19",
+    "case_type": "A",
+    "measurement": 26,
+    "r_star": 500,
+    "split": "evaluation",
+    "weight": 96
+  },
+  {
+    "age": 22,
+    "case_id": "c-e2ace883588f",
+    "case_type": "A",
+    "measurement": 40,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 122
+  },
+  {
+    "age": 56,
+    "case_id": "c-e3033d46668b",
+    "case_type": "A",
+    "measurement": 58,
+    "r_star": 1250,
+    "split": "evaluation",
+    "weight": 126
+  },
+  {
+    "age": 65,
+    "case_id": "c-e414cf9c9b72",
+    "case_type": "A",
+    "measurement": 37,
+    "r_star": 1350,
+    "split": "evaluation",
+    "weight": 133
+  },
+  {
+    "age": 76,
+    "case_id": "c-e4f0e99f922b",
+    "case_type": "A",
+    "measurement": 42,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 96
+  },
+  {
+    "age": 57,
+    "case_id": "c-e52453faca02",
+    "case_type": "A",
+    "measurement": 37,
+    "r_star": 1300,
+    "split": "evaluation",
+    "weight": 132
+  },
+  {
+    "age": 79,
+    "case_id": "c-e5365c9647be",
+    "case_type": "A",
+    "measurement": 32,
+    "r_star": 1300,
+    "split": "evaluation",
+    "weight": 128
+  },
+  {
+    "age": 53,
+    "case_id": "c-e82a854add06",
+    "case_type": "A",
+    "measurement": 53,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 100
+  },
+  {
+    "age": 63,
+    "case_id": "c-ea98db533017",
+    "case_type": "A",
+    "measurement": 45,
+    "r_star": 1300,
+    "split": "evaluation",
+    "weight": 130
+  },
+  {
+    "age": 36,
+    "case_id": "c-f1b0708e7f99",
+    "case_type": "A",
+    "measurement": 50,
+    "r_star": 1300,
+    "split": "evaluation",
+    "weight": 129
+  },
+  {
+    "age": 66,
+    "case_id": "c-f3e35f189b36",
+    "case_type": "A",
+    "measurement": 49,
+    "r_star": 1250,
+    "split": "evaluation",
+    "weight": 123
+  },
+  {
+    "age": 85,
+    "case_id": "c-f849317e91fe",
+    "case_type": "A",
+    "measurement": 48,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 102
+  },
+  {
+    "age": 47,
+    "case_id": "c-fa8f663b7f22",
+    "case_type": "A",
+    "measurement": 47,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 118
+  },
+  {
+    "age": 28,
+    "case_id": "c-ffbc7c952999",
+    "case_type": "A",
+    "measurement": 34,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 99
+  },
+  {
+    "age": 45,
+    "case_id": "c-00d66e256f49",
+    "case_type": "near_measurement",
+    "measurement": 64,
+    "r_star": 2400,
+    "split": "evaluation",
+    "weight": 120
+  },
+  {
+    "age": 47,
+    "case_id": "c-243d9b08c02a",
+    "case_type": "near_measurement",
+    "measurement": 60,
+    "r_star": 1800,
+    "split": "evaluation",
+    "weight": 90
+  },
+  {
+    "age": 26,
+    "case_id": "c-2fc04f77deb7",
+    "case_type": "near_measurement",
+    "measurement": 60,
+    "r_star": 1800,
+    "split": "evaluation",
+    "weight": 91
+  },
+  {
+    "age": 56,
+    "case_id": "c-39b101bf231c",
+    "case_type": "near_measurement",
+    "measurement": 65,
+    "r_star": 2400,
+    "split": "evaluation",
+    "weight": 119
+  },
+  {
+    "age": 71,
+    "case_id": "c-3ed4c76d5314",
+    "case_type": "near_measurement",
+    "measurement": 60,
+    "r_star": 1900,
+    "split": "evaluation",
+    "weight": 96
+  },
+  {
+    "age": 83,
+    "case_id": "c-432206ab6461",
+    "case_type": "near_measurement",
+    "measurement": 61,
+    "r_star": 2700,
+    "split": "evaluation",
+    "weight": 135
+  },
+  {
+    "age": 44,
+    "case_id": "c-4f8ebfdecf36",
+    "case_type": "near_measurement",
+    "measurement": 65,
+    "r_star": 2550,
+    "split": "evaluation",
+    "weight": 128
+  },
+  {
+    "age": 46,
+    "case_id": "c-6f0bc135bbcd",
+    "case_type": "near_measurement",
+    "measurement": 61,
+    "r_star": 2400,
+    "split": "evaluation",
+    "weight": 120
+  },
+  {
+    "age": 21,
+    "case_id": "c-82b5eeb03a5f",
+    "case_type": "near_measurement",
+    "measurement": 65,
+    "r_star": 2150,
+    "split": "evaluation",
+    "weight": 108
+  },
+  {
+    "age": 46,
+    "case_id": "c-939218f04571",
+    "case_type": "near_measurement",
+    "measurement": 65,
+    "r_star": 2000,
+    "split": "evaluation",
+    "weight": 101
+  },
+  {
+    "age": 61,
+    "case_id": "c-94281ccd296c",
+    "case_type": "near_measurement",
+    "measurement": 62,
+    "r_star": 2800,
+    "split": "evaluation",
+    "weight": 140
+  },
+  {
+    "age": 48,
+    "case_id": "c-954be9b70022",
+    "case_type": "near_measurement",
+    "measurement": 65,
+    "r_star": 1900,
+    "split": "evaluation",
+    "weight": 95
+  },
+  {
+    "age": 44,
+    "case_id": "c-966afc720d81",
+    "case_type": "near_measurement",
+    "measurement": 60,
+    "r_star": 2100,
+    "split": "evaluation",
+    "weight": 104
+  },
+  {
+    "age": 43,
+    "case_id": "c-9cd52a94ed2c",
+    "case_type": "near_measurement",
+    "measurement": 63,
+    "r_star": 2150,
+    "split": "evaluation",
+    "weight": 108
+  },
+  {
+    "age": 74,
+    "case_id": "c-b6c55c26d0da",
+    "case_type": "near_measurement",
+    "measurement": 63,
+    "r_star": 1950,
+    "split": "evaluation",
+    "weight": 97
+  },
+  {
+    "age": 67,
+    "case_id": "c-ce21f667b60d",
+    "case_type": "near_measurement",
+    "measurement": 60,
+    "r_star": 1950,
+    "split": "evaluation",
+    "weight": 97
+  },
+  {
+    "age": 64,
+    "case_id": "c-d6ddd8855fb2",
+    "case_type": "near_measurement",
+    "measurement": 62,
+    "r_star": 1950,
+    "split": "evaluation",
+    "weight": 97
+  },
+  {
+    "age": 81,
+    "case_id": "c-dbb3fe240905",
+    "case_type": "near_measurement",
+    "measurement": 62,
+    "r_star": 1900,
+    "split": "evaluation",
+    "weight": 95
+  },
+  {
+    "age": 65,
+    "case_id": "c-e8ebc8c128f2",
+    "case_type": "near_measurement",
+    "measurement": 60,
+    "r_star": 2800,
+    "split": "evaluation",
+    "weight": 140
+  },
+  {
+    "age": 70,
+    "case_id": "c-ff43dc874998",
+    "case_type": "near_measurement",
+    "measurement": 62,
+    "r_star": 2350,
+    "split": "evaluation",
+    "weight": 117
+  },
+  {
+    "age": 70,
+    "case_id": "c-017610420155",
+    "case_type": "near_weight",
+    "measurement": 18,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 88
+  },
+  {
+    "age": 90,
+    "case_id": "c-1611acd2d528",
+    "case_type": "near_weight",
+    "measurement": 36,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 87
+  },
+  {
+    "age": 27,
+    "case_id": "c-1aac8b8260c4",
+    "case_type": "near_weight",
+    "measurement": 19,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 85
+  },
+  {
+    "age": 83,
+    "case_id": "c-2efc851dcd72",
+    "case_type": "near_weight",
+    "measurement": 25,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 87
+  },
+  {
+    "age": 22,
+    "case_id": "c-343e357fecd4",
+    "case_type": "near_weight",
+    "measurement": 58,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 87
+  },
+  {
+    "age": 28,
+    "case_id": "c-4297205e08ca",
+    "case_type": "near_weight",
+    "measurement": 55,
+    "r_star": 900,
+    "split": "evaluation",
+    "weight": 89
+  },
+  {
+    "age": 90,
+    "case_id": "c-44b7757675a4",
+    "case_type": "near_weight",
+    "measurement": 16,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 85
+  },
+  {
+    "age": 36,
+    "case_id": "c-542a9300acd8",
+    "case_type": "near_weight",
+    "measurement": 34,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 86
+  },
+  {
+    "age": 60,
+    "case_id": "c-5fe104906c09",
+    "case_type": "near_weight",
+    "measurement": 10,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 86
+  },
+  {
+    "age": 62,
+    "case_id": "c-64f60f3692ba",
+    "case_type": "near_weight",
+    "measurement": 48,
+    "r_star": 900,
+    "split": "evaluation",
+    "weight": 88
+  },
+  {
+    "age": 50,
+    "case_id": "c-8f318597ec8e",
+    "case_type": "near_weight",
+    "measurement": 54,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 87
+  },
+  {
+    "age": 73,
+    "case_id": "c-9290f7aa0193",
+    "case_type": "near_weight",
+    "measurement": 27,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 89
+  },
+  {
+    "age": 34,
+    "case_id": "c-9fc33264160b",
+    "case_type": "near_weight",
+    "measurement": 42,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 85
+  },
+  {
+    "age": 32,
+    "case_id": "c-a1a04bbe7dea",
+    "case_type": "near_weight",
+    "measurement": 53,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 85
+  },
+  {
+    "age": 84,
+    "case_id": "c-bbb50b17b5a6",
+    "case_type": "near_weight",
+    "measurement": 48,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 87
+  },
+  {
+    "age": 70,
+    "case_id": "c-c486a572bb6d",
+    "case_type": "near_weight",
+    "measurement": 59,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 85
+  },
+  {
+    "age": 42,
+    "case_id": "c-c812ae7fd2fa",
+    "case_type": "near_weight",
+    "measurement": 27,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 86
+  },
+  {
+    "age": 38,
+    "case_id": "c-d43f29488e55",
+    "case_type": "near_weight",
+    "measurement": 37,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 85
+  },
+  {
+    "age": 89,
+    "case_id": "c-d5a028fc6b74",
+    "case_type": "near_weight",
+    "measurement": 43,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 86
+  },
+  {
+    "age": 28,
+    "case_id": "c-f8220392da6a",
+    "case_type": "near_weight",
+    "measurement": 45,
+    "r_star": 900,
+    "split": "evaluation",
+    "weight": 88
+  },
+  {
+    "age": 24,
+    "case_id": "c-002ece4f046f",
+    "case_type": "U",
+    "measurement": 29,
+    "r_star": 200,
+    "split": "evaluation",
+    "weight": 44
+  },
+  {
+    "age": 85,
+    "case_id": "c-0070fce26464",
+    "case_type": "U",
+    "measurement": 15,
+    "r_star": 300,
+    "split": "evaluation",
+    "weight": 61
+  },
+  {
+    "age": 46,
+    "case_id": "c-0207627fe00f",
+    "case_type": "U",
+    "measurement": 74,
+    "r_star": 2450,
+    "split": "evaluation",
+    "weight": 123
+  },
+  {
+    "age": 72,
+    "case_id": "c-029e251636a6",
+    "case_type": "U",
+    "measurement": 120,
+    "r_star": 2700,
+    "split": "evaluation",
+    "weight": 134
+  },
+  {
+    "age": 21,
+    "case_id": "c-03ca45d5539c",
+    "case_type": "U",
+    "measurement": 106,
+    "r_star": 2300,
+    "split": "evaluation",
+    "weight": 114
+  },
+  {
+    "age": 83,
+    "case_id": "c-0499db637099",
+    "case_type": "U",
+    "measurement": 75,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 60
+  },
+  {
+    "age": 54,
+    "case_id": "c-05d903a2af93",
+    "case_type": "U",
+    "measurement": 74,
+    "r_star": 900,
+    "split": "evaluation",
+    "weight": 44
+  },
+  {
+    "age": 25,
+    "case_id": "c-0615b8b72b30",
+    "case_type": "U",
+    "measurement": 21,
+    "r_star": 200,
+    "split": "evaluation",
+    "weight": 42
+  },
+  {
+    "age": 26,
+    "case_id": "c-084a9df8e570",
+    "case_type": "U",
+    "measurement": 116,
+    "r_star": 1850,
+    "split": "evaluation",
+    "weight": 93
+  },
+  {
+    "age": 40,
+    "case_id": "c-0870c8e89ee6",
+    "case_type": "U",
+    "measurement": 22,
+    "r_star": 350,
+    "split": "evaluation",
+    "weight": 65
+  },
+  {
+    "age": 26,
+    "case_id": "c-097346c3fbc1",
+    "case_type": "U",
+    "measurement": 93,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 53
+  },
+  {
+    "age": 31,
+    "case_id": "c-0c9f6425580d",
+    "case_type": "U",
+    "measurement": 114,
+    "r_star": 1400,
+    "split": "evaluation",
+    "weight": 69
+  },
+  {
+    "age": 77,
+    "case_id": "c-0d611dade321",
+    "case_type": "U",
+    "measurement": 70,
+    "r_star": 2200,
+    "split": "evaluation",
+    "weight": 111
+  },
+  {
+    "age": 65,
+    "case_id": "c-0d77b44d3271",
+    "case_type": "U",
+    "measurement": 30,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 45
+  },
+  {
+    "age": 26,
+    "case_id": "c-0de0f8310996",
+    "case_type": "U",
+    "measurement": 120,
+    "r_star": 1250,
+    "split": "evaluation",
+    "weight": 63
+  },
+  {
+    "age": 68,
+    "case_id": "c-0f3d29cd8360",
+    "case_type": "U",
+    "measurement": 76,
+    "r_star": 1550,
+    "split": "evaluation",
+    "weight": 78
+  },
+  {
+    "age": 44,
+    "case_id": "c-0f5eb1d34da2",
+    "case_type": "U",
+    "measurement": 82,
+    "r_star": 1400,
+    "split": "evaluation",
+    "weight": 71
+  },
+  {
+    "age": 49,
+    "case_id": "c-108b444296d5",
+    "case_type": "U",
+    "measurement": 52,
+    "r_star": 600,
+    "split": "evaluation",
+    "weight": 60
+  },
+  {
+    "age": 74,
+    "case_id": "c-11318a61b066",
+    "case_type": "U",
+    "measurement": 66,
+    "r_star": 2700,
+    "split": "evaluation",
+    "weight": 134
+  },
+  {
+    "age": 18,
+    "case_id": "c-1243de1b7cf2",
+    "case_type": "U",
+    "measurement": 21,
+    "r_star": 350,
+    "split": "evaluation",
+    "weight": 65
+  },
+  {
+    "age": 31,
+    "case_id": "c-137da71e16b2",
+    "case_type": "U",
+    "measurement": 69,
+    "r_star": 2800,
+    "split": "evaluation",
+    "weight": 140
+  },
+  {
+    "age": 72,
+    "case_id": "c-13cb923f5918",
+    "case_type": "U",
+    "measurement": 45,
+    "r_star": 600,
+    "split": "evaluation",
+    "weight": 60
+  },
+  {
+    "age": 66,
+    "case_id": "c-140e663ad3a2",
+    "case_type": "U",
+    "measurement": 51,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 64
+  },
+  {
+    "age": 78,
+    "case_id": "c-14fae8a04a8f",
+    "case_type": "U",
+    "measurement": 69,
+    "r_star": 1550,
+    "split": "evaluation",
+    "weight": 77
+  },
+  {
+    "age": 82,
+    "case_id": "c-150286e4dc8f",
+    "case_type": "U",
+    "measurement": 120,
+    "r_star": 1800,
+    "split": "evaluation",
+    "weight": 91
+  },
+  {
+    "age": 67,
+    "case_id": "c-151c6887d99c",
+    "case_type": "U",
+    "measurement": 98,
+    "r_star": 2200,
+    "split": "evaluation",
+    "weight": 111
+  },
+  {
+    "age": 79,
+    "case_id": "c-156412bbc981",
+    "case_type": "U",
+    "measurement": 53,
+    "r_star": 600,
+    "split": "evaluation",
+    "weight": 60
+  },
+  {
+    "age": 55,
+    "case_id": "c-18853b681c8a",
+    "case_type": "U",
+    "measurement": 89,
+    "r_star": 1800,
+    "split": "evaluation",
+    "weight": 91
+  },
+  {
+    "age": 51,
+    "case_id": "c-18ffacf0f717",
+    "case_type": "U",
+    "measurement": 16,
+    "r_star": 300,
+    "split": "evaluation",
+    "weight": 59
+  },
+  {
+    "age": 90,
+    "case_id": "c-1a86e7023a33",
+    "case_type": "U",
+    "measurement": 77,
+    "r_star": 2350,
+    "split": "evaluation",
+    "weight": 117
+  },
+  {
+    "age": 61,
+    "case_id": "c-1c50f786704a",
+    "case_type": "U",
+    "measurement": 91,
+    "r_star": 2250,
+    "split": "evaluation",
+    "weight": 113
+  },
+  {
+    "age": 62,
+    "case_id": "c-1ca3d3412f5e",
+    "case_type": "U",
+    "measurement": 37,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 83
+  },
+  {
+    "age": 20,
+    "case_id": "c-1d76c31e20b6",
+    "case_type": "U",
+    "measurement": 107,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 60
+  },
+  {
+    "age": 31,
+    "case_id": "c-1d893ca26881",
+    "case_type": "U",
+    "measurement": 16,
+    "r_star": 350,
+    "split": "evaluation",
+    "weight": 73
+  },
+  {
+    "age": 85,
+    "case_id": "c-1ee4e0cac433",
+    "case_type": "U",
+    "measurement": 10,
+    "r_star": 350,
+    "split": "evaluation",
+    "weight": 72
+  },
+  {
+    "age": 44,
+    "case_id": "c-1fea8b8082d1",
+    "case_type": "U",
+    "measurement": 107,
+    "r_star": 2250,
+    "split": "evaluation",
+    "weight": 113
+  },
+  {
+    "age": 21,
+    "case_id": "c-201521765d18",
+    "case_type": "U",
+    "measurement": 115,
+    "r_star": 1400,
+    "split": "evaluation",
+    "weight": 70
+  },
+  {
+    "age": 70,
+    "case_id": "c-20ef382978e9",
+    "case_type": "U",
+    "measurement": 96,
+    "r_star": 900,
+    "split": "evaluation",
+    "weight": 44
+  },
+  {
+    "age": 50,
+    "case_id": "c-212c238a3a73",
+    "case_type": "U",
+    "measurement": 98,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 47
+  },
+  {
+    "age": 78,
+    "case_id": "c-2154e6c0a86b",
+    "case_type": "U",
+    "measurement": 46,
+    "r_star": 600,
+    "split": "evaluation",
+    "weight": 62
+  },
+  {
+    "age": 25,
+    "case_id": "c-216caae752ab",
+    "case_type": "U",
+    "measurement": 28,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 79
+  },
+  {
+    "age": 21,
+    "case_id": "c-219dc766efef",
+    "case_type": "U",
+    "measurement": 53,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 45
+  },
+  {
+    "age": 79,
+    "case_id": "c-21b32e6e899e",
+    "case_type": "U",
+    "measurement": 120,
+    "r_star": 2150,
+    "split": "evaluation",
+    "weight": 108
+  },
+  {
+    "age": 65,
+    "case_id": "c-22639fe7d533",
+    "case_type": "U",
+    "measurement": 55,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 41
+  },
+  {
+    "age": 26,
+    "case_id": "c-2285f7e2804e",
+    "case_type": "U",
+    "measurement": 113,
+    "r_star": 2350,
+    "split": "evaluation",
+    "weight": 117
+  },
+  {
+    "age": 30,
+    "case_id": "c-230ba5ae5589",
+    "case_type": "U",
+    "measurement": 24,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 52
+  },
+  {
+    "age": 60,
+    "case_id": "c-239be7b07ffb",
+    "case_type": "U",
+    "measurement": 66,
+    "r_star": 2550,
+    "split": "evaluation",
+    "weight": 128
+  },
+  {
+    "age": 56,
+    "case_id": "c-23e38be75d0e",
+    "case_type": "U",
+    "measurement": 83,
+    "r_star": 1550,
+    "split": "evaluation",
+    "weight": 78
+  },
+  {
+    "age": 51,
+    "case_id": "c-24253629f015",
+    "case_type": "U",
+    "measurement": 42,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 41
+  },
+  {
+    "age": 25,
+    "case_id": "c-24765e7f346e",
+    "case_type": "U",
+    "measurement": 108,
+    "r_star": 1950,
+    "split": "evaluation",
+    "weight": 98
+  },
+  {
+    "age": 48,
+    "case_id": "c-257a026596a5",
+    "case_type": "U",
+    "measurement": 111,
+    "r_star": 2500,
+    "split": "evaluation",
+    "weight": 126
+  },
+  {
+    "age": 89,
+    "case_id": "c-25a966df982b",
+    "case_type": "U",
+    "measurement": 118,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 42
+  },
+  {
+    "age": 28,
+    "case_id": "c-25b79de32803",
+    "case_type": "U",
+    "measurement": 105,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 52
+  },
+  {
+    "age": 52,
+    "case_id": "c-26703e41589c",
+    "case_type": "U",
+    "measurement": 82,
+    "r_star": 2450,
+    "split": "evaluation",
+    "weight": 123
+  },
+  {
+    "age": 68,
+    "case_id": "c-2690d2be315f",
+    "case_type": "U",
+    "measurement": 116,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 51
+  },
+  {
+    "age": 42,
+    "case_id": "c-276c08806ac9",
+    "case_type": "U",
+    "measurement": 115,
+    "r_star": 1600,
+    "split": "evaluation",
+    "weight": 80
+  },
+  {
+    "age": 65,
+    "case_id": "c-28812e656046",
+    "case_type": "U",
+    "measurement": 41,
+    "r_star": 500,
+    "split": "evaluation",
+    "weight": 51
+  },
+  {
+    "age": 90,
+    "case_id": "c-29228e04b26d",
+    "case_type": "U",
+    "measurement": 102,
+    "r_star": 2350,
+    "split": "evaluation",
+    "weight": 117
+  },
+  {
+    "age": 88,
+    "case_id": "c-2934151c08a9",
+    "case_type": "U",
+    "measurement": 13,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 51
+  },
+  {
+    "age": 62,
+    "case_id": "c-2a30766ce764",
+    "case_type": "U",
+    "measurement": 87,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 61
+  },
+  {
+    "age": 24,
+    "case_id": "c-2a46480e1fd2",
+    "case_type": "U",
+    "measurement": 99,
+    "r_star": 2700,
+    "split": "evaluation",
+    "weight": 135
+  },
+  {
+    "age": 64,
+    "case_id": "c-2a7fc9220fcc",
+    "case_type": "U",
+    "measurement": 29,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 53
+  },
+  {
+    "age": 40,
+    "case_id": "c-2c11834190f8",
+    "case_type": "U",
+    "measurement": 63,
+    "r_star": 900,
+    "split": "evaluation",
+    "weight": 45
+  },
+  {
+    "age": 71,
+    "case_id": "c-2ce2b0e32594",
+    "case_type": "U",
+    "measurement": 96,
+    "r_star": 2100,
+    "split": "evaluation",
+    "weight": 105
+  },
+  {
+    "age": 33,
+    "case_id": "c-2e2052ab0550",
+    "case_type": "U",
+    "measurement": 31,
+    "r_star": 500,
+    "split": "evaluation",
+    "weight": 48
+  },
+  {
+    "age": 89,
+    "case_id": "c-2fac96100d92",
+    "case_type": "U",
+    "measurement": 87,
+    "r_star": 2250,
+    "split": "evaluation",
+    "weight": 112
+  },
+  {
+    "age": 85,
+    "case_id": "c-2fd6a46621f1",
+    "case_type": "U",
+    "measurement": 12,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 53
+  },
+  {
+    "age": 22,
+    "case_id": "c-2fffc3972d6c",
+    "case_type": "U",
+    "measurement": 89,
+    "r_star": 1350,
+    "split": "evaluation",
+    "weight": 67
+  },
+  {
+    "age": 79,
+    "case_id": "c-30a5a2feb1c3",
+    "case_type": "U",
+    "measurement": 47,
+    "r_star": 750,
+    "split": "evaluation",
+    "weight": 77
+  },
+  {
+    "age": 71,
+    "case_id": "c-3165e10d93f1",
+    "case_type": "U",
+    "measurement": 110,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 48
+  },
+  {
+    "age": 70,
+    "case_id": "c-321acb9137f2",
+    "case_type": "U",
+    "measurement": 13,
+    "r_star": 350,
+    "split": "evaluation",
+    "weight": 68
+  },
+  {
+    "age": 61,
+    "case_id": "c-3386f3f2fa49",
+    "case_type": "U",
+    "measurement": 112,
+    "r_star": 1850,
+    "split": "evaluation",
+    "weight": 93
+  },
+  {
+    "age": 77,
+    "case_id": "c-351596cbc3b7",
+    "case_type": "U",
+    "measurement": 102,
+    "r_star": 800,
+    "split": "evaluation",
+    "weight": 40
+  },
+  {
+    "age": 56,
+    "case_id": "c-3538fbc3e708",
+    "case_type": "U",
+    "measurement": 106,
+    "r_star": 1850,
+    "split": "evaluation",
+    "weight": 92
+  },
+  {
+    "age": 55,
+    "case_id": "c-36e0df374f54",
+    "case_type": "U",
+    "measurement": 66,
+    "r_star": 2050,
+    "split": "evaluation",
+    "weight": 103
+  },
+  {
+    "age": 52,
+    "case_id": "c-36eb3fead0c2",
+    "case_type": "U",
+    "measurement": 120,
+    "r_star": 2800,
+    "split": "evaluation",
+    "weight": 140
+  },
+  {
+    "age": 40,
+    "case_id": "c-38e6f01e52e3",
+    "case_type": "U",
+    "measurement": 68,
+    "r_star": 2100,
+    "split": "evaluation",
+    "weight": 105
+  },
+  {
+    "age": 24,
+    "case_id": "c-3a04d4d1f512",
+    "case_type": "U",
+    "measurement": 79,
+    "r_star": 1500,
+    "split": "evaluation",
+    "weight": 74
+  },
+  {
+    "age": 48,
+    "case_id": "c-3c17eb0f23c2",
+    "case_type": "U",
+    "measurement": 69,
+    "r_star": 900,
+    "split": "evaluation",
+    "weight": 46
+  },
+  {
+    "age": 74,
+    "case_id": "c-3cd56b666ac4",
+    "case_type": "U",
+    "measurement": 117,
+    "r_star": 1900,
+    "split": "evaluation",
+    "weight": 95
+  },
+  {
+    "age": 61,
+    "case_id": "c-3d94daea4e8e",
+    "case_type": "U",
+    "measurement": 87,
+    "r_star": 900,
+    "split": "evaluation",
+    "weight": 44
+  },
+  {
+    "age": 27,
+    "case_id": "c-3e867d0245a0",
+    "case_type": "U",
+    "measurement": 67,
+    "r_star": 2150,
+    "split": "evaluation",
+    "weight": 108
+  },
+  {
+    "age": 72,
+    "case_id": "c-3eb34d1b3701",
+    "case_type": "U",
+    "measurement": 51,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 42
+  },
+  {
+    "age": 51,
+    "case_id": "c-3f2a56be2d56",
+    "case_type": "U",
+    "measurement": 59,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 42
+  },
+  {
+    "age": 35,
+    "case_id": "c-3ff82762e093",
+    "case_type": "U",
+    "measurement": 40,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 46
+  },
+  {
+    "age": 90,
+    "case_id": "c-41aa4419fd01",
+    "case_type": "U",
+    "measurement": 46,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 41
+  },
+  {
+    "age": 64,
+    "case_id": "c-41d2f4214fe7",
+    "case_type": "U",
+    "measurement": 56,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 46
+  },
+  {
+    "age": 54,
+    "case_id": "c-439b66e65266",
+    "case_type": "U",
+    "measurement": 47,
+    "r_star": 800,
+    "split": "evaluation",
+    "weight": 78
+  },
+  {
+    "age": 50,
+    "case_id": "c-44c5ed4a8367",
+    "case_type": "U",
+    "measurement": 87,
+    "r_star": 1400,
+    "split": "evaluation",
+    "weight": 71
+  },
+  {
+    "age": 64,
+    "case_id": "c-454ea28fb000",
+    "case_type": "U",
+    "measurement": 106,
+    "r_star": 2350,
+    "split": "evaluation",
+    "weight": 117
+  },
+  {
+    "age": 44,
+    "case_id": "c-463c2c905ff2",
+    "case_type": "U",
+    "measurement": 99,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 51
+  },
+  {
+    "age": 43,
+    "case_id": "c-463c65591269",
+    "case_type": "U",
+    "measurement": 50,
+    "r_star": 600,
+    "split": "evaluation",
+    "weight": 60
+  },
+  {
+    "age": 26,
+    "case_id": "c-470b5bcfc6a5",
+    "case_type": "U",
+    "measurement": 26,
+    "r_star": 200,
+    "split": "evaluation",
+    "weight": 43
+  },
+  {
+    "age": 70,
+    "case_id": "c-477da0672b25",
+    "case_type": "U",
+    "measurement": 76,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 61
+  },
+  {
+    "age": 29,
+    "case_id": "c-483c3b77e273",
+    "case_type": "U",
+    "measurement": 77,
+    "r_star": 2250,
+    "split": "evaluation",
+    "weight": 112
+  },
+  {
+    "age": 85,
+    "case_id": "c-4ae660d0d6a6",
+    "case_type": "U",
+    "measurement": 115,
+    "r_star": 900,
+    "split": "evaluation",
+    "weight": 46
+  },
+  {
+    "age": 78,
+    "case_id": "c-4ba2523e5d95",
+    "case_type": "U",
+    "measurement": 110,
+    "r_star": 2100,
+    "split": "evaluation",
+    "weight": 105
+  },
+  {
+    "age": 53,
+    "case_id": "c-4f27ff6d5afb",
+    "case_type": "U",
+    "measurement": 107,
+    "r_star": 1900,
+    "split": "evaluation",
+    "weight": 96
+  },
+  {
+    "age": 75,
+    "case_id": "c-4fda81ca0413",
+    "case_type": "U",
+    "measurement": 68,
+    "r_star": 2700,
+    "split": "evaluation",
+    "weight": 135
+  },
+  {
+    "age": 58,
+    "case_id": "c-50617c90c166",
+    "case_type": "U",
+    "measurement": 57,
+    "r_star": 700,
+    "split": "evaluation",
+    "weight": 72
+  },
+  {
+    "age": 90,
+    "case_id": "c-5207cb9a4d5c",
+    "case_type": "U",
+    "measurement": 56,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 45
+  },
+  {
+    "age": 26,
+    "case_id": "c-523d8fd54517",
+    "case_type": "U",
+    "measurement": 69,
+    "r_star": 1700,
+    "split": "evaluation",
+    "weight": 85
+  },
+  {
+    "age": 54,
+    "case_id": "c-53a37465cdf8",
+    "case_type": "U",
+    "measurement": 83,
+    "r_star": 1100,
+    "split": "evaluation",
+    "weight": 54
+  },
+  {
+    "age": 30,
+    "case_id": "c-5579c38c7049",
+    "case_type": "U",
+    "measurement": 63,
+    "r_star": 1700,
+    "split": "evaluation",
+    "weight": 84
+  },
+  {
+    "age": 81,
+    "case_id": "c-5637a8606e58",
+    "case_type": "U",
+    "measurement": 111,
+    "r_star": 1850,
+    "split": "evaluation",
+    "weight": 93
+  },
+  {
+    "age": 23,
+    "case_id": "c-570e75d4e3d7",
+    "case_type": "U",
+    "measurement": 17,
+    "r_star": 350,
+    "split": "evaluation",
+    "weight": 71
+  },
+  {
+    "age": 84,
+    "case_id": "c-57ffb61cb9a6",
+    "case_type": "U",
+    "measurement": 14,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 47
+  },
+  {
+    "age": 38,
+    "case_id": "c-59966e983523",
+    "case_type": "U",
+    "measurement": 97,
+    "r_star": 1500,
+    "split": "evaluation",
+    "weight": 75
+  },
+  {
+    "age": 39,
+    "case_id": "c-5aabef1a890b",
+    "case_type": "U",
+    "measurement": 17,
+    "r_star": 350,
+    "split": "evaluation",
+    "weight": 72
+  },
+  {
+    "age": 31,
+    "case_id": "c-5acb6da48641",
+    "case_type": "U",
+    "measurement": 103,
+    "r_star": 1550,
+    "split": "evaluation",
+    "weight": 77
+  },
+  {
+    "age": 18,
+    "case_id": "c-5cdae803cfcc",
+    "case_type": "U",
+    "measurement": 82,
+    "r_star": 900,
+    "split": "evaluation",
+    "weight": 45
+  },
+  {
+    "age": 64,
+    "case_id": "c-5d7e6cb4775a",
+    "case_type": "U",
+    "measurement": 30,
+    "r_star": 600,
+    "split": "evaluation",
+    "weight": 58
+  },
+  {
+    "age": 55,
+    "case_id": "c-5dc6fa10e51c",
+    "case_type": "U",
+    "measurement": 64,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 52
+  },
+  {
+    "age": 67,
+    "case_id": "c-5ddc7bcac766",
+    "case_type": "U",
+    "measurement": 101,
+    "r_star": 1250,
+    "split": "evaluation",
+    "weight": 63
+  },
+  {
+    "age": 30,
+    "case_id": "c-5f08221df17d",
+    "case_type": "U",
+    "measurement": 20,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 80
+  },
+  {
+    "age": 62,
+    "case_id": "c-5f6e3d7c39c0",
+    "case_type": "U",
+    "measurement": 106,
+    "r_star": 1150,
+    "split": "evaluation",
+    "weight": 58
+  },
+  {
+    "age": 86,
+    "case_id": "c-6367e85a3d22",
+    "case_type": "U",
+    "measurement": 67,
+    "r_star": 2350,
+    "split": "evaluation",
+    "weight": 117
+  },
+  {
+    "age": 82,
+    "case_id": "c-6427e1359408",
+    "case_type": "U",
+    "measurement": 89,
+    "r_star": 1150,
+    "split": "evaluation",
+    "weight": 58
+  },
+  {
+    "age": 53,
+    "case_id": "c-64601f564747",
+    "case_type": "U",
+    "measurement": 105,
+    "r_star": 2750,
+    "split": "evaluation",
+    "weight": 138
+  },
+  {
+    "age": 23,
+    "case_id": "c-6514139e9af3",
+    "case_type": "U",
+    "measurement": 71,
+    "r_star": 1300,
+    "split": "evaluation",
+    "weight": 64
+  },
+  {
+    "age": 78,
+    "case_id": "c-65f15377de33",
+    "case_type": "U",
+    "measurement": 89,
+    "r_star": 1500,
+    "split": "evaluation",
+    "weight": 75
+  },
+  {
+    "age": 62,
+    "case_id": "c-6647fa570f5d",
+    "case_type": "U",
+    "measurement": 19,
+    "r_star": 350,
+    "split": "evaluation",
+    "weight": 71
+  },
+  {
+    "age": 27,
+    "case_id": "c-677313db6fb7",
+    "case_type": "U",
+    "measurement": 104,
+    "r_star": 1700,
+    "split": "evaluation",
+    "weight": 85
+  },
+  {
+    "age": 86,
+    "case_id": "c-693c1b1dee6d",
+    "case_type": "U",
+    "measurement": 95,
+    "r_star": 1750,
+    "split": "evaluation",
+    "weight": 87
+  },
+  {
+    "age": 63,
+    "case_id": "c-6b2a90f13a39",
+    "case_type": "U",
+    "measurement": 55,
+    "r_star": 700,
+    "split": "evaluation",
+    "weight": 71
+  },
+  {
+    "age": 53,
+    "case_id": "c-6c5feb4e3645",
+    "case_type": "U",
+    "measurement": 90,
+    "r_star": 2400,
+    "split": "evaluation",
+    "weight": 121
+  },
+  {
+    "age": 47,
+    "case_id": "c-6cc443c0260d",
+    "case_type": "U",
+    "measurement": 81,
+    "r_star": 900,
+    "split": "evaluation",
+    "weight": 46
+  },
+  {
+    "age": 87,
+    "case_id": "c-6e2430cb8bf0",
+    "case_type": "U",
+    "measurement": 93,
+    "r_star": 2100,
+    "split": "evaluation",
+    "weight": 106
+  },
+  {
+    "age": 90,
+    "case_id": "c-6e4ed466756d",
+    "case_type": "U",
+    "measurement": 93,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 49
+  },
+  {
+    "age": 90,
+    "case_id": "c-6fc2b742f45e",
+    "case_type": "U",
+    "measurement": 103,
+    "r_star": 2700,
+    "split": "evaluation",
+    "weight": 134
+  },
+  {
+    "age": 60,
+    "case_id": "c-70123f0236f3",
+    "case_type": "U",
+    "measurement": 52,
+    "r_star": 600,
+    "split": "evaluation",
+    "weight": 58
+  },
+  {
+    "age": 20,
+    "case_id": "c-70437882a7b5",
+    "case_type": "U",
+    "measurement": 80,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 51
+  },
+  {
+    "age": 90,
+    "case_id": "c-7050dfd22bf8",
+    "case_type": "U",
+    "measurement": 27,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 50
+  },
+  {
+    "age": 71,
+    "case_id": "c-71f5821f99a6",
+    "case_type": "U",
+    "measurement": 70,
+    "r_star": 1900,
+    "split": "evaluation",
+    "weight": 94
+  },
+  {
+    "age": 51,
+    "case_id": "c-731553ca7180",
+    "case_type": "U",
+    "measurement": 91,
+    "r_star": 2500,
+    "split": "evaluation",
+    "weight": 124
+  },
+  {
+    "age": 70,
+    "case_id": "c-73cd697b84dc",
+    "case_type": "U",
+    "measurement": 81,
+    "r_star": 2300,
+    "split": "evaluation",
+    "weight": 116
+  },
+  {
+    "age": 62,
+    "case_id": "c-74ffe1a0beb0",
+    "case_type": "U",
+    "measurement": 120,
+    "r_star": 2650,
+    "split": "evaluation",
+    "weight": 133
+  },
+  {
+    "age": 38,
+    "case_id": "c-76aca618699d",
+    "case_type": "U",
+    "measurement": 95,
+    "r_star": 2350,
+    "split": "evaluation",
+    "weight": 118
+  },
+  {
+    "age": 75,
+    "case_id": "c-76c8abf25c35",
+    "case_type": "U",
+    "measurement": 93,
+    "r_star": 1600,
+    "split": "evaluation",
+    "weight": 79
+  },
+  {
+    "age": 38,
+    "case_id": "c-76f6845f6988",
+    "case_type": "U",
+    "measurement": 69,
+    "r_star": 2200,
+    "split": "evaluation",
+    "weight": 111
+  },
+  {
+    "age": 63,
+    "case_id": "c-783a9e259b0c",
+    "case_type": "U",
+    "measurement": 105,
+    "r_star": 2700,
+    "split": "evaluation",
+    "weight": 136
+  },
+  {
+    "age": 36,
+    "case_id": "c-7979f0bfda74",
+    "case_type": "U",
+    "measurement": 116,
+    "r_star": 2200,
+    "split": "evaluation",
+    "weight": 109
+  },
+  {
+    "age": 30,
+    "case_id": "c-79c80cc261d7",
+    "case_type": "U",
+    "measurement": 45,
+    "r_star": 600,
+    "split": "evaluation",
+    "weight": 59
+  },
+  {
+    "age": 22,
+    "case_id": "c-7a071ff84eab",
+    "case_type": "U",
+    "measurement": 120,
+    "r_star": 2600,
+    "split": "evaluation",
+    "weight": 129
+  },
+  {
+    "age": 47,
+    "case_id": "c-7a11b4358e2a",
+    "case_type": "U",
+    "measurement": 71,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 51
+  },
+  {
+    "age": 84,
+    "case_id": "c-7a5050634d12",
+    "case_type": "U",
+    "measurement": 86,
+    "r_star": 2800,
+    "split": "evaluation",
+    "weight": 140
+  },
+  {
+    "age": 38,
+    "case_id": "c-7a9ae0a160e1",
+    "case_type": "U",
+    "measurement": 25,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 45
+  },
+  {
+    "age": 78,
+    "case_id": "c-7aed4f8e9f61",
+    "case_type": "U",
+    "measurement": 10,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 46
+  },
+  {
+    "age": 51,
+    "case_id": "c-7bf7444e62e3",
+    "case_type": "U",
+    "measurement": 112,
+    "r_star": 1150,
+    "split": "evaluation",
+    "weight": 57
+  },
+  {
+    "age": 71,
+    "case_id": "c-7bf9b22a8c3b",
+    "case_type": "U",
+    "measurement": 34,
+    "r_star": 750,
+    "split": "evaluation",
+    "weight": 75
+  },
+  {
+    "age": 19,
+    "case_id": "c-7d231ff85e41",
+    "case_type": "U",
+    "measurement": 109,
+    "r_star": 1900,
+    "split": "evaluation",
+    "weight": 96
+  },
+  {
+    "age": 27,
+    "case_id": "c-7d93a2f6346b",
+    "case_type": "U",
+    "measurement": 10,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 84
+  },
+  {
+    "age": 50,
+    "case_id": "c-815a9755bcc0",
+    "case_type": "U",
+    "measurement": 85,
+    "r_star": 1500,
+    "split": "evaluation",
+    "weight": 74
+  },
+  {
+    "age": 72,
+    "case_id": "c-824cd181a5d1",
+    "case_type": "U",
+    "measurement": 120,
+    "r_star": 2050,
+    "split": "evaluation",
+    "weight": 102
+  },
+  {
+    "age": 30,
+    "case_id": "c-834e46d7ea97",
+    "case_type": "U",
+    "measurement": 15,
+    "r_star": 350,
+    "split": "evaluation",
+    "weight": 68
+  },
+  {
+    "age": 41,
+    "case_id": "c-840fcaa5acd3",
+    "case_type": "U",
+    "measurement": 18,
+    "r_star": 300,
+    "split": "evaluation",
+    "weight": 61
+  },
+  {
+    "age": 87,
+    "case_id": "c-85ed9b88913f",
+    "case_type": "U",
+    "measurement": 56,
+    "r_star": 500,
+    "split": "evaluation",
+    "weight": 49
+  },
+  {
+    "age": 81,
+    "case_id": "c-86063802f28a",
+    "case_type": "U",
+    "measurement": 120,
+    "r_star": 2000,
+    "split": "evaluation",
+    "weight": 99
+  },
+  {
+    "age": 45,
+    "case_id": "c-860a709c0d9c",
+    "case_type": "U",
+    "measurement": 66,
+    "r_star": 1950,
+    "split": "evaluation",
+    "weight": 97
+  },
+  {
+    "age": 27,
+    "case_id": "c-86a77ebafb7f",
+    "case_type": "U",
+    "measurement": 118,
+    "r_star": 2700,
+    "split": "evaluation",
+    "weight": 136
+  },
+  {
+    "age": 47,
+    "case_id": "c-86b139a090a9",
+    "case_type": "U",
+    "measurement": 87,
+    "r_star": 1250,
+    "split": "evaluation",
+    "weight": 63
+  },
+  {
+    "age": 45,
+    "case_id": "c-8800d33453fb",
+    "case_type": "U",
+    "measurement": 19,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 83
+  },
+  {
+    "age": 32,
+    "case_id": "c-8809f382bcd8",
+    "case_type": "U",
+    "measurement": 120,
+    "r_star": 1350,
+    "split": "evaluation",
+    "weight": 67
+  },
+  {
+    "age": 70,
+    "case_id": "c-8885a9263a48",
+    "case_type": "U",
+    "measurement": 12,
+    "r_star": 350,
+    "split": "evaluation",
+    "weight": 71
+  },
+  {
+    "age": 81,
+    "case_id": "c-88a4257fcc58",
+    "case_type": "U",
+    "measurement": 83,
+    "r_star": 2350,
+    "split": "evaluation",
+    "weight": 117
+  },
+  {
+    "age": 26,
+    "case_id": "c-8a9a731aa4aa",
+    "case_type": "U",
+    "measurement": 78,
+    "r_star": 1400,
+    "split": "evaluation",
+    "weight": 69
+  },
+  {
+    "age": 73,
+    "case_id": "c-8b877af7a1f1",
+    "case_type": "U",
+    "measurement": 93,
+    "r_star": 1550,
+    "split": "evaluation",
+    "weight": 77
+  },
+  {
+    "age": 18,
+    "case_id": "c-8c9da4e89d9b",
+    "case_type": "U",
+    "measurement": 94,
+    "r_star": 2150,
+    "split": "evaluation",
+    "weight": 108
+  },
+  {
+    "age": 32,
+    "case_id": "c-8cf5c751f470",
+    "case_type": "U",
+    "measurement": 115,
+    "r_star": 2700,
+    "split": "evaluation",
+    "weight": 136
+  },
+  {
+    "age": 72,
+    "case_id": "c-8cfda322fa66",
+    "case_type": "U",
+    "measurement": 11,
+    "r_star": 300,
+    "split": "evaluation",
+    "weight": 55
+  },
+  {
+    "age": 34,
+    "case_id": "c-8dcc739d3478",
+    "case_type": "U",
+    "measurement": 54,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 84
+  },
+  {
+    "age": 80,
+    "case_id": "c-8e72ad1ecba3",
+    "case_type": "U",
+    "measurement": 77,
+    "r_star": 1850,
+    "split": "evaluation",
+    "weight": 92
+  },
+  {
+    "age": 73,
+    "case_id": "c-8e8fd4692f0c",
+    "case_type": "U",
+    "measurement": 27,
+    "r_star": 300,
+    "split": "evaluation",
+    "weight": 60
+  },
+  {
+    "age": 78,
+    "case_id": "c-8ef26d904d62",
+    "case_type": "U",
+    "measurement": 94,
+    "r_star": 2200,
+    "split": "evaluation",
+    "weight": 111
+  },
+  {
+    "age": 36,
+    "case_id": "c-90ec944ab470",
+    "case_type": "U",
+    "measurement": 71,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 43
+  },
+  {
+    "age": 56,
+    "case_id": "c-9288b1772b1d",
+    "case_type": "U",
+    "measurement": 60,
+    "r_star": 1700,
+    "split": "evaluation",
+    "weight": 84
+  },
+  {
+    "age": 56,
+    "case_id": "c-92c395a274a5",
+    "case_type": "U",
+    "measurement": 40,
+    "r_star": 800,
+    "split": "evaluation",
+    "weight": 81
+  },
+  {
+    "age": 89,
+    "case_id": "c-92f331f6e3d1",
+    "case_type": "U",
+    "measurement": 76,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 59
+  },
+  {
+    "age": 27,
+    "case_id": "c-93ff2a5a0ac8",
+    "case_type": "U",
+    "measurement": 65,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 52
+  },
+  {
+    "age": 71,
+    "case_id": "c-9459cdb8d31d",
+    "case_type": "U",
+    "measurement": 82,
+    "r_star": 2700,
+    "split": "evaluation",
+    "weight": 135
+  },
+  {
+    "age": 88,
+    "case_id": "c-94aef27b7d53",
+    "case_type": "U",
+    "measurement": 28,
+    "r_star": 200,
+    "split": "evaluation",
+    "weight": 42
+  },
+  {
+    "age": 42,
+    "case_id": "c-94b52c392a83",
+    "case_type": "U",
+    "measurement": 86,
+    "r_star": 2600,
+    "split": "evaluation",
+    "weight": 131
+  },
+  {
+    "age": 36,
+    "case_id": "c-9549c0649dcf",
+    "case_type": "U",
+    "measurement": 50,
+    "r_star": 700,
+    "split": "evaluation",
+    "weight": 71
+  },
+  {
+    "age": 49,
+    "case_id": "c-959a19ecceaf",
+    "case_type": "U",
+    "measurement": 24,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 45
+  },
+  {
+    "age": 50,
+    "case_id": "c-96359952f13b",
+    "case_type": "U",
+    "measurement": 99,
+    "r_star": 1250,
+    "split": "evaluation",
+    "weight": 63
+  },
+  {
+    "age": 57,
+    "case_id": "c-964d9e2333ad",
+    "case_type": "U",
+    "measurement": 68,
+    "r_star": 1550,
+    "split": "evaluation",
+    "weight": 77
+  },
+  {
+    "age": 89,
+    "case_id": "c-97c0860c55a7",
+    "case_type": "U",
+    "measurement": 91,
+    "r_star": 1600,
+    "split": "evaluation",
+    "weight": 80
+  },
+  {
+    "age": 40,
+    "case_id": "c-9949612cc038",
+    "case_type": "U",
+    "measurement": 85,
+    "r_star": 2300,
+    "split": "evaluation",
+    "weight": 114
+  },
+  {
+    "age": 32,
+    "case_id": "c-9ab39e200d8c",
+    "case_type": "U",
+    "measurement": 37,
+    "r_star": 800,
+    "split": "evaluation",
+    "weight": 79
+  },
+  {
+    "age": 55,
+    "case_id": "c-9c984a6adc0c",
+    "case_type": "U",
+    "measurement": 97,
+    "r_star": 2550,
+    "split": "evaluation",
+    "weight": 127
+  },
+  {
+    "age": 73,
+    "case_id": "c-9c991c518605",
+    "case_type": "U",
+    "measurement": 70,
+    "r_star": 1600,
+    "split": "evaluation",
+    "weight": 80
+  },
+  {
+    "age": 54,
+    "case_id": "c-9cb2c8d7398b",
+    "case_type": "U",
+    "measurement": 76,
+    "r_star": 1900,
+    "split": "evaluation",
+    "weight": 94
+  },
+  {
+    "age": 30,
+    "case_id": "c-9d05727d9235",
+    "case_type": "U",
+    "measurement": 66,
+    "r_star": 2600,
+    "split": "evaluation",
+    "weight": 130
+  },
+  {
+    "age": 45,
+    "case_id": "c-9f8786303984",
+    "case_type": "U",
+    "measurement": 116,
+    "r_star": 1900,
+    "split": "evaluation",
+    "weight": 95
+  },
+  {
+    "age": 67,
+    "case_id": "c-a05f1b006aed",
+    "case_type": "U",
+    "measurement": 24,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 47
+  },
+  {
+    "age": 57,
+    "case_id": "c-a164a3074ba8",
+    "case_type": "U",
+    "measurement": 98,
+    "r_star": 2700,
+    "split": "evaluation",
+    "weight": 134
+  },
+  {
+    "age": 35,
+    "case_id": "c-a1d5ae710a50",
+    "case_type": "U",
+    "measurement": 44,
+    "r_star": 700,
+    "split": "evaluation",
+    "weight": 69
+  },
+  {
+    "age": 51,
+    "case_id": "c-a23fc6e2c73a",
+    "case_type": "U",
+    "measurement": 39,
+    "r_star": 550,
+    "split": "evaluation",
+    "weight": 53
+  },
+  {
+    "age": 36,
+    "case_id": "c-a31cffa27451",
+    "case_type": "U",
+    "measurement": 18,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 50
+  },
+  {
+    "age": 68,
+    "case_id": "c-a364a605887c",
+    "case_type": "U",
+    "measurement": 66,
+    "r_star": 1600,
+    "split": "evaluation",
+    "weight": 80
+  },
+  {
+    "age": 44,
+    "case_id": "c-a38ca05a28e4",
+    "case_type": "U",
+    "measurement": 25,
+    "r_star": 350,
+    "split": "evaluation",
+    "weight": 68
+  },
+  {
+    "age": 57,
+    "case_id": "c-a4d4ca7bf8de",
+    "case_type": "U",
+    "measurement": 12,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 46
+  },
+  {
+    "age": 75,
+    "case_id": "c-a5187dbb7e72",
+    "case_type": "U",
+    "measurement": 88,
+    "r_star": 2150,
+    "split": "evaluation",
+    "weight": 108
+  },
+  {
+    "age": 84,
+    "case_id": "c-a732ea5ee105",
+    "case_type": "U",
+    "measurement": 29,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 46
+  },
+  {
+    "age": 45,
+    "case_id": "c-a798d5304335",
+    "case_type": "U",
+    "measurement": 46,
+    "r_star": 550,
+    "split": "evaluation",
+    "weight": 55
+  },
+  {
+    "age": 70,
+    "case_id": "c-a9b88f3ff76e",
+    "case_type": "U",
+    "measurement": 61,
+    "r_star": 1550,
+    "split": "evaluation",
+    "weight": 78
+  },
+  {
+    "age": 61,
+    "case_id": "c-a9e0572ec83c",
+    "case_type": "U",
+    "measurement": 112,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 59
+  },
+  {
+    "age": 47,
+    "case_id": "c-aaa30e776987",
+    "case_type": "U",
+    "measurement": 25,
+    "r_star": 200,
+    "split": "evaluation",
+    "weight": 42
+  },
+  {
+    "age": 57,
+    "case_id": "c-ab82e1777a86",
+    "case_type": "U",
+    "measurement": 91,
+    "r_star": 1400,
+    "split": "evaluation",
+    "weight": 69
+  },
+  {
+    "age": 30,
+    "case_id": "c-abab7dc222d0",
+    "case_type": "U",
+    "measurement": 10,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 75
+  },
+  {
+    "age": 34,
+    "case_id": "c-ad5f441f7ecf",
+    "case_type": "U",
+    "measurement": 10,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 80
+  },
+  {
+    "age": 66,
+    "case_id": "c-adf85dec4583",
+    "case_type": "U",
+    "measurement": 29,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 45
+  },
+  {
+    "age": 66,
+    "case_id": "c-ae1aa5902c11",
+    "case_type": "U",
+    "measurement": 69,
+    "r_star": 1950,
+    "split": "evaluation",
+    "weight": 98
+  },
+  {
+    "age": 64,
+    "case_id": "c-af31ac4918c3",
+    "case_type": "U",
+    "measurement": 95,
+    "r_star": 2500,
+    "split": "evaluation",
+    "weight": 124
+  },
+  {
+    "age": 50,
+    "case_id": "c-af81814b21b4",
+    "case_type": "U",
+    "measurement": 106,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 53
+  },
+  {
+    "age": 77,
+    "case_id": "c-b02e1a151c99",
+    "case_type": "U",
+    "measurement": 87,
+    "r_star": 2150,
+    "split": "evaluation",
+    "weight": 107
+  },
+  {
+    "age": 28,
+    "case_id": "c-b27463f34dbc",
+    "case_type": "U",
+    "measurement": 111,
+    "r_star": 2350,
+    "split": "evaluation",
+    "weight": 118
+  },
+  {
+    "age": 63,
+    "case_id": "c-b2b695a017a7",
+    "case_type": "U",
+    "measurement": 93,
+    "r_star": 900,
+    "split": "evaluation",
+    "weight": 46
+  },
+  {
+    "age": 29,
+    "case_id": "c-b4d13a287c54",
+    "case_type": "U",
+    "measurement": 16,
+    "r_star": 200,
+    "split": "evaluation",
+    "weight": 42
+  },
+  {
+    "age": 69,
+    "case_id": "c-b5998e62303d",
+    "case_type": "U",
+    "measurement": 55,
+    "r_star": 800,
+    "split": "evaluation",
+    "weight": 81
+  },
+  {
+    "age": 65,
+    "case_id": "c-b68a85d774d5",
+    "case_type": "U",
+    "measurement": 89,
+    "r_star": 1400,
+    "split": "evaluation",
+    "weight": 69
+  },
+  {
+    "age": 34,
+    "case_id": "c-b745ac524dc1",
+    "case_type": "U",
+    "measurement": 117,
+    "r_star": 2400,
+    "split": "evaluation",
+    "weight": 119
+  },
+  {
+    "age": 36,
+    "case_id": "c-b8094c9f7b1b",
+    "case_type": "U",
+    "measurement": 111,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 42
+  },
+  {
+    "age": 76,
+    "case_id": "c-b9664056a9af",
+    "case_type": "U",
+    "measurement": 86,
+    "r_star": 1250,
+    "split": "evaluation",
+    "weight": 63
+  },
+  {
+    "age": 58,
+    "case_id": "c-bac015012562",
+    "case_type": "U",
+    "measurement": 83,
+    "r_star": 2200,
+    "split": "evaluation",
+    "weight": 111
+  },
+  {
+    "age": 75,
+    "case_id": "c-badcda0b5120",
+    "case_type": "U",
+    "measurement": 117,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 53
+  },
+  {
+    "age": 63,
+    "case_id": "c-bb570bd60a27",
+    "case_type": "U",
+    "measurement": 106,
+    "r_star": 1500,
+    "split": "evaluation",
+    "weight": 74
+  },
+  {
+    "age": 31,
+    "case_id": "c-bc0a95392281",
+    "case_type": "U",
+    "measurement": 67,
+    "r_star": 1800,
+    "split": "evaluation",
+    "weight": 91
+  },
+  {
+    "age": 43,
+    "case_id": "c-bd98608c52e2",
+    "case_type": "U",
+    "measurement": 83,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 59
+  },
+  {
+    "age": 79,
+    "case_id": "c-be6ae0c10227",
+    "case_type": "U",
+    "measurement": 72,
+    "r_star": 2050,
+    "split": "evaluation",
+    "weight": 103
+  },
+  {
+    "age": 24,
+    "case_id": "c-bebfc4df506a",
+    "case_type": "U",
+    "measurement": 72,
+    "r_star": 2000,
+    "split": "evaluation",
+    "weight": 100
+  },
+  {
+    "age": 77,
+    "case_id": "c-bfc9f6b4c4b6",
+    "case_type": "U",
+    "measurement": 66,
+    "r_star": 2500,
+    "split": "evaluation",
+    "weight": 124
+  },
+  {
+    "age": 56,
+    "case_id": "c-c01c33ce2647",
+    "case_type": "U",
+    "measurement": 100,
+    "r_star": 1950,
+    "split": "evaluation",
+    "weight": 97
+  },
+  {
+    "age": 29,
+    "case_id": "c-c2130ec28f69",
+    "case_type": "U",
+    "measurement": 60,
+    "r_star": 800,
+    "split": "evaluation",
+    "weight": 40
+  },
+  {
+    "age": 36,
+    "case_id": "c-c23bf1504ce1",
+    "case_type": "U",
+    "measurement": 115,
+    "r_star": 2600,
+    "split": "evaluation",
+    "weight": 131
+  },
+  {
+    "age": 85,
+    "case_id": "c-c2c5c214487d",
+    "case_type": "U",
+    "measurement": 35,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 63
+  },
+  {
+    "age": 87,
+    "case_id": "c-c2f88a2fa795",
+    "case_type": "U",
+    "measurement": 72,
+    "r_star": 2300,
+    "split": "evaluation",
+    "weight": 116
+  },
+  {
+    "age": 37,
+    "case_id": "c-c535719c64a8",
+    "case_type": "U",
+    "measurement": 101,
+    "r_star": 2600,
+    "split": "evaluation",
+    "weight": 131
+  },
+  {
+    "age": 78,
+    "case_id": "c-c53aa2cedd74",
+    "case_type": "U",
+    "measurement": 96,
+    "r_star": 1700,
+    "split": "evaluation",
+    "weight": 85
+  },
+  {
+    "age": 33,
+    "case_id": "c-c57a7df5c66d",
+    "case_type": "U",
+    "measurement": 28,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 84
+  },
+  {
+    "age": 65,
+    "case_id": "c-c6eb23506ae0",
+    "case_type": "U",
+    "measurement": 75,
+    "r_star": 1000,
+    "split": "evaluation",
+    "weight": 50
+  },
+  {
+    "age": 54,
+    "case_id": "c-c743b039ef25",
+    "case_type": "U",
+    "measurement": 38,
+    "r_star": 750,
+    "split": "evaluation",
+    "weight": 75
+  },
+  {
+    "age": 64,
+    "case_id": "c-c9455e47b160",
+    "case_type": "U",
+    "measurement": 119,
+    "r_star": 1350,
+    "split": "evaluation",
+    "weight": 67
+  },
+  {
+    "age": 28,
+    "case_id": "c-c951a5b856ee",
+    "case_type": "U",
+    "measurement": 91,
+    "r_star": 1250,
+    "split": "evaluation",
+    "weight": 62
+  },
+  {
+    "age": 39,
+    "case_id": "c-c9e027628480",
+    "case_type": "U",
+    "measurement": 24,
+    "r_star": 300,
+    "split": "evaluation",
+    "weight": 62
+  },
+  {
+    "age": 40,
+    "case_id": "c-cbd6ccea8710",
+    "case_type": "U",
+    "measurement": 59,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 83
+  },
+  {
+    "age": 81,
+    "case_id": "c-cdd9f0a91c9b",
+    "case_type": "U",
+    "measurement": 77,
+    "r_star": 1050,
+    "split": "evaluation",
+    "weight": 52
+  },
+  {
+    "age": 64,
+    "case_id": "c-d0768cca5085",
+    "case_type": "U",
+    "measurement": 49,
+    "r_star": 700,
+    "split": "evaluation",
+    "weight": 69
+  },
+  {
+    "age": 53,
+    "case_id": "c-d0aed69d32ce",
+    "case_type": "U",
+    "measurement": 76,
+    "r_star": 2650,
+    "split": "evaluation",
+    "weight": 133
+  },
+  {
+    "age": 78,
+    "case_id": "c-d0ea7a8503b0",
+    "case_type": "U",
+    "measurement": 119,
+    "r_star": 1550,
+    "split": "evaluation",
+    "weight": 77
+  },
+  {
+    "age": 69,
+    "case_id": "c-d15d5e46c0be",
+    "case_type": "U",
+    "measurement": 13,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 83
+  },
+  {
+    "age": 28,
+    "case_id": "c-d1a63f5d935f",
+    "case_type": "U",
+    "measurement": 97,
+    "r_star": 2400,
+    "split": "evaluation",
+    "weight": 121
+  },
+  {
+    "age": 20,
+    "case_id": "c-d1f6d5f767e8",
+    "case_type": "U",
+    "measurement": 64,
+    "r_star": 1350,
+    "split": "evaluation",
+    "weight": 68
+  },
+  {
+    "age": 69,
+    "case_id": "c-d4f2da6b5c01",
+    "case_type": "U",
+    "measurement": 100,
+    "r_star": 1750,
+    "split": "evaluation",
+    "weight": 88
+  },
+  {
+    "age": 38,
+    "case_id": "c-d505095cbed9",
+    "case_type": "U",
+    "measurement": 106,
+    "r_star": 2700,
+    "split": "evaluation",
+    "weight": 136
+  },
+  {
+    "age": 66,
+    "case_id": "c-d629d84675f8",
+    "case_type": "U",
+    "measurement": 99,
+    "r_star": 1300,
+    "split": "evaluation",
+    "weight": 66
+  },
+  {
+    "age": 22,
+    "case_id": "c-d8296aff95f3",
+    "case_type": "U",
+    "measurement": 100,
+    "r_star": 1250,
+    "split": "evaluation",
+    "weight": 62
+  },
+  {
+    "age": 83,
+    "case_id": "c-da1705c6482d",
+    "case_type": "U",
+    "measurement": 28,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 54
+  },
+  {
+    "age": 60,
+    "case_id": "c-db8e9fd546dd",
+    "case_type": "U",
+    "measurement": 89,
+    "r_star": 1200,
+    "split": "evaluation",
+    "weight": 61
+  },
+  {
+    "age": 50,
+    "case_id": "c-dc17949a050e",
+    "case_type": "U",
+    "measurement": 70,
+    "r_star": 2650,
+    "split": "evaluation",
+    "weight": 133
+  },
+  {
+    "age": 66,
+    "case_id": "c-dd23226798a7",
+    "case_type": "U",
+    "measurement": 117,
+    "r_star": 1950,
+    "split": "evaluation",
+    "weight": 98
+  },
+  {
+    "age": 47,
+    "case_id": "c-de3caa657c78",
+    "case_type": "U",
+    "measurement": 92,
+    "r_star": 1300,
+    "split": "evaluation",
+    "weight": 66
+  },
+  {
+    "age": 74,
+    "case_id": "c-e0f1f8026785",
+    "case_type": "U",
+    "measurement": 78,
+    "r_star": 2700,
+    "split": "evaluation",
+    "weight": 136
+  },
+  {
+    "age": 18,
+    "case_id": "c-e263ea07f8de",
+    "case_type": "U",
+    "measurement": 78,
+    "r_star": 2500,
+    "split": "evaluation",
+    "weight": 124
+  },
+  {
+    "age": 85,
+    "case_id": "c-e274b73fc2a4",
+    "case_type": "U",
+    "measurement": 83,
+    "r_star": 2550,
+    "split": "evaluation",
+    "weight": 127
+  },
+  {
+    "age": 62,
+    "case_id": "c-e565ad7d2518",
+    "case_type": "U",
+    "measurement": 40,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 42
+  },
+  {
+    "age": 75,
+    "case_id": "c-e5be45ca7129",
+    "case_type": "U",
+    "measurement": 63,
+    "r_star": 1750,
+    "split": "evaluation",
+    "weight": 88
+  },
+  {
+    "age": 82,
+    "case_id": "c-e5e67191bd7e",
+    "case_type": "U",
+    "measurement": 94,
+    "r_star": 1750,
+    "split": "evaluation",
+    "weight": 87
+  },
+  {
+    "age": 52,
+    "case_id": "c-e7205e0142e6",
+    "case_type": "U",
+    "measurement": 104,
+    "r_star": 2200,
+    "split": "evaluation",
+    "weight": 111
+  },
+  {
+    "age": 34,
+    "case_id": "c-e72fe13312f9",
+    "case_type": "U",
+    "measurement": 34,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 45
+  },
+  {
+    "age": 52,
+    "case_id": "c-e907a30e80ad",
+    "case_type": "U",
+    "measurement": 79,
+    "r_star": 1550,
+    "split": "evaluation",
+    "weight": 78
+  },
+  {
+    "age": 23,
+    "case_id": "c-e9119032a1a9",
+    "case_type": "U",
+    "measurement": 110,
+    "r_star": 1500,
+    "split": "evaluation",
+    "weight": 74
+  },
+  {
+    "age": 82,
+    "case_id": "c-e92f8d915a77",
+    "case_type": "U",
+    "measurement": 94,
+    "r_star": 850,
+    "split": "evaluation",
+    "weight": 42
+  },
+  {
+    "age": 45,
+    "case_id": "c-e9bb82b5e470",
+    "case_type": "U",
+    "measurement": 115,
+    "r_star": 2100,
+    "split": "evaluation",
+    "weight": 105
+  },
+  {
+    "age": 38,
+    "case_id": "c-ebbdaea21022",
+    "case_type": "U",
+    "measurement": 108,
+    "r_star": 1400,
+    "split": "evaluation",
+    "weight": 70
+  },
+  {
+    "age": 29,
+    "case_id": "c-ec3c145ec873",
+    "case_type": "U",
+    "measurement": 107,
+    "r_star": 1900,
+    "split": "evaluation",
+    "weight": 94
+  },
+  {
+    "age": 86,
+    "case_id": "c-ecd3a36d07c0",
+    "case_type": "U",
+    "measurement": 87,
+    "r_star": 2000,
+    "split": "evaluation",
+    "weight": 100
+  },
+  {
+    "age": 39,
+    "case_id": "c-ed932f378e85",
+    "case_type": "U",
+    "measurement": 46,
+    "r_star": 450,
+    "split": "evaluation",
+    "weight": 43
+  },
+  {
+    "age": 83,
+    "case_id": "c-edfcbb74277a",
+    "case_type": "U",
+    "measurement": 120,
+    "r_star": 950,
+    "split": "evaluation",
+    "weight": 48
+  },
+  {
+    "age": 73,
+    "case_id": "c-ee44c4e45884",
+    "case_type": "U",
+    "measurement": 59,
+    "r_star": 800,
+    "split": "evaluation",
+    "weight": 82
+  },
+  {
+    "age": 75,
+    "case_id": "c-ef97d1c5d395",
+    "case_type": "U",
+    "measurement": 88,
+    "r_star": 2200,
+    "split": "evaluation",
+    "weight": 109
+  },
+  {
+    "age": 76,
+    "case_id": "c-f020fe436bad",
+    "case_type": "U",
+    "measurement": 118,
+    "r_star": 900,
+    "split": "evaluation",
+    "weight": 45
+  },
+  {
+    "age": 60,
+    "case_id": "c-f1e0469b9e13",
+    "case_type": "U",
+    "measurement": 109,
+    "r_star": 900,
+    "split": "evaluation",
+    "weight": 44
+  },
+  {
+    "age": 29,
+    "case_id": "c-f206fdd8a0e5",
+    "case_type": "U",
+    "measurement": 77,
+    "r_star": 2200,
+    "split": "evaluation",
+    "weight": 110
+  },
+  {
+    "age": 53,
+    "case_id": "c-f279b5359ca3",
+    "case_type": "U",
+    "measurement": 95,
+    "r_star": 1600,
+    "split": "evaluation",
+    "weight": 80
+  },
+  {
+    "age": 24,
+    "case_id": "c-f3281903cc06",
+    "case_type": "U",
+    "measurement": 26,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 82
+  },
+  {
+    "age": 39,
+    "case_id": "c-f5bd1dbea451",
+    "case_type": "U",
+    "measurement": 37,
+    "r_star": 650,
+    "split": "evaluation",
+    "weight": 67
+  },
+  {
+    "age": 78,
+    "case_id": "c-f5ce520e622c",
+    "case_type": "U",
+    "measurement": 63,
+    "r_star": 1150,
+    "split": "evaluation",
+    "weight": 57
+  },
+  {
+    "age": 76,
+    "case_id": "c-f6bd07ef65ec",
+    "case_type": "U",
+    "measurement": 10,
+    "r_star": 200,
+    "split": "evaluation",
+    "weight": 40
+  },
+  {
+    "age": 85,
+    "case_id": "c-f85af320dbf4",
+    "case_type": "U",
+    "measurement": 81,
+    "r_star": 1500,
+    "split": "evaluation",
+    "weight": 76
+  },
+  {
+    "age": 84,
+    "case_id": "c-f8df826b5ddc",
+    "case_type": "U",
+    "measurement": 44,
+    "r_star": 800,
+    "split": "evaluation",
+    "weight": 79
+  },
+  {
+    "age": 53,
+    "case_id": "c-f963cadeeb08",
+    "case_type": "U",
+    "measurement": 29,
+    "r_star": 400,
+    "split": "evaluation",
+    "weight": 82
+  },
+  {
+    "age": 65,
+    "case_id": "c-f9aee5bbd534",
+    "case_type": "U",
+    "measurement": 96,
+    "r_star": 2300,
+    "split": "evaluation",
+    "weight": 114
+  },
+  {
+    "age": 60,
+    "case_id": "c-fb0987c85213",
+    "case_type": "U",
+    "measurement": 40,
+    "r_star": 700,
+    "split": "evaluation",
+    "weight": 68
+  },
+  {
+    "age": 56,
+    "case_id": "c-fb56a4a8d626",
+    "case_type": "U",
+    "measurement": 50,
+    "r_star": 500,
+    "split": "evaluation",
+    "weight": 48
+  },
+  {
+    "age": 25,
+    "case_id": "c-fb964ef44e82",
+    "case_type": "U",
+    "measurement": 108,
+    "r_star": 1650,
+    "split": "evaluation",
+    "weight": 82
+  },
+  {
+    "age": 53,
+    "case_id": "c-fc84ab7300bf",
+    "case_type": "U",
+    "measurement": 47,
+    "r_star": 800,
+    "split": "evaluation",
+    "weight": 82
+  },
+  {
+    "age": 25,
+    "case_id": "c-fca2c9559a9d",
+    "case_type": "U",
+    "measurement": 39,
+    "r_star": 750,
+    "split": "evaluation",
+    "weight": 75
+  },
+  {
+    "age": 88,
+    "case_id": "c-fde85d59901f",
+    "case_type": "U",
+    "measurement": 10,
+    "r_star": 250,
+    "split": "evaluation",
+    "weight": 49
+  },
+  {
+    "age": 66,
+    "case_id": "c-ffeeec11877e",
+    "case_type": "U",
+    "measurement": 103,
+    "r_star": 2800,
+    "split": "evaluation",
+    "weight": 140
+  }
+]

@@ -1,0 +1,63 @@
+{
+  "checksums_sha256": {
+    "episodes/main.json": "8eca5061734ddaa046a235aa51ccb5c46adfa17390c6173a289121bda4ee9d7c",
+    "episodes/pilot.json": "904b2b6600f75b533fb6c65d4bb16b182876bba2364ea380ee458b449454fbee",
+    "episodes/trial.json": "b14aa1e261a50ff2f4fe90f6ebd9eef4ce7afbdfa8319890ecef37372c8fba4e",
+    "excluded_keys.json": "db293fc3494e91ab09e713b8abc4f42b16a1b4ca107da3d83fc5cb781bf05409",
+    "pools/development.json": "30dc182240451b5ea523bd68f34e096bb3f4ebb1a0ca0aa8e7b090181acc5e0a",
+    "pools/evaluation.json": "32cbe53c355668c3c53a09ae6281e1fa43bd50adb69d73bc414a9aacbd19a0f6",
+    "used_keys.json": "954504dcd6f0ba94a9d649984fbb338145313680d155cb41f2a270252ede87b0"
+  },
+  "counts": {
+    "development": {
+      "A": 150,
+      "U": 300,
+      "near_measurement": 20,
+      "near_weight": 20,
+      "u_heavy_far": 100,
+      "u_light_high": 100,
+      "u_light_low": 50,
+      "u_light_mid": 50
+    },
+    "evaluation": {
+      "A": 150,
+      "U": 300,
+      "near_measurement": 20,
+      "near_weight": 20,
+      "u_heavy_far": 100,
+      "u_light_high": 100,
+      "u_light_low": 50,
+      "u_light_mid": 50
+    }
+  },
+  "dataset_version": "v1",
+  "excluded_keys_count": 578,
+  "generation_order": [
+    "evaluation_pool",
+    "development_pool",
+    "trial_lists",
+    "pilot_lists",
+    "main_lists"
+  ],
+  "generator_version": "0.2.0",
+  "list_counts": {
+    "main": 30,
+    "pilot": 20,
+    "trial": 3
+  },
+  "quotas": {
+    "A": 150,
+    "near_measurement": 20,
+    "near_weight": 20,
+    "u_heavy_far": 100,
+    "u_light_high": 100,
+    "u_light_low": 50,
+    "u_light_mid": 50
+  },
+  "seeds": {
+    "dev_pool_base": 200,
+    "pilot_lists_base": 3000,
+    "trial_lists_base": 2000
+  },
+  "used_keys_count": 1178
+}

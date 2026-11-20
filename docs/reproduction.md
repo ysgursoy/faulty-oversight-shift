@@ -1,6 +1,6 @@
 # Reproduction Guide
 
-Status: **pipeline implemented; no model runs yet.** No results are available.
+Status: **design version 1, completed.** The released records are in [`releases/v1/`](../releases/v1/).
 
 ## 1. Environment
 
@@ -22,14 +22,14 @@ uv run python -m unittest discover -s tests
 
 ## 3. Reanalysis of a released record set
 
-A release directory holds one dataset (`data/`) and sealed runs (`runs/<run-id>/`).
+A release directory holds one dataset (`data/`) and sealed runs (`runs/<run-id>/`). The released set is `releases/v1`; it also keeps the pre-check records under `prechecks/`.
 
 ```bash
-uv run oversight-study validate-release <release-path>
-uv run oversight-study analyze <release-path> --stage main --split evaluation
+uv run oversight-study validate-release releases/v1
+uv run oversight-study analyze releases/v1 --stage main --split evaluation --out results
 ```
 
-`analyze` writes tables, figures, and a manifest with input run ids, parameters, and checksums under `results/<analysis-id>/`. Rerunning it on the same release reproduces the tables exactly.
+`analyze` writes tables, figures, and a manifest with input run ids, parameters, and checksums under `results/<analysis-id>/`. Rerunning it on the same release reproduces the tables exactly; the released analysis is [`results/main-evaluation-r0-c0557ee2/`](../results/main-evaluation-r0-c0557ee2/). Classifier outputs and the manual review for the main run are in [`annotations/main-20261119T203514Z-2ad2bde3/`](../annotations/main-20261119T203514Z-2ad2bde3/); they are not covered by the run's seal and carry their own `checksums.sha256`.
 
 ## 4. Running the pipeline
 

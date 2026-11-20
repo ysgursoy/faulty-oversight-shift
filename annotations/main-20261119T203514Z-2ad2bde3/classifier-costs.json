@@ -1,0 +1,35 @@
+{
+  "by_model": {
+    "claude-haiku-5-5": {
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "calls": 19134,
+      "cost_usd": 0.9524729000000001,
+      "input_tokens": 5860019,
+      "output_tokens": 732942
+    },
+    "claude-opus-5-5": {
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "calls": 502,
+      "cost_usd": 2.494808,
+      "input_tokens": 231192,
+      "output_tokens": 78502
+    }
+  },
+  "prices_usd_per_mtok": {
+    "claude-haiku-5-5": {
+      "cache_read": null,
+      "cache_write": null,
+      "input": 0.1,
+      "output": 0.5
+    },
+    "claude-opus-5-5": {
+      "cache_read": 0.2,
+      "cache_write": 5.0,
+      "input": 4.0,
+      "output": 20.0
+    }
+  },
+  "total_cost_usd": 3.4472809
+}

@@ -162,3 +162,20 @@ def correct_feedback_control(end: pd.DataFrame, r_star_by_case: Mapping[str, int
         [c[col] for col in CELL]).all()
     return per_episode.groupby(level=GROUP).agg(["sum", "size"]).rename(
         columns={"sum": "all_r_star", "size": "episodes"})
+
+
+def detect_and_retain(application: pd.DataFrame, accuracy: pd.DataFrame) -> pd.DataFrame:
+    """Episodes that both matched the evaluator pattern on at least one unseen probe pair
+    and answered all three final affected cases exactly by the protocol.
+
+    Inputs are episode-by-column tables from `compare.build_table` (columns: frame,
+    condition letter, wording). Descriptive only; columns present in both tables.
+    """
+    rows = []
+    for column in application.columns:
+        if column not in accuracy.columns:
+            continue
+        both = (application[column] > 0) & (accuracy[column] == 1)
+        rows.append({"frame": column[0], "letter": column[1], "wording": column[2],
+                     "both": int(both.sum()), "n": int(application[column].notna().sum())})
+    return pd.DataFrame(rows).set_index(["frame", "letter", "wording"])

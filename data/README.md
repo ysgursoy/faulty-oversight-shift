@@ -1,21 +1,22 @@
 # Data
 
-No dataset has been generated yet. See [`docs/data-card.md`](../docs/data-card.md) for the planned construction.
+The released dataset is [`releases/v1/data/`](../releases/v1/data/). See [`docs/data-card.md`](../docs/data-card.md) for its construction.
 
 ## Split roles
 
-- `development`: prompt and implementation development.
+- `development`: prompt and implementation development (pre-check, trial, pilot).
 - `evaluation`: reported evaluation only; never used to revise prompts or select a model.
 
-Generation order is fixed: evaluation pool, development pool (with all evaluation keys excluded), then episode lists and probes.
+Generation order is fixed: evaluation pool, development pool (with all evaluation keys excluded), then episode lists and probes. Keys listed in `excluded_keys.json` are treated as already used.
 
-## Planned version layout
+## Version layout
 
 ```text
-data/<dataset-version>/
+releases/<dataset-version>/data/
   pools/
   episodes/
   used_keys.json
+  excluded_keys.json
   manifest.json
 ```
 

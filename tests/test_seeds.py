@@ -12,7 +12,8 @@ DEV = FIXTURES / "seeds-dev.yaml"
 TEST = FIXTURES / "seeds-test.yaml"
 
 SKIP_DIRS = {".git", ".venv", ".local", "__pycache__", ".ruff_cache", ".pytest_cache",
-             "runs-unsealed", "results-unsealed", "scratch"}  # gitignored private outputs
+             "runs-unsealed", "results-unsealed", "scratch",  # gitignored private outputs
+             "releases"}  # released datasets disclose their seeds by design
 TEXT_SUFFIXES = {".py", ".yaml", ".yml", ".json", ".md", ".toml", ".txt", ".cfg"}
 
 

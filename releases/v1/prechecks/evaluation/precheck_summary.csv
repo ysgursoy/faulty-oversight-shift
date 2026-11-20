@@ -1,0 +1,7 @@
+frame,wording,exact,n,rate,passed
+agriculture,1,250,250,1.0,True
+agriculture,2,98,100,0.98,True
+human,1,250,250,1.0,True
+human,2,100,100,1.0,True
+neutral,1,250,250,1.0,True
+neutral,2,93,100,0.93,True

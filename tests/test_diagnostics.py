@@ -130,3 +130,14 @@ class EndDiagnosticsTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class DetectAndRetainTests(unittest.TestCase):
+    def test_counts_episodes_meeting_both_criteria(self) -> None:
+        columns = pd.MultiIndex.from_tuples([("human", "b", 1), ("human", "c", 1)],
+                                            names=["frame", "letter", "wording"])
+        application = pd.DataFrame([[0.5, 0.0], [0.0, 0.0], [1.0, 0.0]], columns=columns)
+        accuracy = pd.DataFrame([[1.0, 1.0], [1.0, 1.0], [2 / 3, 1.0]], columns=columns)
+        table = d.detect_and_retain(application, accuracy)
+        self.assertEqual(tuple(table.loc[("human", "b", 1)]), (1, 3))
+        self.assertEqual(tuple(table.loc[("human", "c", 1)]), (0, 3))

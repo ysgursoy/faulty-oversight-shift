@@ -1,0 +1,40 @@
+cells:
+- conditions:
+  - a
+  - c
+  - b-1.5
+  - f-1.5
+  frames:
+  - neutral
+  - agriculture
+  - human
+  lists:
+    start: 0
+    stop: null
+  optional: false
+  replicates:
+  - 0
+  wordings:
+  - 1
+- conditions:
+  - c
+  - b-1.5
+  frames:
+  - neutral
+  - agriculture
+  - human
+  lists:
+    start: 0
+    stop: null
+  optional: false
+  replicates:
+  - 0
+  wordings:
+  - 2
+design_version: '1'
+list_count: 3
+m: 1.5
+max_cost_usd: 250.0
+order_seed: 5100
+split: development
+stage: trial

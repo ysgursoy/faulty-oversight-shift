@@ -1,0 +1,15 @@
+{
+  "cache_read_tokens": 107950553,
+  "cache_write_tokens": 4646988,
+  "calls": 24691,
+  "cost_usd_with_cache": 46.2336073,
+  "cost_usd_without_cache": 249.016164,
+  "input_tokens": 396826,
+  "output_tokens": 2302743,
+  "prices_usd_per_mtok": {
+    "cache_read": 0.1,
+    "cache_write": 2.5,
+    "input": 2.0,
+    "output": 10.0
+  }
+}

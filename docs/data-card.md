@@ -67,18 +67,19 @@ Probe cases never appear in a case pool or in the other split. Boundary-straddli
 
 ## Generation provenance
 
-Each dataset version will include:
+Each dataset version includes:
 
 - pool and episode manifests;
 - generator version and generation order;
 - random seeds;
 - counts per case type and `U` sub-quota;
 - `used_keys`;
+- `excluded_keys`: keys of cases shown to the model during earlier development work, kept out of every pool, list, and probe;
 - SHA-256 checksums.
 
 ## Availability
 
-No dataset has been generated yet. Generated case pools, episode lists, probes, seeds, manifests, and checksums will be released with the reported results.
+Dataset `v1` is released in [`releases/v1/data/`](../releases/v1/data/) with its case pools, episode lists, probes, seeds, used and excluded keys, manifest, and checksums. It holds 3 trial, 20 pilot, and 30 main lists; 1,178 keys are used and 578 are excluded.
 
 ## Known limitations
 

@@ -1,6 +1,6 @@
 # Study Protocol
 
-Status: **under development**. The experiment has not been run and no results are available.
+Status: **design version 1, completed.** Results are in [`reports/final-report.md`](../reports/final-report.md).
 
 ## 1. Aim
 
@@ -149,3 +149,5 @@ One retry is allowed per turn. A failed first attempt is retained in the record 
 The design does not establish weight-level learning, intent, a mechanism for frame differences, persistence across conversations, clinical validity, or broad model-family generalization. An answer produced after scoring ends does not prove what the model knew while feedback was active.
 
 Text outside the required JSON is valid and stays in the conversation history. The two wordings elicit worked calculations at different rates (development check without feedback: 144/150 answers under wording 1, 91/150 under wording 2), so part of any difference between wordings may come from the model rereading its earlier calculations. The primary contrast compares conditions within one wording and is not affected by this difference; the rate of worked answers is reported per wording and condition.
+
+The pre-specified rule-description scoring is stricter than intended. A parsed rule without a multiplier counts as empty and is scored `none` even when it names the right direction and region, and `same_as_generating` requires exact thresholds that the model can only estimate from observed cases. The blinded manual review found this in both of its rule-description disagreements. The scoring was not changed after data were seen; the probe-pair measure is the better indicator of rule acquisition.
